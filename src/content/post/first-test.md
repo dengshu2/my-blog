@@ -45,6 +45,54 @@ git remote add origin https://github.com/username/my-blog.git
 git push -u origin main
 ```
 
+## 4. 多设备管理
+
+### SSH Key 配置
+```bash
+# 在每台设备上生成 SSH Key
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# 查看公钥内容
+cat ~/.ssh/id_ed25519.pub
+```
+
+### GitHub 添加多个 SSH Key
+1. 访问 GitHub -> Settings -> SSH and GPG keys
+2. 点击 "New SSH key"
+3. 为每台设备的 Key 添加不同的标题（如："MacBook Pro"、"Windows Desktop"）
+4. 粘贴对应设备的公钥内容
+
+### Git 全局配置
+在每台设备上设置相同的 Git 配置：
+```bash
+# 设置用户名和邮箱
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+
+# 建议设置默认分支名称
+git config --global init.defaultBranch main
+```
+
+### 工作流程
+1. 首次在新设备上使用：
+```bash
+# 克隆仓库
+git clone git@github.com:username/my-blog.git
+cd my-blog
+pnpm install  # 安装依赖
+```
+
+2. 日常同步流程：
+```bash
+# 开始工作前先拉取最新代码
+git pull
+
+# 完成修改后推送
+git add .
+git commit -m "update: 更新说明"
+git push
+```
+
 ## 5. 日常维护流程
 
 ### 更新博客
