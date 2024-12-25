@@ -2,46 +2,38 @@ import type { SiteConfig } from "@/types";
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 
 export const siteConfig: SiteConfig = {
-	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
-	author: "Chris Williams",
-	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
+	author: "邓舒",
 	date: {
-		locale: "en-GB",
-		options: {
-			day: "numeric",
-			month: "short",
-			year: "numeric",
-		},
+	  locale: "zh-CN", // 改为中文
+	  options: {
+		day: "numeric",
+		month: "short", 
+		year: "numeric",
+	  },
 	},
-	// Used as the default description meta property and webmanifest description
-	description: "An opinionated starter theme for Astro",
-	// HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
-	lang: "en-GB",
-	// Meta property, found in src/components/BaseHead.astro L:42
-	ogLocale: "en_GB",
-	// Option to sort posts by updatedDate if set to true (if property exists). Default (false) will sort by publishDate
-	sortPostsByUpdatedDate: false,
-	// Used to construct the meta title property found in src/components/BaseHead.astro L:11, and webmanifest name found in astro.config.ts L:42
-	title: "Astro Theme Cactus",
+	description: "记录技术与生活",
+	lang: "zh-CN",
+	ogLocale: "zh_CN",
+	title: "邓舒的博客",
 	webmentions: {
-		// Webmention.io API endpoint. Get your own here: https://webmention.io/, and follow this blog post: https://astro-cactus.chriswilliams.dev/posts/webmentions/
-		link: "https://webmention.io/astro-cactus.chriswilliams.dev/webmention",
+	  link: "", // 暂时不需要 webmentions
 	},
+	sortPostsByUpdatedDate: true,
 };
 
 // Used to generate links in both the Header & Footer.
 export const menuLinks: { path: string; title: string }[] = [
 	{
 		path: "/",
-		title: "Home",
+		title: "首页",
 	},
 	{
 		path: "/about/",
-		title: "About",
+		title: "关于",
 	},
 	{
 		path: "/posts/",
-		title: "Blog",
+		title: "博客",
 	},
 ];
 
