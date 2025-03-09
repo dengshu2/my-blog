@@ -25,7 +25,7 @@ tags: ["vps", "服务器", "安全", "docker", "git"]
 
 ```bash
 # 更新软件包索引并升级已安装的软件
-sudo apt update -y && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y && sudo apt install -y build-essential tree
 ```
 
 ## 3. SSH 安全加固
@@ -95,6 +95,12 @@ docker compose version
 
 # 运行测试容器
 sudo docker run hello-world
+
+# 查看所有容器
+sudo docker ps -a
+
+# 删除未使用的镜像、容器和网络
+sudo docker system prune -f
 ```
 
 ## 5. Git 配置
@@ -117,6 +123,9 @@ cat ~/.ssh/id_ed25519.pub
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
+
+# 设置默认main分支
+git config --global init.defaultBranch main
 ```
 
 测试 Git 配置：
@@ -148,7 +157,89 @@ sudo ufw status verbose
 sudo ufw disable
 ```
 
-## 7. 系统备份
+## 7. Java 环境配置 (SDKMAN!)
+
+SDKMAN! 是一个用于管理多个版本 Java 及其相关工具的命令行工具，可以轻松安装和切换不同版本的 JDK：
+
+```bash
+# 安装 SDKMAN! 所需依赖
+sudo apt install -y curl zip unzip
+
+# 安装 SDKMAN!
+curl -s "https://get.sdkman.io" | bash
+
+# 加载 SDKMAN! 脚本
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# 验证安装
+sdk version
+```
+
+使用 SDKMAN! 安装和管理 Java：
+
+```bash
+# 列出可用的 JDK 版本
+sdk list java
+
+# 安装特定版本的 JDK (例如 JDK 17)
+sdk install java 8.0.442-zulu 
+
+# 设置默认 Java 版本
+sdk default java 8.0.442-zulu
+
+# 验证 Java 安装
+java -version
+javac -version
+```
+
+## 8. Python 环境配置 (pyenv)
+
+pyenv 允许在同一系统上安装和管理多个 Python 版本：
+
+```bash
+# 安装 pyenv 所需依赖
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+# 使用 pyenv 安装程序
+curl https://pyenv.run | bash
+```
+
+将 pyenv 添加到 shell 配置中：
+
+```bash
+# 添加以下内容到 ~/.bashrc 或 ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+# 重新加载 shell 配置
+source ~/.bashrc
+```
+
+使用 pyenv 安装和管理 Python：
+
+```bash
+# 列出可用的 Python 版本
+pyenv install --list
+
+# 安装特定版本的 Python
+pyenv install 3.11.11
+
+# 设置全局 Python 版本
+pyenv global 3.11.11
+
+# 验证 Python 安装
+python --version
+pip --version
+
+# 安装常用的 Python 包
+pip install ipython numpy pandas matplotlib
+```
+
+## 9. 系统备份
 
 完成基础配置后，建议创建系统快照或备份。
 
