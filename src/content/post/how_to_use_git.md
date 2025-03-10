@@ -243,7 +243,7 @@ git log
 - [Git 官方文档](https://git-scm.com/doc)
 - [GitHub 官方文档](https://docs.github.com/)
 - [Pro Git 中文版](https://git-scm.com/book/zh/v2)
-- [Git 教程视频](https://www.youtube.com/watch?v=FKXRiAiQFiY)
+- 强烈推荐[Git 教程视频](https://www.youtube.com/watch?v=FKXRiAiQFiY)
 
 ## 总结
 
