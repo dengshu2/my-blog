@@ -69,6 +69,7 @@ git config --list
 | `git push` | 将本地提交推送到远程仓库 |
 | `git pull` | 从远程仓库拉取最新更改 |
 | `git branch` | 查看分支列表 |
+| `git log` | 查看提交历史 |
 | `git checkout -b <branch>` | 创建并切换到新分支 |
 | `git branch -d <branch>` | 删除本地分支 |
 | `git merge <branch>` | 合并指定分支到当前分支 |
@@ -230,6 +231,19 @@ git reset HEAD <file>
 # 撤销最近的提交
 git reset --soft HEAD~1
 ```
+
+### 查看提交历史
+
+```bash
+git log
+```
+
+## 参考资料
+
+- [Git 官方文档](https://git-scm.com/doc)
+- [GitHub 官方文档](https://docs.github.com/)
+- [Pro Git 中文版](https://git-scm.com/book/zh/v2)
+- [Git 教程视频](https://www.youtube.com/watch?v=FKXRiAiQFiY)
 
 ## 总结
 
