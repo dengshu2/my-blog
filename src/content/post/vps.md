@@ -34,7 +34,7 @@ sudo apt install -y build-essential tree net-tools
 sudo apt install -y imagemagick inkscape fonts-noto-cjk
 
 # 可选安装 python
-sudo apt install -y python3 python3-pip
+sudo apt install -y python3 python3-pip python3-venv
 
 # 可选安装 openjdk11
 sudo apt install -y openjdk-11-jdk
