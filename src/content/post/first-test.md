@@ -103,6 +103,9 @@ git pull
 # 本地开发
 pnpm dev
 
+# astro check 检查语法
+pnpm astro check
+
 # 提交更改
 git add .
 git commit -m "update: 更新说明"
