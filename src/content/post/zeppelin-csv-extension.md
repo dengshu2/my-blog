@@ -33,23 +33,17 @@ tags: ["claude-code", "zeppelin", "chrome-extension", "csv", "工具"]
 
 #### 3. 开启开发者模式
 
-打开**开发者模式**开关：
+打开**开发者模式**开关，点击**加载未打包的扩展程序**按钮：
 
 ![开发者模式](https://img.runningotter.com/2025/08/c3a3f4a82ab9dfde1d2e8adef71b1cf9.png)
 
-#### 4. 加载扩展程序
-
-点击**加载未打标的扩展程序**按钮：
-
-![加载扩展程序](https://img.runningotter.com/2025/08/fd15b532395bffa02b9dcf55b6ddcea5.png)
-
-#### 5. 选择扩展文件夹
+#### 4. 选择扩展文件夹
 
 选择解压后的 `zeppelin_csv_download` 文件夹：
 
 ![选择文件夹](https://img.runningotter.com/2025/08/23c3725ee2607b9b3d73a690cb8b50a2.png)
 
-#### 6. 固定扩展
+#### 5. 固定扩展
 
 安装完成后，建议在扩展程序列表中将其固定，方便日后使用：
 
@@ -57,7 +51,7 @@ tags: ["claude-code", "zeppelin", "chrome-extension", "csv", "工具"]
 
 ## 使用方法
 
-安装完成后，登录到 Zeppelin 并刷新界面，你就可以看到新增的下载按钮了。
+安装完成后，登录到 Zeppelin 并刷新界面，点击浏览器右上角刚固定的插件，你就可以看到下面的界面，点击下载就可以了。
 
 ![插件界面](https://img.runningotter.com/2025/08/80c7521f61a8c67f02d12694ed3fc532.png)
 
