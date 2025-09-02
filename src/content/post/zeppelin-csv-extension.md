@@ -23,7 +23,7 @@ tags: ["claude-code", "zeppelin", "chrome-extension", "csv", "工具"]
 
 打开浏览器后，点击**应用扩展**按钮：
 
-![应用扩展](https:\\img.runningotter.com/2025/09/6c8730f5e18662390d66130068b1d90c.png)
+![应用扩展](https://img.runningotter.com/2025/09/6c8730f5e18662390d66130068b1d90c.png)
 
 #### 2. 进入管理扩展程序
 

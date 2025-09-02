@@ -46,11 +46,11 @@ tags: ["claude-code", "excel", "spark-sql", "online-tool", "工具"]
 
 在 Upload Excel File 模块，点击上传按钮选择要处理的文件：
 
-![开始界面](https:\\img.runningotter.com/2025/09/2772186e513dd940690444e4004859ce.png)
+![开始界面](https://img.runningotter.com/2025/09/2772186e513dd940690444e4004859ce.png)
 
 点击数据上传后，会弹出文件选择对话框。目前支持 Excel 和 CSV 格式，选择文件后点击确认，稍等片刻即可看到解析结果：
 
-![解析结果](https:\\img.runningotter.com/2025/09/2de35f8a11653a85caeba180fc6532a7.png)
+![解析结果](https://img.runningotter.com/2025/09/2de35f8a11653a85caeba180fc6532a7.png)
 
 ### 2. 数据预览
 
@@ -64,7 +64,7 @@ tags: ["claude-code", "excel", "spark-sql", "online-tool", "工具"]
 
 配置完成后，在 Generated Spark SQL 模块就能看到生成的完整 Spark SQL 插入语句：
 
-![生成结果](https:\\img.runningotter.com/2025/09/50ea42ee48dfc8503c69db38740f934f.png)
+![生成结果](https://img.runningotter.com/2025/09/50ea42ee48dfc8503c69db38740f934f.png)
 
 ## 开发感悟
 
