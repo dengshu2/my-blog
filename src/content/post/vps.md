@@ -25,7 +25,7 @@ tags: ["vps", "服务器", "安全", "docker", "git"]
 
 ```bash
 # 更新软件包索引并升级已安装的软件
-sudo apt update && sudo apt upgrade -y 
+sudo apt update && sudo apt upgrade -y
 
 # 安装必要的工具
 sudo apt install -y build-essential tree net-tools
@@ -43,7 +43,27 @@ sudo apt install -y openjdk-11-jdk
 sudo apt install -y maven
 ```
 
-## 3. SSH 安全加固
+## 3. 配置新的用户和 SSH 安全加固
+
+### 配置新的用户
+
+root 用户只用来管理账号，不做日常的开发
+
+```bash
+# 创建新的用户
+adduser dengshu
+
+# 授权sudo命令
+usermod -aG sudo dengshu
+
+# 设置sudo免密
+sodo visudo
+
+# 新增(Ctrl+o 保存 Ctrl+w 退出)
+dengshu ALL=(ALL) NOPASSWD:ALL
+```
+
+### SSH 安全加固
 
 SSH 是远程管理服务器的主要通道，加固 SSH 配置至关重要：
 
@@ -115,7 +135,7 @@ sudo docker system prune -f
 sudo apt install -y git
 
 # 生成 SSH 密钥对
-ssh-keygen -t ed25519 -C "dengshu5115@gmail.com" 
+ssh-keygen -t ed25519 -C "dengshu5115@gmail.com"
 
 # 显示公钥内容，复制后添加到 GitHub/GitLab 账户中
 cat ~/.ssh/id_ed25519.pub
@@ -124,8 +144,8 @@ cat ~/.ssh/id_ed25519.pub
 配置 Git 全局用户信息：
 
 ```bash
-git config --global user.name "dengshu2" 
-git config --global user.email "dengshu5115@gmail.com" 
+git config --global user.name "dengshu2"
+git config --global user.email "dengshu5115@gmail.com"
 
 # 设置默认main分支
 git config --global init.defaultBranch main
