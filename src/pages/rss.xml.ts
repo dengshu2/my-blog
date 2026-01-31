@@ -18,6 +18,11 @@ export const GET = async () => {
 
 		items: await Promise.all(
 			sortedPosts.map(async (post) => {
+				// 渲染 Markdown 为 HTML
+				const { default: MarkdownIt } = await import("markdown-it");
+				const md = new MarkdownIt({ html: true });
+				const html = md.render(post.body);
+
 				return {
 					title: post.data.title,
 					description: post.data.description,
@@ -30,8 +35,8 @@ export const GET = async () => {
 					// 添加分类（使用标签）
 					categories: post.data.tags,
 
-					// 添加完整文章内容
-					content: post.body,
+					// 添加完整文章内容（HTML 格式）
+					content: html,
 
 					// 添加更新日期（如果存在）
 					...(post.data.updatedDate && {

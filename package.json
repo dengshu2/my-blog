@@ -14,6 +14,7 @@
 		"check": "astro check"
 	},
 	"dependencies": {
+		"@astrojs/check": "^0.9.4",
 		"@astrojs/mdx": "3.1.7",
 		"@astrojs/rss": "4.0.7",
 		"@astrojs/sitemap": "3.2.0",
@@ -25,6 +26,7 @@
 		"astro-webmanifest": "^1.0.0",
 		"cssnano": "^7.0.6",
 		"hastscript": "^9.0.0",
+		"markdown-it": "^14.1.0",
 		"mdast-util-directive": "^3.0.0",
 		"mdast-util-to-markdown": "^2.1.0",
 		"mdast-util-to-string": "^4.0.0",
@@ -33,10 +35,9 @@
 		"satori": "0.11.2",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.33.5",
+		"typescript": "^5.6.3",
 		"unified": "^11.0.5",
-		"unist-util-visit": "^5.0.0",
-		"@astrojs/check": "^0.9.4",
-		"typescript": "^5.6.3"
+		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.4",
@@ -46,6 +47,7 @@
 		"@resvg/resvg-js": "^2.6.2",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/hast": "^3.0.4",
+		"@types/markdown-it": "^14.1.2",
 		"@types/mdast": "^4.0.4",
 		"autoprefixer": "^10.4.20",
 		"pagefind": "^1.1.1",

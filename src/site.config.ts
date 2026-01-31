@@ -7,14 +7,14 @@ export const siteConfig: SiteConfig = {
 	  locale: "zh-CN", // 改为中文
 	  options: {
 		day: "numeric",
-		month: "short", 
+		month: "short",
 		year: "numeric",
 	  },
 	},
 	description: "记录技术与生活",
 	lang: "zh-CN",
 	ogLocale: "zh_CN",
-	title: "邓舒的博客",
+	title: "Running Otter",
 	webmentions: {
 	  link: "", // 暂时不需要 webmentions
 	},
