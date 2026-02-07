@@ -1,6 +1,9 @@
 {
 	"name": "my-blog",
 	"version": "4.11.0",
+	"pnpm": {
+		"onlyBuiltDependencies": ["sharp", "@resvg/resvg-js"]
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
