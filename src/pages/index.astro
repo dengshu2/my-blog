@@ -36,24 +36,14 @@ const projects = [
 
 <PageLayout meta={{ title: "首页" }}>
 	<!-- Hero Section -->
-	<section class="relative mb-8" id="hero">
-		<div class="mb-3 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm text-accent">
-			<span class="inline-flex h-2 w-2 rounded-full bg-accent"></span>
-			Open to collaborate
-		</div>
-
+	<section class="mb-8" id="hero">
 		<h1 class="mb-2 text-3xl font-bold leading-tight tracking-tight text-accent-2 sm:text-4xl">
 			你好，我是<span class="text-accent">邓舒</span>
 		</h1>
 
-		<p class="mb-1.5 text-lg font-medium text-accent-2/80 sm:text-xl">
-			数据开发工程师
+		<p class="mb-1.5 text-lg text-textColor/70 sm:text-xl">
+			数据开发工程师 · AI + DATA
 		</p>
-
-		<div class="mb-4 flex items-center gap-2 text-base text-textColor/70">
-			<span class="inline-block h-px w-8 bg-accent/50"></span>
-			通过 <span class="font-semibold text-accent">AI</span> + <span class="font-semibold text-accent">DATA</span> 构建杠杆
-		</div>
 
 		<SocialList />
 	</section>
@@ -71,46 +61,24 @@ const projects = [
 					href={project.url}
 					target="_blank"
 					rel="noreferrer"
-					class="project-card group relative overflow-hidden rounded-xl border border-accent/10 bg-bgColor p-4 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+					class="group rounded-xl border border-accent/10 bg-bgColor p-4 transition-colors hover:border-accent/30"
 				>
 					<div class="mb-2 flex items-center justify-between">
-						<span class="text-2xl transition-transform duration-300 group-hover:scale-110">{project.icon}</span>
+						<span class="text-2xl">{project.icon}</span>
 						<span class="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
 							{project.tag}
 						</span>
 					</div>
-					<h3 class="mb-2 font-semibold text-accent-2 transition-colors group-hover:text-accent">
+					<h3 class="mb-1.5 font-semibold text-accent-2 transition-colors group-hover:text-accent">
 						{project.title}
 					</h3>
 					<p class="text-sm leading-relaxed text-textColor/60">
 						{project.description}
 					</p>
-					<div class="mt-3 flex items-center gap-1 text-xs text-accent/0 transition-all duration-300 group-hover:text-accent">
-						<span>访问项目</span>
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-						</svg>
-					</div>
-					<!-- hover glow effect -->
-					<div class="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--theme-accent) / 0.06), transparent 40%);"></div>
 				</a>
 			))}
 		</div>
 	</section>
-
-
-	<!-- Scroll Divider -->
-	<div class="flex flex-col items-center gap-3 py-8">
-		<div class="flex w-full items-center gap-4">
-			<span class="h-px flex-1 bg-gradient-to-r from-transparent to-accent/20"></span>
-			<a href="#posts" class="group flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 text-accent/40 transition-all duration-300 hover:border-accent/40 hover:text-accent">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-				</svg>
-			</a>
-			<span class="h-px flex-1 bg-gradient-to-l from-transparent to-accent/20"></span>
-		</div>
-	</div>
 
 	<!-- Blog Posts Section -->
 	<section aria-label="Blog post list" id="posts">
@@ -132,36 +100,3 @@ const projects = [
 		</ul>
 	</section>
 </PageLayout>
-
-<style>
-	/* Subtle gradient border on hover for project cards */
-	.project-card::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background: linear-gradient(90deg, transparent, hsl(var(--theme-accent) / 0.5), transparent);
-		opacity: 0;
-		transition: opacity 0.3s;
-	}
-
-	.project-card:hover::before {
-		opacity: 1;
-	}
-</style>
-
-<script>
-	// Track mouse position for card glow effect
-	document.querySelectorAll('.project-card').forEach((card) => {
-		card.addEventListener('mousemove', (e) => {
-			const me = e as MouseEvent;
-			const rect = (me.currentTarget as HTMLElement).getBoundingClientRect();
-			const x = me.clientX - rect.left;
-			const y = me.clientY - rect.top;
-			(me.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-			(me.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
-		});
-	});
-</script>
