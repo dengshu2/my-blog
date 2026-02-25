@@ -213,11 +213,12 @@ const projects = [
 	// Track mouse position for card glow effect
 	document.querySelectorAll('.project-card').forEach((card) => {
 		card.addEventListener('mousemove', (e) => {
-			const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
-			(e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-			(e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+			const me = e as MouseEvent;
+			const rect = (me.currentTarget as HTMLElement).getBoundingClientRect();
+			const x = me.clientX - rect.left;
+			const y = me.clientY - rect.top;
+			(me.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+			(me.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
 		});
 	});
 </script>
