@@ -2,7 +2,10 @@
 	"name": "my-blog",
 	"version": "4.11.0",
 	"pnpm": {
-		"onlyBuiltDependencies": ["sharp", "@resvg/resvg-js"]
+		"onlyBuiltDependencies": [
+			"sharp",
+			"@resvg/resvg-js"
+		]
 	},
 	"scripts": {
 		"dev": "astro dev",
@@ -17,7 +20,7 @@
 		"check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
+		"@astrojs/check": "^0.9.6",
 		"@astrojs/mdx": "3.1.7",
 		"@astrojs/rss": "4.0.7",
 		"@astrojs/sitemap": "3.2.0",
