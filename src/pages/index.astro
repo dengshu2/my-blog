@@ -36,24 +36,21 @@ const projects = [
 
 <PageLayout meta={{ title: "首页" }}>
 	<!-- Hero Section -->
-	<section class="hero-section relative mb-10" id="hero">
-		<div class="hero-badge mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm text-accent">
-			<span class="relative flex h-2 w-2">
-				<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-				<span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-			</span>
+	<section class="relative mb-8" id="hero">
+		<div class="mb-3 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm text-accent">
+			<span class="inline-flex h-2 w-2 rounded-full bg-accent"></span>
 			Open to collaborate
 		</div>
 
-		<h1 class="hero-title mb-3 text-3xl font-bold leading-tight tracking-tight text-accent-2 sm:text-4xl">
+		<h1 class="mb-2 text-3xl font-bold leading-tight tracking-tight text-accent-2 sm:text-4xl">
 			你好，我是<span class="text-accent">邓舒</span>
 		</h1>
 
-		<p class="hero-subtitle mb-2 text-lg font-medium text-accent-2/80 sm:text-xl">
+		<p class="mb-1.5 text-lg font-medium text-accent-2/80 sm:text-xl">
 			数据开发工程师
 		</p>
 
-		<div class="hero-tagline mb-6 flex items-center gap-2 text-base text-textColor/70">
+		<div class="mb-4 flex items-center gap-2 text-base text-textColor/70">
 			<span class="inline-block h-px w-8 bg-accent/50"></span>
 			通过 <span class="font-semibold text-accent">AI</span> + <span class="font-semibold text-accent">DATA</span> 构建杠杆
 		</div>
@@ -75,7 +72,6 @@ const projects = [
 					target="_blank"
 					rel="noreferrer"
 					class="project-card group relative overflow-hidden rounded-xl border border-accent/10 bg-bgColor p-4 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
-					style={`animation-delay: ${index * 100}ms`}
 				>
 					<div class="mb-2 flex items-center justify-between">
 						<span class="text-2xl transition-transform duration-300 group-hover:scale-110">{project.icon}</span>
@@ -104,10 +100,10 @@ const projects = [
 
 
 	<!-- Scroll Divider -->
-	<div class="scroll-divider flex flex-col items-center gap-3 py-10">
+	<div class="flex flex-col items-center gap-3 py-8">
 		<div class="flex w-full items-center gap-4">
 			<span class="h-px flex-1 bg-gradient-to-r from-transparent to-accent/20"></span>
-			<a href="#posts" class="scroll-arrow group flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 text-accent/40 transition-all duration-300 hover:border-accent/40 hover:text-accent">
+			<a href="#posts" class="group flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 text-accent/40 transition-all duration-300 hover:border-accent/40 hover:text-accent">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 				</svg>
@@ -139,44 +135,6 @@ const projects = [
 </PageLayout>
 
 <style>
-	/* Fade-in animation for sections */
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.hero-section {
-		animation: fadeInUp 0.6s ease-out;
-	}
-
-	.hero-badge {
-		animation: fadeInUp 0.6s ease-out 0.1s both;
-	}
-
-	.hero-title {
-		animation: fadeInUp 0.6s ease-out 0.2s both;
-	}
-
-	.hero-subtitle {
-		animation: fadeInUp 0.6s ease-out 0.3s both;
-	}
-
-	.hero-tagline {
-		animation: fadeInUp 0.6s ease-out 0.4s both;
-	}
-
-	.project-card {
-		animation: fadeInUp 0.5s ease-out both;
-	}
-
-
-
 	/* Subtle gradient border on hover for project cards */
 	.project-card::before {
 		content: '';
@@ -192,20 +150,6 @@ const projects = [
 
 	.project-card:hover::before {
 		opacity: 1;
-	}
-
-	/* Scroll arrow bounce */
-	@keyframes gentleBounce {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(4px); }
-	}
-
-	.scroll-arrow {
-		animation: gentleBounce 2s ease-in-out infinite;
-	}
-
-	.scroll-divider {
-		animation: fadeInUp 0.6s ease-out 0.6s both;
 	}
 </style>
 
