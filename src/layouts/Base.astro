@@ -21,7 +21,7 @@ const {
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
 	</head>
 	<body
-		class="mx-auto flex min-h-screen max-w-4xl flex-col bg-bgColor px-6 pt-16 font-mono text-base font-normal text-textColor antialiased sm:px-12"
+		class="mx-auto flex min-h-screen max-w-5xl flex-col bg-bgColor px-6 pt-16 font-mono text-base font-normal text-textColor antialiased sm:px-12"
 	>
 		<ThemeProvider />
 		<SkipLink />
@@ -30,5 +30,19 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<script>
+			// Mermaid client-side rendering
+			// The remark-mermaid plugin converts ```mermaid blocks to <pre class="mermaid">
+			const mermaidElements = document.querySelectorAll<HTMLElement>("pre.mermaid");
+			if (mermaidElements.length > 0) {
+				import("mermaid").then((mod) => {
+					mod.default.initialize({
+						startOnLoad: false,
+						theme: document.documentElement.classList.contains("dark") ? "dark" : "default",
+					});
+					mod.default.run({ nodes: mermaidElements });
+				});
+			}
+		</script>
 	</body>
 </html>

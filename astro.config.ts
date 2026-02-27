@@ -14,6 +14,7 @@ import { siteConfig } from "./src/site.config";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
 import remarkUnwrapImages from "remark-unwrap-images";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
+import { remarkMermaid } from "./src/plugins/remark-mermaid"; /* Convert mermaid blocks to raw HTML */
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
 
 // Rehype plugins
@@ -85,7 +86,7 @@ export default defineConfig({
 				},
 			],
 		],
-		remarkPlugins: [remarkUnwrapImages, remarkReadingTime, remarkDirective, remarkAdmonitions],
+		remarkPlugins: [remarkMermaid, remarkUnwrapImages, remarkReadingTime, remarkDirective, remarkAdmonitions],
 		remarkRehype: {
 			footnoteLabelProperties: {
 				className: [""],
