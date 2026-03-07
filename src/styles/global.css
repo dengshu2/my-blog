@@ -76,6 +76,11 @@
    ===================================================== */
 @layer components {
 	.prose {
+		/* Override @tailwindcss/typography hardcoded colors (TW3 plugin outputs
+		   `color: #374151` directly, ignoring --tw-prose-body CSS var).
+		   This ensures correct text color in both light and dark modes. */
+		color: hsl(var(--theme-text));
+
 		/* prose color tokens */
 		--tw-prose-body: theme(--color-text-color);
 		--tw-prose-bold: theme(--color-text-color);
@@ -86,6 +91,15 @@
 		--tw-prose-links: theme(--color-text-color);
 		--tw-prose-quotes: theme(--color-quote);
 		--tw-prose-th-borders: #666;
+
+		/* prose-invert tokens (used by dark:prose-invert) — map to dark theme vars */
+		--tw-prose-invert-body: theme(--color-text-color);
+		--tw-prose-invert-headings: theme(--color-accent-2);
+		--tw-prose-invert-bold: theme(--color-text-color);
+		--tw-prose-invert-bullets: theme(--color-text-color);
+		--tw-prose-invert-code: theme(--color-text-color);
+		--tw-prose-invert-links: theme(--color-link);
+		--tw-prose-invert-quotes: theme(--color-quote);
 
 		a {
 			/* inline .cactus-link styles (avoids @apply cross-reference in TW4 @layer) */

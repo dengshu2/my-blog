@@ -23,7 +23,7 @@ const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 	<article class="break-words" data-pagefind-body>
 		<div id="blog-hero"><Masthead content={post} /></div>
 		<div
-			class="prose prose-cactus mt-12 max-w-none prose-headings:font-semibold prose-headings:text-accent-2 prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent sm:prose-headings:before:content-['#'] sm:prose-th:before:content-none"
+			class="prose prose-cactus mt-12 max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:text-accent-2 prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent sm:prose-headings:before:content-['#'] sm:prose-th:before:content-none"
 		>
 			<slot />
 			<WebMentions />
