@@ -10,8 +10,7 @@
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "never",
 		"source.organizeImports.biome": "explicit",
-		"source.fixAll": "never",
-		"quickfix.biome": "explicit"
+		"source.fixAll": "never"
 	},
 	"[markdown]": {
 		"editor.wordWrap": "on"
