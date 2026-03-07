@@ -17,9 +17,14 @@
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"astro.content-intellisense": true,
-	"css.validate": false,
-	"scss.validate": false,
-	"files.associations": {
-		"*.css": "tailwindcss"
-	}
+
+	// 静默 CSS 语言服务对 Tailwind v4 指令（@plugin, @theme, @apply, @custom-variant）的未知规则警告
+	"css.lint.unknownAtRules": "ignore",
+
+	// 静默 Tailwind IntelliSense 对 class 名称迁移的建议（break-words → wrap-break-word 等）
+	"tailwindCSS.lint.cssConflict": "ignore",
+
+	// 关闭 JSON schema 对 editor.defaultFormatter 值的严格校验（biomejs.biome 未在白名单中）
+	"json.schemaDownload.enable": true,
+	"json.validate.enable": false
 }
