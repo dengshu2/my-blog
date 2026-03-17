@@ -1,3 +1,9 @@
+/* LXGW WenKai Screen — individual imports to avoid nested @import path issues */
+@import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreen.css";
+@import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreenr.css";
+@import "lxgw-wenkai-screen-webfont/lxgwwenkaiscreen.css";
+@import "lxgw-wenkai-screen-webfont/lxgwwenkaiscreenr.css";
+
 /* Tailwind CSS 4 - CSS-first configuration */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
@@ -50,6 +56,47 @@
 		--theme-accent-2: 0deg 0% 93%;
 		--theme-quote: 102deg 100% 86%;
 	}
+
+	/* ── Typography baseline ── */
+	html {
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		font-family:
+			"Inter",
+			"LXGW WenKai Screen",
+			"PingFang SC",
+			"Noto Sans SC",
+			system-ui,
+			sans-serif;
+		line-height: 1.75;
+		letter-spacing: 0.33px;
+		font-weight: 400;
+		font-feature-settings: "kern" 1;
+		word-break: break-word;
+		overflow-wrap: break-word;
+	}
+
+	/* Keep monospace for code elements */
+	pre, code, kbd, samp {
+		font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+	}
+
+	/* Tighten heading tracking for display text */
+	h1, h2, h3, h4, h5, h6 {
+		line-height: 1.3;
+		letter-spacing: -0.015em;
+		text-wrap: balance;
+	}
+
+	/* Readable paragraph wrapping */
+	p {
+		text-wrap: pretty;
+	}
 }
 
 /* =====================================================
@@ -82,24 +129,24 @@
 		color: hsl(var(--theme-text));
 
 		/* prose color tokens */
-		--tw-prose-body: theme(--color-text-color);
-		--tw-prose-bold: theme(--color-text-color);
-		--tw-prose-bullets: theme(--color-text-color);
-		--tw-prose-code: theme(--color-text-color);
-		--tw-prose-headings: theme(--color-accent-2);
+		--tw-prose-body: hsl(var(--theme-text));
+		--tw-prose-bold: hsl(var(--theme-text));
+		--tw-prose-bullets: hsl(var(--theme-text));
+		--tw-prose-code: hsl(var(--theme-text));
+		--tw-prose-headings: hsl(var(--theme-accent-2));
 		--tw-prose-hr: 0.5px dashed #666;
-		--tw-prose-links: theme(--color-text-color);
-		--tw-prose-quotes: theme(--color-quote);
+		--tw-prose-links: hsl(var(--theme-text));
+		--tw-prose-quotes: hsl(var(--theme-quote));
 		--tw-prose-th-borders: #666;
 
 		/* prose-invert tokens (used by dark:prose-invert) — map to dark theme vars */
-		--tw-prose-invert-body: theme(--color-text-color);
-		--tw-prose-invert-headings: theme(--color-accent-2);
-		--tw-prose-invert-bold: theme(--color-text-color);
-		--tw-prose-invert-bullets: theme(--color-text-color);
-		--tw-prose-invert-code: theme(--color-text-color);
-		--tw-prose-invert-links: theme(--color-link);
-		--tw-prose-invert-quotes: theme(--color-quote);
+		--tw-prose-invert-body: hsl(var(--theme-text));
+		--tw-prose-invert-headings: hsl(var(--theme-accent-2));
+		--tw-prose-invert-bold: hsl(var(--theme-text));
+		--tw-prose-invert-bullets: hsl(var(--theme-text));
+		--tw-prose-invert-code: hsl(var(--theme-text));
+		--tw-prose-invert-links: hsl(var(--theme-link));
+		--tw-prose-invert-quotes: hsl(var(--theme-quote));
 
 		a {
 			/* inline .cactus-link styles (avoids @apply cross-reference in TW4 @layer) */

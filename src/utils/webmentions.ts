@@ -17,7 +17,6 @@ async function fetchWebmentions(timeFrom: string | null, perPage = 1000) {
 	}
 
 	if (!API_TOKEN) {
-		console.warn("No webmention api token specified in .env");
 		return null;
 	}
 
