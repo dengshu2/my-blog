@@ -8,27 +8,36 @@ const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
-const projects = [
+const projects: { title: string; description: string; url: string }[] = [
 	{
-		title: "GitHub 仓库管理",
-		description: "可视化管理和探索 GitHub 仓库，发现有趣的开源项目",
+		title: "SQLForge",
+		description: "SQL 格式化与方言转换工具，基于 sqlglot",
+		url: "https://sqlforge.dengshu.ovh/",
+	},
+	{
+		title: "WordCore",
+		description: "英语词汇练习：看单词、写例句、AI 批改",
+		url: "https://wordcore.dengshu.ovh/",
+	},
+	{
+		title: "TransLens",
+		description: "中英翻译学习工具，基于 Go + OpenRouter",
+		url: "https://translate.dengshu.ovh/",
+	},
+	{
+		title: "FlashSnap",
+		description: "输入文字，用 Gemini Flash 生成杂志风格信息卡",
+		url: "https://flashsnap.dengshu.ovh/",
+	},
+	{
+		title: "Astrolabe",
+		description: "可视化任意 GitHub 用户的 Star 仓库",
 		url: "https://astrolabe.dengshu.ovh/",
-		icon: "🔭",
-		tag: "探索",
 	},
 	{
-		title: "人生大问题",
-		description: "那些值得反复思考的人生问题，记录思想的碰撞与成长",
+		title: "The Big Questions",
+		description: "人类文明经典导览：11 个大问题、300+ 思想家、900+ 著作",
 		url: "https://question.dengshu.ovh/",
-		icon: "💡",
-		tag: "思考",
-	},
-	{
-		title: "效率工具",
-		description: "精心挑选、打磨的个人效率工具集，让工作与生活更高效",
-		url: "https://site.dengshu.ovh/",
-		icon: "⚡",
-		tag: "效率",
 	},
 ];
 
@@ -51,11 +60,11 @@ const projects = [
 	<!-- Projects Section -->
 	<section class="mb-12" id="projects">
 		<div class="mb-5 flex items-center gap-3">
-			<h2 class="title text-xl">正在探索的项目</h2>
+			<h2 class="title text-xl">项目</h2>
 			<span class="h-px flex-1 bg-accent/10"></span>
 		</div>
 
-		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="grid gap-4 sm:grid-cols-2">
 			{projects.map((project) => (
 				<a
 					href={project.url}
@@ -63,12 +72,6 @@ const projects = [
 					rel="noreferrer"
 					class="group rounded-xl border border-accent/10 bg-bgColor p-4 transition-colors hover:border-accent/30"
 				>
-					<div class="mb-2 flex items-center justify-between">
-						<span class="text-2xl">{project.icon}</span>
-						<span class="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
-							{project.tag}
-						</span>
-					</div>
 					<h3 class="mb-1.5 font-semibold text-accent-2 transition-colors group-hover:text-accent">
 						{project.title}
 					</h3>
