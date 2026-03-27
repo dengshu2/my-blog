@@ -97,6 +97,44 @@ Python 客户端  →  [认证①]  →  Thrift Server  →  [认证②]  →  Y
   --keytab /etc/security/keytabs/spark.keytab
 ```
 
+这个 `--principal` 参数里的三段都有讲究，逐个说：
+
+#### realm 必须和 keytab 一致
+
+```
+spark/spark-thrift.cluster-net@CORP.LOCAL
+                                ─────────
+                         必须和 keytab 里的 realm 一致
+```
+
+keytab 是 KDC 颁发的，绑定了特定 realm，不匹配就认证失败。
+
+#### `spark` 前缀——约定俗成，但不是硬性规定
+
+不是必须叫 `spark`，也可以叫 `hive`，取决于管理员建这个 principal 时用的名字。但实践中 Spark Thrift Server 基本都用 `spark`，你只要和管理员确认一致就行。
+
+#### 中间的主机名——最需要注意的部分
+
+```
+spark / spark-thrift.cluster-net @ CORP.LOCAL
+         ──────────────────────
+              这里有讲究
+```
+
+这里必须填 **Thrift Server 实际所在机器的 FQDN**（完全限定域名），而且要和 KDC 里注册的完全一样，**一个字母都不能差**。
+
+验证方法，在 Thrift Server 所在机器上执行：
+
+```bash
+hostname -f
+```
+
+输出是什么，principal 里就填什么。比如输出是 `spark-thrift.cluster-net`，那 principal 就是 `spark/spark-thrift.cluster-net@CORP.LOCAL`。
+
+:::warning
+如果填的主机名和 KDC 里注册的不一致，客户端连接时会报 `Server not found in Kerberos database`。这是最常见的坑，排查时优先检查主机名是否完全匹配。
+:::
+
 **认证①**（Client → Server）：你的 Python 服务连进来时需要做的认证，**这才是你写代码时需要关心的部分**。
 
 ---

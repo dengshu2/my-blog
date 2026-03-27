@@ -37,8 +37,6 @@ sqlglot.transpile("SELECT EPOCH_MS(1618088028295)", read="duckdb", write="hive")
 
 **数据血缘（Lineage）**：能追踪列级别的数据来源，DataHub 的 SQL 血缘解析模块底层用的就是 sqlglot。对于需要做数据治理的团队来说，这个能力相当实用。
 
-**SQL 优化（Optimize）**：常量折叠、谓词下推、星号展开等常见优化都支持。
-
 **AST 解析**：可以把 SQL 解析成抽象语法树，方便程序化地分析和修改 SQL 结构。
 
 ## 半小时搭了个在线工具
