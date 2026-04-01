@@ -25,7 +25,7 @@
 		"@astrojs/sitemap": "3.7.0",
 		"@tailwindcss/vite": "^4.2.1",
 		"astro": "5.18.0",
-		"astro-expressive-code": "^0.37.1",
+		"astro-expressive-code": "^0.41.7",
 		"astro-icon": "^1.1.5",
 		"astro-robots-txt": "^1.0.0",
 		"astro-webmanifest": "^1.0.0",
