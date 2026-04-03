@@ -44,9 +44,9 @@ Typeless 订阅价格约 $12/月（年付），如果你嫌贵，可以参考以
 
 ---
 
-## 三、 Cloud Code Max：你的 24 小时 AI 程序员
+## 三、 Claude Code Max：你的 24 小时 AI 程序员
 
-Cloud Code Max（即 Claude Code 的 Max 订阅体系）代表了目前 **Agentic Workflow（智能体工作流）** 的最高水平。虽然市场上有价格更亲民的 **CodeX**、**GitHub Copilot** 或 **Google Antigravity**，但 Cloud Code Max 的生态衔接和流畅感目前是独一份的。
+Claude Code Max 代表了目前 **Agentic Workflow（智能体工作流）** 的最高水平。虽然市场上有价格更亲民的 **CodeX**、**GitHub Copilot** 或 **Google Antigravity**，但 Claude Code Max 的生态衔接和流畅感目前是独一份的。
 
 ### 1. 为什么“100 美元”是黄金档位？
 它的计价分为 $20、$100、$200。在对比过各档位的可用次数后，你会发现中间的 **$100 (Max 5x)** 是真正的甜点点。
