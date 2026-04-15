@@ -179,6 +179,10 @@
 			font-weight: 700;
 		}
 
+		img {
+			margin-inline: auto;
+		}
+
 		sup {
 			@apply ms-0.5;
 
