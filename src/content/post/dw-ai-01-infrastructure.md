@@ -21,7 +21,7 @@ tags: ["dw-ai", "docker", "clickhouse", "postgresql", "vector", "grafana", "ngin
 
 | 篇目 | 主题 |
 |------|------|
-| **本篇** | 基础设施架构：Docker 编排 + 数据采集 + 存储 + 可视化 |
+| 本篇 | 基础设施架构：Docker 编排 + 数据采集 + 存储 + 可视化 |
 | 第二篇 | ClickHouse MCP：用自然语言查询你的数据仓库 |
 | 第三篇 | Grafana MCP：用 AI 对话式管理看板和告警 |
 
@@ -80,9 +80,9 @@ graph TB
 
 为什么用 [Nginx Proxy Manager](https://nginxproxymanager.com/) 而不是直接写 nginx.conf？
 
-一个字：**懒**。NPM 提供了 Web UI 来管理域名、SSL 证书（Let's Encrypt 自动续期），点几下就能把 `blog.example.com` 代理到某个容器的端口。
+一个字：懒。NPM 提供了 Web UI 来管理域名、SSL 证书（Let's Encrypt 自动续期），点几下就能把 `blog.example.com` 代理到某个容器的端口。
 
-NPM 对我们数据基础设施最重要的价值不是反代本身，而是——**它会自动产生结构化的访问日志**。这些日志就是我们数据管道的起点。
+NPM 对我们数据基础设施最重要的价值不是反代本身，而是——它会自动产生结构化的访问日志。这些日志就是我们数据管道的起点。
 
 ## 数据采集：两条路径
 
@@ -104,11 +104,11 @@ flowchart LR
 
 [Vector](https://vector.dev/) 是一个用 Rust 写的高性能数据管道工具。选它的原因：
 
-- **资源占用低**：适合 VPS 这种有限资源的环境
-- **配置即代码**：一个 YAML 文件搞定采集、转换、输出
-- **原生支持 ClickHouse**：不需要额外的中间件
+- 资源占用低：适合 VPS 这种有限资源的环境
+- 配置即代码：一个 YAML 文件搞定采集、转换、输出
+- 原生支持 ClickHouse：不需要额外的中间件
 
-Vector 的配置遵循一个清晰的三段式结构：**Sources → Transforms → Sinks**
+Vector 的配置遵循一个清晰的三段式结构：Sources → Transforms → Sinks
 
 ```yaml
 # 简化后的 vector.yaml
@@ -143,7 +143,7 @@ sinks:
     table: nginx_access_log
 ```
 
-**这里有个关键细节**：Vector 容器需要能读取 Nginx 的日志文件，所以在 docker-compose 中把 Nginx 的日志目录挂载为只读卷：
+这里有个关键细节：Vector 容器需要能读取 Nginx 的日志文件，所以在 docker-compose 中把 Nginx 的日志目录挂载为只读卷：
 
 ```yaml
 # vector 的 docker-compose.yml
@@ -177,9 +177,9 @@ TTL timestamp + INTERVAL 90 DAY;     -- 90 天自动过期
 
 日志是一种数据来源，但更多的业务数据存在 PostgreSQL 里。比如我用 PostgreSQL 存储 NodeSeek 论坛的帖子数据。
 
-**问题是**：PostgreSQL 擅长 OLTP（事务处理），但不擅长大规模分析查询。ClickHouse 擅长 OLAP（分析），但不适合频繁的增删改。
+问题是：PostgreSQL 擅长 OLTP（事务处理），但不擅长大规模分析查询。ClickHouse 擅长 OLAP（分析），但不适合频繁的增删改。
 
-**怎么办？** 让它们各司其职，然后用 ClickHouse 的 [MaterializedPostgreSQL](https://clickhouse.com/docs/engines/database-engines/materialized-postgresql) 引擎实时同步。
+怎么办？让它们各司其职，然后用 ClickHouse 的 [MaterializedPostgreSQL](https://clickhouse.com/docs/engines/database-engines/materialized-postgresql) 引擎实时同步。
 
 首先，PostgreSQL 需要开启逻辑复制（这是同步的前提）：
 
@@ -217,7 +217,7 @@ SETTINGS
     materialized_postgresql_tables_list = 'posts';  -- 要同步的表
 ```
 
-**执行之后会发生什么？** ClickHouse 会自动：
+执行之后会发生什么？ClickHouse 会自动：
 
 1. 连接到 PostgreSQL
 2. 创建逻辑复制槽
@@ -231,36 +231,36 @@ SETTINGS
 
 | | PostgreSQL | ClickHouse |
 |--|-----------|-----------|
-| **定位** | OLTP，业务数据 | OLAP，分析查询 |
-| **存什么** | 用户数据、RSS 订阅、帖子等 | 日志、同步的业务快照 |
-| **查询模式** | 单行读写、事务 | 大范围扫描、聚合分析 |
-| **压缩** | 普通 | 极致压缩（列式存储） |
+| 定位 | OLTP，业务数据 | OLAP，分析查询 |
+| 存什么 | 用户数据、RSS 订阅、帖子等 | 日志、同步的业务快照 |
+| 查询模式 | 单行读写、事务 | 大范围扫描、聚合分析 |
+| 压缩 | 普通 | 极致压缩（列式存储） |
 
 ## 可视化与监控：Grafana
 
-数据采集了、存储了，最后一步是**让数据可见**。
+数据采集了、存储了，最后一步是让数据可见。
 
 [Grafana](https://grafana.com/) 同时连接 ClickHouse 和 PostgreSQL 作为数据源，可以在一个看板里展示来自不同数据库的数据。
 
 有了这套基础设施，你可以构建的看板包括：
 
-- **Nginx 流量看板**：各域名的请求量、状态码分布、响应时间趋势
-- **错误率告警**：某个服务的 5xx 比例超过阈值时自动通知
-- **业务数据看板**：从 ClickHouse 中查询同步过来的业务数据做分析
+- Nginx 流量看板：各域名的请求量、状态码分布、响应时间趋势
+- 错误率告警：某个服务的 5xx 比例超过阈值时自动通知
+- 业务数据看板：从 ClickHouse 中查询同步过来的业务数据做分析
 
 除了 Grafana，我还用了两个辅助工具：
 
-- **[Dozzle](https://dozzle.dev/)**：实时查看所有 Docker 容器的日志，排查问题的第一工具
-- **[Gatus](https://gatus.io/)**：定时检查各服务的健康状态，挂了第一时间知道
+- [Dozzle](https://dozzle.dev/)：实时查看所有 Docker 容器的日志，排查问题的第一工具
+- [Gatus](https://gatus.io/)：定时检查各服务的健康状态，挂了第一时间知道
 
 ## 总结
 
 回头看这套架构，核心就是四层：
 
-1. **流量入口**（Nginx PM）→ 管理域名和 SSL，产生日志
-2. **数据采集**（Vector + MaterializedPG）→ 日志采集 + 数据库同步，两条路径把数据汇入 ClickHouse
-3. **数据存储**（PostgreSQL + ClickHouse）→ OLTP + OLAP 各司其职
-4. **可视化**（Grafana）→ 统一查询和展示
+1. 流量入口（Nginx PM）→ 管理域名和 SSL，产生日志
+2. 数据采集（Vector + MaterializedPG）→ 日志采集 + 数据库同步，两条路径把数据汇入 ClickHouse
+3. 数据存储（PostgreSQL + ClickHouse）→ OLTP + OLAP 各司其职
+4. 可视化（Grafana）→ 统一查询和展示
 
 全部运行在一台 VPS 上，用 Docker Compose 编排。不复杂，但够用。
 

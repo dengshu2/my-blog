@@ -13,7 +13,7 @@ tags: ["sqlglot", "sql", "data-engineering"]
 
 做数据的人都知道，SQL 这东西各家方言多到离谱。同一个日期函数，在 Hive 里叫 `date_format`，到了 DuckDB 变成 `strftime`，PostgreSQL 又是 `to_char`。每次做架构迁移或者跨引擎查询，光是改 SQL 就能改到怀疑人生。
 
-sqlglot 就是来解决这个问题的。它目前支持 **31+ 种 SQL 方言**的互相转换，GitHub 上 7k+ stars，且被不少知名项目采用：
+sqlglot 就是来解决这个问题的。它目前支持 31+ 种 SQL 方言的互相转换，GitHub 上 7k+ stars，且被不少知名项目采用：
 
 - [Apache Superset](https://github.com/apache/superset) — 数据可视化平台
 - [Dagster](https://github.com/dagster-io/dagster) — 数据编排框架
@@ -49,12 +49,12 @@ sqlglot.transpile("SELECT EPOCH_MS(1618088028295)", read="duckdb", write="hive")
 
 功能包括：
 
-- **格式化** — 把乱七八糟的 SQL 整理成可读的格式
-- **方言转换** — 支持 31+ 种方言互转（MySQL ↔ PostgreSQL ↔ Spark ↔ BigQuery ↔ ClickHouse...）
-- **SQL 优化** — 应用查询优化规则
-- **AST 查看** — 查看 SQL 的抽象语法树
-- **Diff 对比** — 语义级别的 SQL 差异比较
-- **血缘分析** — 列级别的数据来源追踪
+- 格式化 — 把乱七八糟的 SQL 整理成可读的格式
+- 方言转换 — 支持 31+ 种方言互转（MySQL ↔ PostgreSQL ↔ Spark ↔ BigQuery ↔ ClickHouse...）
+- SQL 优化 — 应用查询优化规则
+- AST 查看 — 查看 SQL 的抽象语法树
+- Diff 对比 — 语义级别的 SQL 差异比较
+- 血缘分析 — 列级别的数据来源追踪
 
 技术架构很简单，单容器部署，FastAPI 同时托管 API 和前端静态文件，反向代理指过去就行。
 

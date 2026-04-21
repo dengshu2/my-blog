@@ -15,9 +15,9 @@ tags: ["mac", "开发环境", "dotfiles", "homebrew", "效率"]
 
 | 原则 | 说明 |
 |------|------|
-| **Homebrew 统管** | 所有软件（命令行 + GUI）优先通过 Homebrew 安装，一条命令批量搞定 |
-| **iCloud 同步配置** | 敏感配置放 iCloud，新电脑创建软链接即可恢复 |
-| **按需安装，不囤积** | 全局包不预装，项目需要时再安装 |
+| Homebrew 统管 | 所有软件（命令行 + GUI）优先通过 Homebrew 安装，一条命令批量搞定 |
+| iCloud 同步配置 | 敏感配置放 iCloud，新电脑创建软链接即可恢复 |
+| 按需安装，不囤积 | 全局包不预装，项目需要时再安装 |
 
 核心逻辑很简单：**软件安装靠 Brewfile 自动化，配置恢复靠 iCloud + 软链接**。
 
@@ -116,14 +116,14 @@ cask "font-lxgw-wenkai"      # 霞鹜文楷
 
 ## Phase 2: iCloud + 软链接恢复配置
 
-软件装好了，但各种配置文件才是环境的灵魂。我的方案是把所有配置统一放在 `~/Documents/dotfiles/`（iCloud 自动同步），新电脑上创建**软链接**指向这些文件。
+软件装好了，但各种配置文件才是环境的灵魂。我的方案是把所有配置统一放在 `~/Documents/dotfiles/`（iCloud 自动同步），新电脑上创建软链接指向这些文件。
 
 ### 为什么用软链接而不是直接复制？
 
 | 方式 | 优点 | 缺点 |
 |------|------|------|
 | 直接复制 | 简单 | 改了之后要手动再拷贝回去 |
-| **软链接** ✅ | 修改即同步，只维护一份文件 | 源文件被删除则链接失效 |
+| 软链接 ✅ | 修改即同步，只维护一份文件 | 源文件被删除则链接失效 |
 
 ### dotfiles 目录结构
 
@@ -158,21 +158,21 @@ ln -sf ~/Documents/dotfiles/ghostty/config ~/.config/ghostty/config
 一行命令 = 一个配置恢复，简单粗暴。
 
 > [!TIP]
-> 注意 **SSH 密钥**的权限问题：私钥必须是 `600` 权限，否则 SSH 会拒绝使用。部分应用（如代理客户端）在运行时会锁定配置文件，这些需要先关闭应用再恢复。
+> 注意 SSH 密钥的权限问题：私钥必须是 `600` 权限，否则 SSH 会拒绝使用。部分应用（如代理客户端）在运行时会锁定配置文件，这些需要先关闭应用再恢复。
 
 ## Phase 3: Shell 环境
 
 我的 Shell 环境主要由这几部分组成：
 
-- **Oh My Zsh** — 插件管理框架，用了 `git`、`z`、`docker` 等插件
-- **Starship** — 跨 Shell 的 Prompt，接管 Oh My Zsh 的主题
-- **fzf** — `Ctrl+R` 历史搜索 / `Ctrl+T` 文件搜索
-- **zsh-autosuggestions** + **zsh-syntax-highlighting** — 命令建议和语法高亮
+- Oh My Zsh — 插件管理框架，用了 `git`、`z`、`docker` 等插件
+- Starship — 跨 Shell 的 Prompt，接管 Oh My Zsh 的主题
+- fzf — `Ctrl+R` 历史搜索 / `Ctrl+T` 文件搜索
+- zsh-autosuggestions + zsh-syntax-highlighting — 命令建议和语法高亮
 
 这些都已经在 Brewfile 里了，装好之后 `.zshrc` 通过软链接恢复，Shell 环境就回来了。
 
 > [!NOTE]
-> Oh My Zsh 安装时会覆盖 `.zshrc`，所以要**先装 Oh My Zsh，再恢复软链接**，顺序不能反。
+> Oh My Zsh 安装时会覆盖 `.zshrc`，所以要先装 Oh My Zsh，再恢复软链接，顺序不能反。
 
 ## Phase 4: 开发语言与工具链
 
@@ -183,7 +183,7 @@ fnm install 22    # 安装 LTS 版本
 fnm default 22    # 设为默认
 ```
 
-全局包策略：**不预装**，项目需要时按需安装。常用的也就一个 `pnpm`。
+全局包策略：不预装，项目需要时按需安装。常用的也就一个 `pnpm`。
 
 ### Python — 用 uv 管理
 
@@ -237,8 +237,8 @@ set -euo pipefail
 
 整个迁移方案的核心就两件事：
 
-1. **Brewfile** — 软件安装自动化
-2. **iCloud + 软链接** — 配置恢复自动化
+1. Brewfile — 软件安装自动化
+2. iCloud + 软链接 — 配置恢复自动化
 
 把迁移文档本身也放在 dotfiles 里，既是操作手册，也是配置备份的一部分。下次再换电脑，直接照着跑就行。
 

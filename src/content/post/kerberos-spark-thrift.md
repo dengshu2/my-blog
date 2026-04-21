@@ -11,7 +11,7 @@ tags: ["kerberos", "spark", "data-engineering"]
 
 类比一下：
 
-> 你去公司大楼，保安不认识你，但你有**工牌**（keytab）。保安（KDC）核验工牌后，给你一张**临时通行证**（ticket）。之后进任何门（访问任何服务），刷通行证就行，不用每次都找保安。
+> 你去公司大楼，保安不认识你，但你有工牌（keytab）。保安（KDC）核验工牌后，给你一张临时通行证（ticket）。之后进任何门（访问任何服务），刷通行证就行，不用每次都找保安。
 
 ---
 
@@ -23,7 +23,7 @@ Kerberos 的"保安中心"，负责颁发 ticket。通常由集群管理员维�
 
 ### principal — 身份 ID
 
-**principal 是 Kerberos 里的通用词，表示任何需要身份认证的对象**，不管是人还是服务，统一都叫 principal。就像"身份证"这个词，张三有身份证，银行也有营业执照，都是"身份证明"，叫法一样但持有者不同。
+principal 是 Kerberos 里的通用词，表示任何需要身份认证的对象，不管是人还是服务，统一都叫 principal。就像"身份证"这个词，张三有身份证，银行也有营业执照，都是"身份证明"，叫法一样但持有者不同。
 
 格式上有一个规律，看有没有 `/`：
 
@@ -38,7 +38,7 @@ spark/spark-thrift.cluster-net@CORP.LOCAL
 有 / → 服务账号（服务名/主机名）
 ```
 
-`@` 后面的部分叫 **Realm**，相当于公司的域，类比邮箱地址：
+`@` 后面的部分叫 Realm，相当于公司的域，类比邮箱地址：
 
 ```
 data_dev_user01 @ CORP.LOCAL
@@ -48,7 +48,7 @@ data_dev_user01 @ CORP.LOCAL
 
 ### keytab 文件 — 密钥卡
 
-包含加密后的密码，用于自动向 KDC 换取 ticket，不需要每次手动输密码。**由管理员在 KDC 上生成后交给你**，你自己无法生成。
+包含加密后的密码，用于自动向 KDC 换取 ticket，不需要每次手动输密码。由管理员在 KDC 上生成后交给你，你自己无法生成。
 
 ### krb5.conf — 导航地图
 
@@ -67,7 +67,7 @@ klist  # 查看 ticket 是否有效、是否过期
 
 ## Spark Thrift Server 是什么
 
-**Thrift Server 是一个 SQL 入口**，让你可以用普通的 Python 客户端连进来执行 Spark SQL，不需要自己写 Spark 代码。Thrift 是 Apache 的一个 RPC 框架，Spark 用它包了一层 HiveServer2 兼容服务。
+Thrift Server 是一个 SQL 入口，让你可以用普通的 Python 客户端连进来执行 Spark SQL，不需要自己写 Spark 代码。Thrift 是 Apache 的一个 RPC 框架，Spark 用它包了一层 HiveServer2 兼容服务。
 
 ```
 你的 Python 代码
@@ -121,7 +121,7 @@ spark / spark-thrift.cluster-net @ CORP.LOCAL
               这里有讲究
 ```
 
-这里必须填 **Thrift Server 实际所在机器的 FQDN**（完全限定域名），而且要和 KDC 里注册的完全一样，**一个字母都不能差**。
+这里必须填 Thrift Server 实际所在机器的 FQDN（完全限定域名），而且要和 KDC 里注册的完全一样，一个字母都不能差。
 
 验证方法，在 Thrift Server 所在机器上执行：
 
@@ -135,7 +135,7 @@ hostname -f
 如果填的主机名和 KDC 里注册的不一致，客户端连接时会报 `Server not found in Kerberos database`。这是最常见的坑，排查时优先检查主机名是否完全匹配。
 :::
 
-**认证①**（Client → Server）：你的 Python 服务连进来时需要做的认证，**这才是你写代码时需要关心的部分**。
+**认证①**（Client → Server）：你的 Python 服务连进来时需要做的认证，这才是你写代码时需要关心的部分。
 
 ---
 

@@ -24,9 +24,9 @@ tags: ["google-workspace", "ai", "cli", "自动化", "工具"]
 **一句话：Google Workspace 全家桶的统一命令行接口，专为人类和 AI Agent 设计。**
 
 - 支持 Drive、Gmail、Calendar、Sheets、Docs、Slides、Chat、Forms、Keep、Meet……几乎涵盖所有 Google Workspace 服务
-- 命令结构从 Google Discovery Service **动态生成**，不需要手动维护，Google 加新 API 就自动支持
-- 所有输出都是**结构化 JSON**，AI 可以直接消费
-- 内置 **100+ Agent Skills**（SKILL.md 文件），教 LLM 怎么用这些命令
+- 命令结构从 Google Discovery Service 动态生成，不需要手动维护，Google 加新 API 就自动支持
+- 所有输出都是结构化 JSON，AI 可以直接消费
+- 内置 100+ Agent Skills（SKILL.md 文件），教 LLM 怎么用这些命令
 
 > ⚠️ 注意：这不是 Google 官方产品，虽然代码托管在 googleworkspace 组织下。
 
@@ -55,7 +55,7 @@ gws 支持多种认证方式，我用的是手动 OAuth（因为没装 gcloud CL
 
 ### 第一步：创建 Google Cloud 项目
 
-去 [Google Cloud Console](https://console.cloud.google.com/projectcreate) 创建一个新项目，名字随意，记下 **Project ID**。
+去 [Google Cloud Console](https://console.cloud.google.com/projectcreate) 创建一个新项目，名字随意，记下 Project ID。
 
 ### 第二步：启用 API
 
@@ -70,16 +70,16 @@ gws 支持多种认证方式，我用的是手动 OAuth（因为没装 gcloud CL
 
 访问：`https://console.cloud.google.com/apis/credentials/consent?project=<PROJECT_ID>`
 
-- **User Type 选 External**（不要选 Internal，否则个人 Gmail 账号无法授权）
+- User Type 选 External（不要选 Internal，否则个人 Gmail 账号无法授权）
 - 填写 App name（随意，比如 "My-GWS-Tool"）
-- 在 **Test users** 里添加自己的 Gmail 邮箱
+- 在 Test users 里添加自己的 Gmail 邮箱
 
 ### 第四步：创建 OAuth 凭证
 
 访问：`https://console.cloud.google.com/apis/credentials?project=<PROJECT_ID>`
 
-- 点 **Create Credentials → OAuth client ID**
-- Application type 选 **Desktop app**
+- 点 Create Credentials → OAuth client ID
+- Application type 选 Desktop app
 - 下载 JSON 文件，保存到 `~/.config/gws/client_secret.json`
 
 ```bash
@@ -101,13 +101,13 @@ gws auth login -s drive,gmail,sheets,calendar
 
 **这一步很重要，容易被忽略。**
 
-OAuth App 在 Testing 模式时，Google 限制 Refresh Token 只有 **7 天有效期**，过了就要重新登录。
+OAuth App 在 Testing 模式时，Google 限制 Refresh Token 只有 7 天有效期，过了就要重新登录。
 
 解决方法：把 App 发布为 Production。对个人用途不需要 Google 审核，直接发布即可：
 
 `https://console.cloud.google.com/apis/credentials/consent?project=<PROJECT_ID>`
 
-找到 **"Publish App"** 点击确认，Token 从此长期有效。
+找到 "Publish App" 点击确认，Token 从此长期有效。
 
 ### 验证认证状态
 
@@ -179,11 +179,11 @@ AI 就会自动运行相应的 `gws` 命令，读取 JSON 输出，再给我整�
 
 | 事项 | 说明 |
 |---|---|
-| **费用** | 个人账号完全免费，API 配额极宽松 |
-| **密钥安全** | `~/.config/gws/client_secret.json` 不要上传到 GitHub |
-| **凭证加密** | 认证信息用 AES-256-GCM 加密存在本地，密钥在 OS keyring |
-| **自动升级** | npm 全局包不会自动升级，手动执行 `npm update -g @googleworkspace/cli` |
-| **官方支持** | 非 Google 官方产品，v1.0 之前可能有 breaking changes |
+| 费用 | 个人账号完全免费，API 配额极宽松 |
+| 密钥安全 | `~/.config/gws/client_secret.json` 不要上传到 GitHub |
+| 凭证加密 | 认证信息用 AES-256-GCM 加密存在本地，密钥在 OS keyring |
+| 自动升级 | npm 全局包不会自动升级，手动执行 `npm update -g @googleworkspace/cli` |
+| 官方支持 | 非 Google 官方产品，v1.0 之前可能有 breaking changes |
 
 ---
 
