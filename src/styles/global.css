@@ -90,12 +90,22 @@
 	h1, h2, h3, h4, h5, h6 {
 		line-height: 1.3;
 		letter-spacing: -0.015em;
-		text-wrap: balance;
+		text-wrap: auto;
 	}
 
 	/* Readable paragraph wrapping */
 	p {
-		text-wrap: pretty;
+		text-wrap: auto;
+	}
+
+	@media (min-width: 768px) {
+		h1, h2, h3, h4, h5, h6 {
+			text-wrap: balance;
+		}
+
+		p {
+			text-wrap: pretty;
+		}
 	}
 }
 
