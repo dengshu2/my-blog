@@ -147,17 +147,20 @@
 		--tw-prose-invert-links: hsl(var(--theme-link));
 		--tw-prose-invert-quotes: hsl(var(--theme-quote));
 
-		/* Heading wrap: `pretty` works better than typography's default for
-		   mixed CJK + Latin titles; keep Latin words intact. */
+		/* Heading wrap for mixed CJK + Latin titles:
+		   `keep-all` (per MDN) keeps Latin words intact while letting CJK
+		   break naturally between any two characters. `pretty` then balances
+		   the result and avoids orphans. */
 		h1, h2, h3, h4, h5, h6 {
 			text-wrap: pretty;
-			word-break: normal;
-			overflow-wrap: anywhere;
+			word-break: keep-all;
+			overflow-wrap: break-word;
 		}
 
-		/* Reserve space for Expressive Code's absolutely-positioned copy button
-		   so it doesn't overlap code content on narrow screens. */
-		.expressive-code pre > code {
+		/* Reserve space for Expressive Code's absolutely-positioned copy button.
+		   EC's own fix (`:nth-child(1 of .ec-line) .code`) uses Selectors-Level-4
+		   which isn't universal; apply padding to every line as a fallback. */
+		.expressive-code .ec-line .code {
 			padding-inline-end: 3rem;
 		}
 
