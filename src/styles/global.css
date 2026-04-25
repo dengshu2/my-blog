@@ -90,12 +90,22 @@
 	h1, h2, h3, h4, h5, h6 {
 		line-height: 1.3;
 		letter-spacing: -0.015em;
-		text-wrap: balance;
+		/* `pretty` wraps better than `balance` for mixed CJK + Latin headings */
+		text-wrap: pretty;
+		/* Prevent body's `word-break: break-word` from splitting Latin words */
+		word-break: normal;
+		overflow-wrap: anywhere;
 	}
 
 	/* Readable paragraph wrapping */
 	p {
 		text-wrap: pretty;
+	}
+
+	/* Reserve space for Expressive Code's absolutely-positioned copy button
+	   so it doesn't overlap code content on narrow screens */
+	.expressive-code pre > code {
+		padding-inline-end: 3rem;
 	}
 }
 
