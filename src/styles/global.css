@@ -149,19 +149,20 @@
 
 		/* Heading wrap for mixed CJK + Latin titles:
 		   `keep-all` (per MDN) keeps Latin words intact while letting CJK
-		   break naturally between any two characters. `pretty` then balances
-		   the result and avoids orphans. */
+		   break naturally between any two characters. `!important` ensures
+		   we win over Tailwind Typography's defaults regardless of layer order. */
 		h1, h2, h3, h4, h5, h6 {
-			text-wrap: pretty;
-			word-break: keep-all;
-			overflow-wrap: break-word;
+			text-wrap: pretty !important;
+			word-break: keep-all !important;
+			overflow-wrap: break-word !important;
 		}
 
 		/* Reserve space for Expressive Code's absolutely-positioned copy button.
-		   EC's own fix (`:nth-child(1 of .ec-line) .code`) uses Selectors-Level-4
-		   which isn't universal; apply padding to every line as a fallback. */
+		   Apply on multiple selectors as a defensive fallback across EC versions. */
+		.expressive-code pre,
+		.expressive-code pre > code,
 		.expressive-code .ec-line .code {
-			padding-inline-end: 3rem;
+			padding-inline-end: 3rem !important;
 		}
 
 		a {
@@ -325,5 +326,21 @@
 			font-size: theme(--text-sm);
 			font-weight: 400;
 		}
+	}
+}
+
+/* =====================================================
+   Mobile-only fixes
+   ===================================================== */
+@media (max-width: 640px) {
+	/* Shrink prose headings so mixed CJK + Latin titles fit on one line */
+	.prose h1 { font-size: 1.5em !important; }
+	.prose h2 { font-size: 1.25em !important; }
+	.prose h3 { font-size: 1.125em !important; }
+
+	/* Hide Expressive Code's copy button on mobile — long-press to copy works,
+	   and the absolute-positioned button overlaps code on narrow screens. */
+	.expressive-code .copy {
+		display: none !important;
 	}
 }
