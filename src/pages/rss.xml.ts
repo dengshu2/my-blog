@@ -21,13 +21,13 @@ export const GET = async () => {
 				// 渲染 Markdown 为 HTML
 				const { default: MarkdownIt } = await import("markdown-it");
 				const md = new MarkdownIt({ html: true });
-				const html = md.render(post.body);
+				const html = md.render(post.body ?? "");
 
 				return {
 					title: post.data.title,
 					description: post.data.description,
 					pubDate: post.data.publishDate,
-					link: `posts/${post.slug}`,
+					link: `posts/${post.id}`,
 
 					// 添加作者
 					author: siteConfig.author,
