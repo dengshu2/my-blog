@@ -87,12 +87,12 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 						</svg>
 						Tags
 					</h2>
-					<ul class="flex flex-wrap gap-2 text-bgColor">
+					<ul class="flex flex-wrap gap-2 text-sm">
 						{uniqueTags.map((tag) => (
 							<li>
 								<a
 									aria-label={`View all posts with the tag: ${tag}`}
-									class="flex items-center justify-center rounded-lg bg-accent p-1"
+									class="inline-block rounded-md border border-accent/20 bg-accent/5 px-2.5 py-0.5 text-textColor/80 transition-colors hover:border-accent/50 hover:bg-accent/10 hover:text-accent"
 									href={`/tags/${tag}/`}
 								>
 									{tag}
