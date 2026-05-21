@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
+import Comments from "@/components/blog/Comments.astro";
 import Masthead from "@/components/blog/Masthead.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 
@@ -28,6 +29,7 @@ const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 			<slot />
 			<WebMentions />
 		</div>
+		<Comments />
 	</article>
 	<button
 		aria-label="Back to Top"
