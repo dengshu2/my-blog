@@ -179,7 +179,7 @@ services:
 name = "data-engine-hello-world"
 version = "0.1.0"
 description = "A simple data engine project"
-authors = ["dengsu2 <dengshu5115@gmail.com>"]
+authors = ["dengsu2 <dengshu.dev@gmail.com>"]
 packages = [{include = "src"}]
 
 [tool.poetry.dependencies]

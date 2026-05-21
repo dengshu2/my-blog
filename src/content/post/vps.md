@@ -160,7 +160,7 @@ sudo docker system prune -f
 sudo apt install -y git
 
 # 生成 SSH 密钥对
-ssh-keygen -t ed25519 -C "dengshu5115@gmail.com"
+ssh-keygen -t ed25519 -C "dengshu.dev@gmail.com"
 
 # 显示公钥内容，复制后添加到 GitHub/GitLab 账户中
 cat ~/.ssh/id_ed25519.pub
@@ -170,7 +170,7 @@ cat ~/.ssh/id_ed25519.pub
 
 ```bash
 git config --global user.name "dengshu2"
-git config --global user.email "dengshu5115@gmail.com"
+git config --global user.email "dengshu.dev@gmail.com"
 
 # 设置默认main分支
 git config --global init.defaultBranch main
