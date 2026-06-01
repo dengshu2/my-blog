@@ -1,0 +1,417 @@
+{
+	"updatedAt": "2026-06-01T05:37:50.646Z",
+	"summary": {
+		"trophyLevel": 102,
+		"earned": {
+			"bronze": 253,
+			"silver": 41,
+			"gold": 13,
+			"platinum": 0
+		}
+	},
+	"games": [
+		{
+			"name": "Ghost of Yōtei",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR51746_00/ac2a4c07-5c47-4e29-b4db-2d147cfde454.png",
+			"platform": "PS5",
+			"progress": 70,
+			"earned": {
+				"bronze": 37,
+				"silver": 6,
+				"gold": 2,
+				"platinum": 0
+			},
+			"lastPlayed": "2025-11-02T08:54:46Z"
+		},
+		{
+			"name": "Clair Obscur: Expedition 33",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR39144_00/7a309210-3431-4b75-b06d-ec476a82cfc1.png",
+			"platform": "PS5",
+			"progress": 60,
+			"earned": {
+				"bronze": 34,
+				"silver": 1,
+				"gold": 1,
+				"platinum": 0
+			},
+			"lastPlayed": "2025-05-10T12:12:07Z"
+		},
+		{
+			"name": "Split Fiction",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR31606_00/f813e350-6c7b-49eb-a72b-ba69dba25210.png",
+			"platform": "PS5",
+			"progress": 33,
+			"earned": {
+				"bronze": 2,
+				"silver": 1,
+				"gold": 3,
+				"platinum": 0
+			},
+			"lastPlayed": "2025-04-06T08:43:59Z"
+		},
+		{
+			"name": "It Takes Two",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22459_00/841bf99e-b054-4d8a-b340-ca5bd4cbb5e8.png",
+			"platform": "PS5",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2025-04-01T14:13:14Z"
+		},
+		{
+			"name": "ELDEN RING™",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR25264_00_0016A3314AA603308997B9D8AF70F614271E5497AD/64DEB2C822A98E40E781F532802810638901068F.PNG",
+			"platform": "PS4",
+			"progress": 8,
+			"earned": {
+				"bronze": 4,
+				"silver": 1,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-12-01T02:57:41Z"
+		},
+		{
+			"name": "Sekiro™: Shadows Die Twice",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR15587_00_00B683E5453204A612C38DC218AEF0317CD5E8E9CC/85B017F39EA939B035F2C5A6B7198E87DAC9B610.PNG",
+			"platform": "PS4",
+			"progress": 48,
+			"earned": {
+				"bronze": 15,
+				"silver": 5,
+				"gold": 1,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-11-03T12:15:09Z"
+		},
+		{
+			"name": "Tinykin",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR30098_00/164d2433-d48d-45b2-a23d-caf6b860e643.png",
+			"platform": "PS5",
+			"progress": 10,
+			"earned": {
+				"bronze": 3,
+				"silver": 2,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-10-20T13:49:48Z"
+		},
+		{
+			"name": "Cult of the Lamb",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR28536_00/310f477b-85fb-4ce7-a94f-ed3ad8ec7301.png",
+			"platform": "PS5",
+			"progress": 16,
+			"earned": {
+				"bronze": 12,
+				"silver": 2,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-10-05T11:47:54Z"
+		},
+		{
+			"name": "The Last of Us™ Part I",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR26546_00/905833e1-1c8e-48eb-826f-01839fda59a0.png",
+			"platform": "PS5",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-28T07:57:26Z"
+		},
+		{
+			"name": "Sackboy: A Big Adventure",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR19950_00/28286d6e-d0b0-492f-8e0e-573ad62184ef.png",
+			"platform": "PS5",
+			"progress": 11,
+			"earned": {
+				"bronze": 8,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-27T14:06:59Z"
+		},
+		{
+			"name": "A Way Out",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR13087_00_00A7567C744FA8B835869441FDD512B6295AFF204B/B743ECEC0B6036F07039195DBF0D2675E56107CE.PNG",
+			"platform": "PS4",
+			"progress": 23,
+			"earned": {
+				"bronze": 0,
+				"silver": 2,
+				"gold": 2,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-24T13:37:51Z"
+		},
+		{
+			"name": "Overcooked 2\n",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR14796_00_00A4AEDE0A37CC9BD07425C13425F54BFD94E11ED1/380655B8357BD3008EDA474853248C702BD24C80.PNG",
+			"platform": "PS4",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-23T11:37:30Z"
+		},
+		{
+			"name": "God of War",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR12518_00_009C1232E900005FE409857E926767DFE9CAC7F371/CCDC60CADE4B3970C348FEFDE0094BA95C0A802F.PNG",
+			"platform": "PS4",
+			"progress": 15,
+			"earned": {
+				"bronze": 11,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-19T12:03:37Z"
+		},
+		{
+			"name": "Black Myth: Wukong",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR34992_00/61830ea4-0722-4ad5-95cc-f313135de0b4.png",
+			"platform": "PS5",
+			"progress": 54,
+			"earned": {
+				"bronze": 19,
+				"silver": 2,
+				"gold": 2,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-19T11:05:54Z"
+		},
+		{
+			"name": "The Witcher 3: Wild Hunt",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR24698_00/886b95c3-4ff1-44d7-beb0-2a4992b06f09.png",
+			"platform": "PS5",
+			"progress": 1,
+			"earned": {
+				"bronze": 1,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-09-16T13:44:27Z"
+		},
+		{
+			"name": "Child of Light",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR05890_00_00C315E94ECD2216037067F1DA101E13F2A58A66B9/7E052BD6FE36061397634C53F42FE6C546DE8625.PNG",
+			"platform": "PS4",
+			"progress": 4,
+			"earned": {
+				"bronze": 1,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-08-23T10:09:00Z"
+		},
+		{
+			"name": "Bloodborne",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR05818_00_00347A646D41E9660F4153AD7A0274E2BC597C5A27/AE3477BA91121142BEB82AB2B7E2F8BAB9B3C17A.PNG",
+			"platform": "PS4",
+			"progress": 50,
+			"earned": {
+				"bronze": 21,
+				"silver": 7,
+				"gold": 1,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-08-15T13:55:52Z"
+		},
+		{
+			"name": "Fallout 4",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR31904_00/c57616d5-bba3-4b9e-a40a-cf9ff3c64d8f.png",
+			"platform": "PS5",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-08-05T10:59:30Z"
+		},
+		{
+			"name": "DAVE THE DIVER",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR41950_00/75945292-b048-49f5-bb4a-0cde9c51a69e.png",
+			"platform": "PS5",
+			"progress": 41,
+			"earned": {
+				"bronze": 24,
+				"silver": 2,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-13T04:03:01Z"
+		},
+		{
+			"name": "Hollow Knight",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR16297_00_00480B1D9C4B2C263C4EEC8DDB80CEF12063AE2D6C/41BE283891111B51D79B70448673F99CFEF48238.PNG",
+			"platform": "PS4",
+			"progress": 42,
+			"earned": {
+				"bronze": 14,
+				"silver": 5,
+				"gold": 1,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-11T13:51:48Z"
+		},
+		{
+			"name": "Shadow of The Tomb Raider",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR14876_00_004DD62A7F4FB5AAF94ECCA19DBAAAB006297EDFBA/47966D6D11DFFE65A722709AE0577A2798E618D2.PNG",
+			"platform": "PS4",
+			"progress": 1,
+			"earned": {
+				"bronze": 2,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-05T11:21:46Z"
+		},
+		{
+			"name": "Sea of Stars",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR30011_00/f6d8ca56-7292-4bdb-a463-072b3b61a184.png",
+			"platform": "PS5",
+			"progress": 2,
+			"earned": {
+				"bronze": 2,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-04T14:19:08Z"
+		},
+		{
+			"name": "Assassin's Creed® Odyssey",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR13822_00_00E63FD8AB71E35431D284C875D26290C020A6ED1A/DEE0D4E5A10A52EA06309E73E38FDA92B759C1DC.PNG",
+			"platform": "PS4",
+			"progress": 1,
+			"earned": {
+				"bronze": 1,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-04T12:28:06Z"
+		},
+		{
+			"name": "Horizon Forbidden West",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21008_00/2b1ab462-7ee0-4415-81d8-bf2632f03850.png",
+			"platform": "PS5",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-07-04T11:11:42Z"
+		},
+		{
+			"name": "Kena: Bridge of Spirits",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR21924_00/617bd3b6-459d-404a-962d-bda5e59f71f4.png",
+			"platform": "PS5",
+			"progress": 9,
+			"earned": {
+				"bronze": 6,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-29T04:08:53Z"
+		},
+		{
+			"name": "Tales of Arise",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22372_00/50ab8be8-66e7-462b-a0e0-d6287234638b.png",
+			"platform": "PS5",
+			"progress": 2,
+			"earned": {
+				"bronze": 2,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-28T10:40:12Z"
+		},
+		{
+			"name": "Ratchet & Clank: Rift Apart",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR20842_00/693b98ed-1b2b-4111-abcd-39ad740aa941.png",
+			"platform": "PS5",
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-27T16:22:44Z"
+		},
+		{
+			"name": "13 Sentinels: Aegis Rim",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR16758_00_00548DD319C6ACA6DA2E8525352899EF76A76B47C1/F3D6B386AD056B28E03667610A163A516F645BB3.PNG",
+			"platform": "PS4",
+			"progress": 1,
+			"earned": {
+				"bronze": 1,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-27T15:09:46Z"
+		},
+		{
+			"name": "Ghost of Tsushima",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR22859_00/d7213b2e-8048-40ae-859e-3ce1863b9390.png",
+			"platform": "PS5,PSPC",
+			"progress": 21,
+			"earned": {
+				"bronze": 23,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-25T15:41:43Z"
+		},
+		{
+			"name": "Valiant Hearts: The Great War",
+			"icon": "https://image.api.playstation.com/trophy/np/NPWR06204_00_00A75B1662634A24F8696216D1996CF1D28E0ACB7B/5307DC83819155F5C8E59DFA06E8C975BE44EDF2.PNG",
+			"platform": "PS4",
+			"progress": 14,
+			"earned": {
+				"bronze": 3,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-21T05:52:18Z"
+		},
+		{
+			"name": "ASTRO’s PLAYROOM",
+			"icon": "https://psnobj.prod.dl.playstation.net/psnobj/NPWR20188_00/9f84e2fc-0cd2-40f1-bfdb-6774fe3a69f6.png",
+			"platform": "PS5",
+			"progress": 19,
+			"earned": {
+				"bronze": 7,
+				"silver": 5,
+				"gold": 0,
+				"platinum": 0
+			},
+			"lastPlayed": "2024-06-20T14:57:00Z"
+		}
+	]
+}

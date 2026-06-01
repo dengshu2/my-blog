@@ -39,6 +39,11 @@ jobs:
           NEODB_API_TOKEN: ${{ secrets.NEODB_API_TOKEN }}
         run: node scripts/fetch-neodb.mjs
 
+      - name: Fetch PSN data
+        env:
+          PSN_NPSSO: ${{ secrets.PSN_NPSSO }}
+        run: node scripts/fetch-psn.mjs
+
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"

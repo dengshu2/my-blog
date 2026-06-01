@@ -1,32 +1,77 @@
 ---
 import { formatPlaytime, steam, steamHeader, steamStoreUrl } from "@/data/steam";
+import { psn } from "@/data/psn";
 import PageLayout from "@/layouts/Base.astro";
 
 const meta = {
-	description: "我在 Steam 上玩过的游戏与时长记录",
+	description: "我的游戏记录，来自 Steam 与 PlayStation",
 	title: "游戏",
 };
 
-const { games, recent, updatedAt } = steam;
-const updatedLabel = updatedAt
-	? new Date(updatedAt).toLocaleDateString("zh-CN", { day: "numeric", month: "long", year: "numeric" })
-	: null;
+const { games, recent } = steam;
 ---
 
 <PageLayout meta={meta}>
-	<div class="space-y-10">
+	<div class="space-y-12">
 		<section>
 			<h1 class="title mb-2">游戏</h1>
-			<p class="text-sm text-textColor/60">
-				来自 Steam 的游戏记录，按总时长排序{updatedLabel ? ` · 更新于 ${updatedLabel}` : ""}。
-			</p>
+			<p class="text-sm text-textColor/60">来自 Steam 与 PlayStation 的游戏记录。</p>
 		</section>
 
+		{/* ---------- PlayStation ---------- */}
+		{
+			psn.games.length > 0 && (
+				<section>
+					<div class="mb-2 flex items-center gap-3">
+						<h2 class="title text-xl">PlayStation</h2>
+						<span class="h-px flex-1 bg-accent/10" />
+						{psn.summary && (
+							<span class="text-sm text-textColor/50">奖杯等级 {psn.summary.trophyLevel}</span>
+						)}
+					</div>
+					{psn.summary && (
+						<p class="mb-5 text-sm text-textColor/60">
+							🏆 金 {psn.summary.earned.gold} · 银 {psn.summary.earned.silver} · 铜{" "}
+							{psn.summary.earned.bronze}
+							{psn.summary.earned.platinum ? ` · 白金 ${psn.summary.earned.platinum}` : ""}
+						</p>
+					)}
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{psn.games.map((g) => (
+							<div class="overflow-hidden rounded-xl border border-accent/10 bg-bgColor">
+								{g.icon && (
+									<img
+										src={g.icon}
+										alt={g.name}
+										loading="lazy"
+										width="256"
+										height="256"
+										class="aspect-square w-full object-cover"
+									/>
+								)}
+								<div class="p-3">
+									<h3 class="truncate font-semibold text-accent-2">{g.name}</h3>
+									<div class="mt-1 flex items-center justify-between text-sm text-textColor/60">
+										<span>{g.platform}</span>
+										<span>{g.progress}%</span>
+									</div>
+									<div class="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-accent/10">
+										<div class="h-full bg-accent" style={`width: ${g.progress}%`} />
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+			)
+		}
+
+		{/* ---------- Steam 最近在玩 ---------- */}
 		{
 			recent.length > 0 && (
 				<section>
 					<div class="mb-5 flex items-center gap-3">
-						<h2 class="title text-xl">最近在玩</h2>
+						<h2 class="title text-xl">Steam · 最近在玩</h2>
 						<span class="h-px flex-1 bg-accent/10" />
 					</div>
 					<div class="grid gap-4 sm:grid-cols-2">
@@ -59,9 +104,10 @@ const updatedLabel = updatedAt
 			)
 		}
 
+		{/* ---------- Steam 游戏库 ---------- */}
 		<section>
 			<div class="mb-5 flex items-center gap-3">
-				<h2 class="title text-xl">游戏库</h2>
+				<h2 class="title text-xl">Steam · 游戏库</h2>
 				<span class="h-px flex-1 bg-accent/10"></span>
 				<span class="text-sm text-textColor/50">{games.length} 款</span>
 			</div>
