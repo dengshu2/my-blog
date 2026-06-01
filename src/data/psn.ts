@@ -11,10 +11,14 @@ export interface PsnGame {
 	name: string;
 	icon: string | null;
 	platform: string | null;
-	/** 完成度 0-100 */
-	progress: number;
-	earned: PsnTrophyCounts | null;
+	/** 游玩时长（分钟） */
+	playtime: number;
+	/** 游玩次数 */
+	playCount: number | null;
 	lastPlayed: string | null;
+	/** 奖杯完成度 0-100，匹配不上为 null */
+	progress: number | null;
+	earned: PsnTrophyCounts | null;
 }
 
 export interface PsnSummary {

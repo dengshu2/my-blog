@@ -53,11 +53,19 @@ const { games, recent } = steam;
 									<h3 class="truncate font-semibold text-accent-2">{g.name}</h3>
 									<div class="mt-1 flex items-center justify-between text-sm text-textColor/60">
 										<span>{g.platform}</span>
-										<span>{g.progress}%</span>
+										<span>{formatPlaytime(g.playtime)}</span>
 									</div>
-									<div class="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-accent/10">
-										<div class="h-full bg-accent" style={`width: ${g.progress}%`} />
-									</div>
+									{g.progress != null && (
+										<div class="mt-2">
+											<div class="flex items-center justify-between text-xs text-textColor/40">
+												<span>奖杯</span>
+												<span>{g.progress}%</span>
+											</div>
+											<div class="mt-1 h-1 w-full overflow-hidden rounded-full bg-accent/10">
+												<div class="h-full bg-accent" style={`width: ${g.progress}%`} />
+											</div>
+										</div>
+									)}
 								</div>
 							</div>
 						))}
