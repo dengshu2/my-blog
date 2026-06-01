@@ -39,6 +39,10 @@ export const menuLinks: { path: string; title: string }[] = [
 		path: "/games/",
 		title: "游戏",
 	},
+	{
+		path: "/shelf/",
+		title: "书影音",
+	},
 ];
 
 // https://expressive-code.com/reference/configuration/

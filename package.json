@@ -18,6 +18,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"fetch:steam": "node scripts/fetch-steam.mjs",
+		"fetch:neodb": "node scripts/fetch-neodb.mjs",
 		"build": "astro check && astro build",
 		"postbuild": "pagefind --site dist",
 		"preview": "astro preview",

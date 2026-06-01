@@ -1,0 +1,89 @@
+---
+import { categoryLabel, neodb, orderedCategories } from "@/data/neodb";
+import PageLayout from "@/layouts/Base.astro";
+
+const meta = {
+	description: "从 NeoDB 同步的书影音游标记记录",
+	title: "书影音",
+};
+
+const groups = orderedCategories();
+const updatedLabel = neodb.updatedAt
+	? new Date(neodb.updatedAt).toLocaleDateString("zh-CN", { day: "numeric", month: "long", year: "numeric" })
+	: null;
+---
+
+<PageLayout meta={meta}>
+	<div class="space-y-12">
+		<section>
+			<h1 class="title mb-2">书影音</h1>
+			<p class="text-sm text-textColor/60">
+				从 NeoDB 同步的「看过 / 读过 / 玩过」，共 {neodb.total} 条{
+					updatedLabel ? ` · 更新于 ${updatedLabel}` : ""
+				}{neodb.profile ? " · " : ""}{
+					neodb.profile && (
+						<a
+							href={neodb.profile.url}
+							target="_blank"
+							rel="noreferrer"
+							class="text-accent hover:underline"
+						>
+							@{neodb.profile.username}
+						</a>
+					)
+				}
+			</p>
+		</section>
+
+		{
+			groups.length === 0 ? (
+				<p class="text-textColor/60">暂无数据。</p>
+			) : (
+				groups.map((g) => (
+					<section>
+						<div class="mb-5 flex items-center gap-3">
+							<h2 class="title text-xl">{categoryLabel(g.category)}</h2>
+							<span class="h-px flex-1 bg-accent/10" />
+							<span class="text-sm text-textColor/50">{g.items.length}</span>
+						</div>
+						<div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+							{g.items.map((m) => (
+								<a
+									href={m.url ?? "#"}
+									target="_blank"
+									rel="noreferrer"
+									class="group"
+									title={m.title}
+								>
+									<div class="relative overflow-hidden rounded-md border border-accent/10 bg-accent/5">
+										{m.cover ? (
+											<img
+												src={m.cover}
+												alt={m.title}
+												loading="lazy"
+												decoding="async"
+												class="aspect-[2/3] w-full object-cover transition-transform group-hover:scale-105"
+											/>
+										) : (
+											<div class="flex aspect-[2/3] w-full items-center justify-center p-2 text-center text-xs text-textColor/40">
+												{m.title}
+											</div>
+										)}
+										{m.rating ? (
+											<span class="absolute right-1 top-1 rounded bg-black/70 px-1.5 py-0.5 text-xs font-medium text-white">
+												{m.rating}
+											</span>
+										) : null}
+									</div>
+									<p class="mt-1 truncate text-xs text-textColor/70 group-hover:text-accent">
+										{m.title}
+									</p>
+								</a>
+							))}
+						</div>
+					</section>
+				))
+			)
+		}
+	</div>
+</PageLayout>

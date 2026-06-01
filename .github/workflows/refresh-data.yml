@@ -34,6 +34,11 @@ jobs:
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
         run: node scripts/fetch-steam.mjs
 
+      - name: Fetch NeoDB data
+        env:
+          NEODB_API_TOKEN: ${{ secrets.NEODB_API_TOKEN }}
+        run: node scripts/fetch-neodb.mjs
+
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
