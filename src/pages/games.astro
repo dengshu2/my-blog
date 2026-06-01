@@ -1,0 +1,101 @@
+---
+import { formatPlaytime, steam, steamHeader, steamStoreUrl } from "@/data/steam";
+import PageLayout from "@/layouts/Base.astro";
+
+const meta = {
+	description: "我在 Steam 上玩过的游戏与时长记录",
+	title: "游戏",
+};
+
+const { games, recent, updatedAt } = steam;
+const updatedLabel = updatedAt
+	? new Date(updatedAt).toLocaleDateString("zh-CN", { day: "numeric", month: "long", year: "numeric" })
+	: null;
+---
+
+<PageLayout meta={meta}>
+	<div class="space-y-10">
+		<section>
+			<h1 class="title mb-2">游戏</h1>
+			<p class="text-sm text-textColor/60">
+				来自 Steam 的游戏记录，按总时长排序{updatedLabel ? ` · 更新于 ${updatedLabel}` : ""}。
+			</p>
+		</section>
+
+		{
+			recent.length > 0 && (
+				<section>
+					<div class="mb-5 flex items-center gap-3">
+						<h2 class="title text-xl">最近在玩</h2>
+						<span class="h-px flex-1 bg-accent/10" />
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						{recent.map((g) => (
+							<a
+								href={steamStoreUrl(g.appid)}
+								target="_blank"
+								rel="noreferrer"
+								class="group flex gap-4 rounded-xl border border-accent/10 bg-bgColor p-3 transition-colors hover:border-accent/30"
+							>
+								<img
+									src={steamHeader(g.appid)}
+									alt={g.name}
+									loading="lazy"
+									width="184"
+									height="86"
+									class="h-[86px] w-[184px] shrink-0 rounded-md object-cover"
+								/>
+								<div class="min-w-0">
+									<h3 class="truncate font-semibold text-accent-2 transition-colors group-hover:text-accent">
+										{g.name}
+									</h3>
+									<p class="mt-1 text-sm text-textColor/60">近 2 周 {formatPlaytime(g.playtime2Weeks)}</p>
+									<p class="text-sm text-textColor/40">总计 {formatPlaytime(g.playtime)}</p>
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
+			)
+		}
+
+		<section>
+			<div class="mb-5 flex items-center gap-3">
+				<h2 class="title text-xl">游戏库</h2>
+				<span class="h-px flex-1 bg-accent/10"></span>
+				<span class="text-sm text-textColor/50">{games.length} 款</span>
+			</div>
+			{
+				games.length === 0 ? (
+					<p class="text-textColor/60">暂无数据。</p>
+				) : (
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{games.map((g) => (
+							<a
+								href={steamStoreUrl(g.appid)}
+								target="_blank"
+								rel="noreferrer"
+								class="group overflow-hidden rounded-xl border border-accent/10 bg-bgColor transition-colors hover:border-accent/30"
+							>
+								<img
+									src={steamHeader(g.appid)}
+									alt={g.name}
+									loading="lazy"
+									width="460"
+									height="215"
+									class="aspect-[460/215] w-full object-cover"
+								/>
+								<div class="p-3">
+									<h3 class="truncate font-semibold text-accent-2 transition-colors group-hover:text-accent">
+										{g.name}
+									</h3>
+									<p class="mt-1 text-sm text-textColor/60">{formatPlaytime(g.playtime)}</p>
+								</div>
+							</a>
+						))}
+					</div>
+				)
+			}
+		</section>
+	</div>
+</PageLayout>

@@ -35,6 +35,10 @@ export const menuLinks: { path: string; title: string }[] = [
 		path: "/posts/",
 		title: "博客",
 	},
+	{
+		path: "/games/",
+		title: "游戏",
+	},
 ];
 
 // https://expressive-code.com/reference/configuration/

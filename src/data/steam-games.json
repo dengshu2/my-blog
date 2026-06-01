@@ -1,0 +1,136 @@
+{
+	"updatedAt": "2026-06-01T02:49:22.053Z",
+	"profile": {
+		"name": "runningotter",
+		"url": "https://steamcommunity.com/profiles/76561199023045394/",
+		"avatar": "https://avatars.steamstatic.com/cdff433c9ea96c9933449fa59011b1dc31a4f0a2_full.jpg"
+	},
+	"recent": [],
+	"games": [
+		{
+			"appid": 1030300,
+			"name": "Hollow Knight: Silksong",
+			"playtime": 3564
+		},
+		{
+			"appid": 1086940,
+			"name": "Baldur's Gate 3",
+			"playtime": 2948
+		},
+		{
+			"appid": 1145360,
+			"name": "Hades",
+			"playtime": 2191
+		},
+		{
+			"appid": 391220,
+			"name": "Rise of the Tomb Raider",
+			"playtime": 1766
+		},
+		{
+			"appid": 1260320,
+			"name": "Party Animals",
+			"playtime": 886
+		},
+		{
+			"appid": 271590,
+			"name": "Grand Theft Auto V Legacy",
+			"playtime": 517
+		},
+		{
+			"appid": 769560,
+			"name": "Night of the Full Moon",
+			"playtime": 387
+		},
+		{
+			"appid": 3097560,
+			"name": "Liar's Bar",
+			"playtime": 293
+		},
+		{
+			"appid": 2868840,
+			"name": "Slay the Spire 2",
+			"playtime": 219
+		},
+		{
+			"appid": 3590,
+			"name": "Plants vs. Zombies: Game of the Year",
+			"playtime": 151
+		},
+		{
+			"appid": 1070710,
+			"name": "Kind Words",
+			"playtime": 149
+		},
+		{
+			"appid": 383870,
+			"name": "Firewatch",
+			"playtime": 141
+		},
+		{
+			"appid": 1509960,
+			"name": "PICO PARK",
+			"playtime": 129
+		},
+		{
+			"appid": 620,
+			"name": "Portal 2",
+			"playtime": 119
+		},
+		{
+			"appid": 95400,
+			"name": "ibb & obb",
+			"playtime": 96
+		},
+		{
+			"appid": 431960,
+			"name": "Wallpaper Engine",
+			"playtime": 81
+		},
+		{
+			"appid": 1426210,
+			"name": "It Takes Two",
+			"playtime": 47
+		},
+		{
+			"appid": 1781350,
+			"name": "Fireboy & Watergirl: Fairy Tales",
+			"playtime": 41
+		},
+		{
+			"appid": 504230,
+			"name": "Celeste",
+			"playtime": 9
+		},
+		{
+			"appid": 204360,
+			"name": "Castle Crashers",
+			"playtime": 0
+		},
+		{
+			"appid": 238460,
+			"name": "BattleBlock Theater",
+			"playtime": 0
+		},
+		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 0
+		},
+		{
+			"appid": 728880,
+			"name": "Overcooked! 2",
+			"playtime": 0
+		},
+		{
+			"appid": 1610440,
+			"name": "Minds Beneath Us",
+			"playtime": 0
+		},
+		{
+			"appid": 3240220,
+			"name": "Grand Theft Auto V Enhanced",
+			"playtime": 0
+		}
+	]
+}
