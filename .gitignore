@@ -25,3 +25,6 @@ pnpm-debug.log*
 *.pem
 .cache
 .astro
+
+# locally generated images (uploaded to image host, referenced by URL)
+generated-images/
