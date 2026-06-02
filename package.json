@@ -20,6 +20,7 @@
 		"fetch:steam": "node scripts/fetch-steam.mjs",
 		"fetch:neodb": "node scripts/fetch-neodb.mjs",
 		"fetch:psn": "node scripts/fetch-psn.mjs",
+		"tag:neodb": "node scripts/tag-neodb-from-libraries.mjs",
 		"build": "astro check && astro build",
 		"postbuild": "pagefind --site dist",
 		"preview": "astro preview",

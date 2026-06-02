@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-06-01T23:22:10.389Z",
+	"updatedAt": "2026-06-02T17:08:48.935Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 457,
+	"total": 476,
 	"categories": [
 		{
 			"category": "movie",
@@ -3034,6 +3034,139 @@
 		{
 			"category": "game",
 			"items": [
+				{
+					"title": "咩咩启示录 Cult of the lamb",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/c11dfff9-906a-40c4-b7f9-14e06f04eaf3.jpg",
+					"url": "https://neodb.social/game/1LokobCERl6t4VOjv27Ydl",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:32.007Z"
+				},
+				{
+					"title": "双影奇境",
+					"cover": "https://neodb.social/m/item/steam/2025/03/09/938033d3-29b9-40a2-8fe7-457cdad2d2b3.jpg",
+					"url": "https://neodb.social/game/1tSJDqu9inXkPtclZB3gPI",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:30.388Z"
+				},
+				{
+					"title": "对马岛之魂",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/bc2ce022-5419-4011-830d-5b05c89f3962.jpg",
+					"url": "https://neodb.social/game/3IymED4gRtyqWO4Vw42zag",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:29.570Z"
+				},
+				{
+					"title": "潜水员戴夫",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/45a28bd8-3cff-4cb7-982f-f85f8e87790a.jpg",
+					"url": "https://neodb.social/game/5Eb8sXUedIofTyx1dG9NtK",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:28.762Z"
+				},
+				{
+					"title": "艾尔登法环 Elden Ring",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/9d1bc828-61dd-482c-a1ac-4bb5402dbbfe.jpg",
+					"url": "https://neodb.social/game/20FxvVRlkkHZKWugWfQWTK",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:27.924Z"
+				},
+				{
+					"title": "只狼：影逝二度",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/f7288b5a-d99d-4d99-8d06-ce20ad471d36.jpg",
+					"url": "https://neodb.social/game/02J7FZX6SV4OqUpUuDlz6y",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:26.282Z"
+				},
+				{
+					"title": "羊蹄山之魂",
+					"cover": "https://neodb.social/m/item/doubangame/2024/09/25/4dc047ce-e1e8-4ac4-9c20-d6966812c345.jpg",
+					"url": "https://neodb.social/game/5NCCWx8SMytoOfOcMrqLom",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:25.466Z"
+				},
+				{
+					"title": "光与影：33号远征队",
+					"cover": "https://neodb.social/m/item/fedi/2025/04/27/f4a18a34-70d9-4281-9def-809ac9b75634.jpg",
+					"url": "https://neodb.social/game/1BUuAewL1tD5JUZ50wCA3U",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:24.654Z"
+				},
+				{
+					"title": "黑神话：悟空",
+					"cover": "https://neodb.social/m/item/game/2024/12/20/bf90a214-e194-4446-a0e3-944cf4f8d9da.jpg",
+					"url": "https://neodb.social/game/2fbcMAaC9Nhr2HhDH6BtCO",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:23.856Z"
+				},
+				{
+					"title": "血源诅咒",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/fe2eb529-7a39-464b-9514-e02237bf7b76.jpg",
+					"url": "https://neodb.social/game/71j3vfCt2RJQmq6paCxgkp",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:23.047Z"
+				},
+				{
+					"title": "猛兽派对",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/6a27ee26-5634-4487-80c1-1e992368eb0a.jpg",
+					"url": "https://neodb.social/game/4b6LFtGSshn4Wj6DIhbcbN",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:22.224Z"
+				},
+				{
+					"title": "古墓丽影 崛起",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/1a57007a-b716-4e85-975a-a93e83498c17.jpg",
+					"url": "https://neodb.social/game/4sLRQ3WuNBmzCRgWrhqDmf",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:21.415Z"
+				},
+				{
+					"title": "哈迪斯 Hades",
+					"cover": "https://neodb.social/m/game/2021/09/13c73e9f23-c37b-4de7-8ff2-41239e264197.jpg",
+					"url": "https://neodb.social/game/0pdqTFs8wO0U58fjmxiXFO",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:20.614Z"
+				},
+				{
+					"title": "博德之门3",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/4f129bfe-4b6a-4378-b5cd-872a7ce18e02.jpg",
+					"url": "https://neodb.social/game/0w4Ta4NeXBnTnvEuJr2qAk",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:19.822Z"
+				},
+				{
+					"title": "空洞骑士：丝之歌",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/9a3ce718-5c93-4167-9812-c338bb6c4f2e.jpg",
+					"url": "https://neodb.social/game/1EZcXj3398L8TKZ4ELPIkW",
+					"rating": null,
+					"markedAt": "2026-06-02T17:03:18.996Z"
+				},
+				{
+					"title": "路易吉洋馆3",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/2fd86ce0-9686-4b28-b5ac-f4ce77f6dc8f.jpg",
+					"url": "https://neodb.social/game/0YyWcqTCDWBTsF9VLmSS14",
+					"rating": null,
+					"markedAt": "2026-06-02T16:48:06.833Z"
+				},
+				{
+					"title": "塞尔达传说 王国之泪 ",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/e26213c9-4691-4dab-a59d-db88a982ca3a.jpg",
+					"url": "https://neodb.social/game/4Ixm8bYfeqJAoZkl09KKfR",
+					"rating": null,
+					"markedAt": "2026-06-02T16:48:05.816Z"
+				},
+				{
+					"title": "塞尔达传说 旷野之息",
+					"cover": "https://neodb.social/m/game/2022/06/01416bcdd8-d4e9-4ec3-bdcf-695a81a0e101.jpg",
+					"url": "https://neodb.social/game/5rrQab2d2xhxGWrjJOZUs0",
+					"rating": null,
+					"markedAt": "2026-06-02T16:48:04.671Z"
+				},
+				{
+					"title": "塞尔达传说 智慧的再现",
+					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/5cc81c14-172f-45de-9581-ca17b21d7a3e.jpg",
+					"url": "https://neodb.social/game/0V6kivFu2oyZDpykEC7IeS",
+					"rating": null,
+					"markedAt": "2026-06-02T16:48:03.140Z"
+				},
 				{
 					"title": "战神",
 					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/69d54316-7fd0-40f2-85d0-c91a51e1c618.jpg",
