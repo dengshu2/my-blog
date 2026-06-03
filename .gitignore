@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # locally generated images (uploaded to image host, referenced by URL)
 generated-images/
+
+# temp font subsetting workspace (full TTF + scripts, not committed)
+.tmp-fonts/

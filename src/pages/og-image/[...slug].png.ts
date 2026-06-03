@@ -1,3 +1,4 @@
+import LxgwWenKai from "@/assets/lxgw-wenkai-gb2312.woff";
 import RobotoMonoBold from "@/assets/roboto-mono-700.ttf";
 import RobotoMono from "@/assets/roboto-mono-regular.ttf";
 import { getAllPosts } from "@/data/post";
@@ -20,6 +21,19 @@ const ogOptions: SatoriOptions = {
 		{
 			data: Buffer.from(RobotoMonoBold),
 			name: "Roboto Mono",
+			style: "normal",
+			weight: 700,
+		},
+		// 中文字形回退（霞鹜文楷 GB2312 子集）；同一字重复用于常规/粗体
+		{
+			data: Buffer.from(LxgwWenKai),
+			name: "LXGW WenKai",
+			style: "normal",
+			weight: 400,
+		},
+		{
+			data: Buffer.from(LxgwWenKai),
+			name: "LXGW WenKai",
 			style: "normal",
 			weight: 700,
 		},
