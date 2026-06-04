@@ -1,11 +1,18 @@
 {
-	"updatedAt": "2026-06-03T23:27:05.197Z",
+	"updatedAt": "2026-06-04T23:01:43.742Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
 		"avatar": "https://avatars.steamstatic.com/cdff433c9ea96c9933449fa59011b1dc31a4f0a2_full.jpg"
 	},
-	"recent": [],
+	"recent": [
+		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime2Weeks": 78,
+			"playtime": 78
+		}
+	],
 	"games": [
 		{
 			"appid": 1030300,
@@ -88,6 +95,11 @@
 			"playtime": 81
 		},
 		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 78
+		},
+		{
 			"appid": 1426210,
 			"name": "It Takes Two",
 			"playtime": 47
@@ -110,11 +122,6 @@
 		{
 			"appid": 238460,
 			"name": "BattleBlock Theater",
-			"playtime": 0
-		},
-		{
-			"appid": 632470,
-			"name": "Disco Elysium",
 			"playtime": 0
 		},
 		{
