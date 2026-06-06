@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-05T22:58:46.533Z",
+	"updatedAt": "2026-06-06T22:55:30.656Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
@@ -9,8 +9,8 @@
 		{
 			"appid": 632470,
 			"name": "Disco Elysium",
-			"playtime2Weeks": 78,
-			"playtime": 78
+			"playtime2Weeks": 96,
+			"playtime": 96
 		}
 	],
 	"games": [
@@ -90,14 +90,14 @@
 			"playtime": 96
 		},
 		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 96
+		},
+		{
 			"appid": 431960,
 			"name": "Wallpaper Engine",
 			"playtime": 81
-		},
-		{
-			"appid": 632470,
-			"name": "Disco Elysium",
-			"playtime": 78
 		},
 		{
 			"appid": 1426210,
