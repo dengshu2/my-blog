@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-06T22:55:30.656Z",
+	"updatedAt": "2026-06-07T22:54:30.897Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
@@ -9,8 +9,8 @@
 		{
 			"appid": 632470,
 			"name": "Disco Elysium",
-			"playtime2Weeks": 96,
-			"playtime": 96
+			"playtime2Weeks": 278,
+			"playtime": 278
 		}
 	],
 	"games": [
@@ -55,6 +55,11 @@
 			"playtime": 293
 		},
 		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 278
+		},
+		{
 			"appid": 2868840,
 			"name": "Slay the Spire 2",
 			"playtime": 219
@@ -87,11 +92,6 @@
 		{
 			"appid": 95400,
 			"name": "ibb & obb",
-			"playtime": 96
-		},
-		{
-			"appid": 632470,
-			"name": "Disco Elysium",
 			"playtime": 96
 		},
 		{
