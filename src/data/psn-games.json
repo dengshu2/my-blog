@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-07T22:54:55.010Z",
+	"updatedAt": "2026-06-08T23:08:27.326Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -10,21 +10,6 @@
 		}
 	},
 	"games": [
-		{
-			"name": "Bloodborne™",
-			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202011/0713/WSZqsrnejjt85wYmUqeBQvMQ.png",
-			"platform": "PS4",
-			"playtime": 4782,
-			"playCount": 30,
-			"lastPlayed": "2024-08-15T13:57:54.990000Z",
-			"progress": 50,
-			"earned": {
-				"bronze": 21,
-				"silver": 7,
-				"gold": 1,
-				"platinum": 0
-			}
-		},
 		{
 			"name": "Black Myth: Wukong",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/bd406f42e9352fdb398efcf21a4ffe575b2306ac40089d21.png",
