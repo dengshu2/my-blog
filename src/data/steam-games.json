@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-08T23:08:05.104Z",
+	"updatedAt": "2026-06-09T23:12:13.626Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
@@ -9,8 +9,8 @@
 		{
 			"appid": 632470,
 			"name": "Disco Elysium",
-			"playtime2Weeks": 278,
-			"playtime": 278
+			"playtime2Weeks": 511,
+			"playtime": 511
 		}
 	],
 	"games": [
@@ -45,6 +45,11 @@
 			"playtime": 517
 		},
 		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 511
+		},
+		{
 			"appid": 769560,
 			"name": "Night of the Full Moon",
 			"playtime": 387
@@ -53,11 +58,6 @@
 			"appid": 3097560,
 			"name": "Liar's Bar",
 			"playtime": 293
-		},
-		{
-			"appid": 632470,
-			"name": "Disco Elysium",
-			"playtime": 278
 		},
 		{
 			"appid": 2868840,

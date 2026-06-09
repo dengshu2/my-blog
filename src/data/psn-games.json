@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-08T23:08:27.326Z",
+	"updatedAt": "2026-06-09T23:12:41.226Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -206,19 +206,14 @@
 			}
 		},
 		{
-			"name": "Sea of Stars",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202303/0921/500cf443c7a7e8a36a882c393ecb1d4a20b9c04bfef9ad57.png",
+			"name": "Sea of Stars: Sunset Edition",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202604/2317/a49622e09a90d32b699213f651de487eb5f249669434e591.png",
 			"platform": "PS5",
 			"playtime": 136,
 			"playCount": 2,
 			"lastPlayed": "2024-07-04T15:03:13.320000Z",
-			"progress": 2,
-			"earned": {
-				"bronze": 2,
-				"silver": 0,
-				"gold": 0,
-				"platinum": 0
-			}
+			"progress": null,
+			"earned": null
 		},
 		{
 			"name": "Sackboy: A Big Adventure",
