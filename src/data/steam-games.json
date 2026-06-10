@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-09T23:12:13.626Z",
+	"updatedAt": "2026-06-10T23:19:24.644Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
@@ -9,8 +9,8 @@
 		{
 			"appid": 632470,
 			"name": "Disco Elysium",
-			"playtime2Weeks": 511,
-			"playtime": 511
+			"playtime2Weeks": 688,
+			"playtime": 688
 		}
 	],
 	"games": [
@@ -40,14 +40,14 @@
 			"playtime": 886
 		},
 		{
+			"appid": 632470,
+			"name": "Disco Elysium",
+			"playtime": 688
+		},
+		{
 			"appid": 271590,
 			"name": "Grand Theft Auto V Legacy",
 			"playtime": 517
-		},
-		{
-			"appid": 632470,
-			"name": "Disco Elysium",
-			"playtime": 511
 		},
 		{
 			"appid": 769560,
