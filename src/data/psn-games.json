@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-11T23:14:57.302Z",
+	"updatedAt": "2026-06-12T23:08:53.412Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -259,6 +259,16 @@
 				"gold": 0,
 				"platinum": 0
 			}
+		},
+		{
+			"name": "It Takes Two  PS4™ & PS5™",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202012/0815/0Xqi1LgRoEtJ5zlFprpd54Vu.png",
+			"platform": "PS5",
+			"playtime": 79,
+			"playCount": 1,
+			"lastPlayed": "2025-04-01T15:37:56.990000Z",
+			"progress": null,
+			"earned": null
 		},
 		{
 			"name": "Tales of Arise",
