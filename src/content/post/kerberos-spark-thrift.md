@@ -1,237 +1,64 @@
 ---
-title: "从零理解 Kerberos + Spark Thrift Server"
+title: "搞懂 Kerberos，以及为什么别再用 Spark Thrift Server"
 publishDate: "2026-03-27"
-description: "用通行证类比拆解 Kerberos 的核心概念，搞清楚 principal、keytab、kinit 到底是什么，以及从集群外部 Python 客户端连接 Spark Thrift Server 时认证参数为什么比集群内多那么多"
+description: "用通行证类比快速讲清 Kerberos 的几个核心概念，再说说 Spark Thrift Server 那套两段认证为什么已经落后，以及新项目为什么更该用 Spark 3.4 的 Spark Connect。"
 tags: ["kerberos", "spark", "data-engineering"]
 ---
 
 ## Kerberos 是什么
 
-**Kerberos 是一套"通行证"系统**，解决的核心问题是：在公司内网里，怎么证明"我是我"？
+Kerberos 是一套"通行证"系统，解决的核心问题是：在公司内网里，怎么证明"我是我"？
 
 类比一下：
 
 > 你去公司大楼，保安不认识你，但你有工牌（keytab）。保安（KDC）核验工牌后，给你一张临时通行证（ticket）。之后进任何门（访问任何服务），刷通行证就行，不用每次都找保安。
 
----
+## 几个核心概念
 
-## 核心概念逐个拆解
+把上面的类比对应到术语，记住这几个就够用了：
 
-### KDC（Key Distribution Center）
-
-Kerberos 的"保安中心"，负责颁发 ticket。通常由集群管理员维护，你不需要直接操作它。
-
-### principal — 身份 ID
-
-principal 是 Kerberos 里的通用词，表示任何需要身份认证的对象，不管是人还是服务，统一都叫 principal。就像"身份证"这个词，张三有身份证，银行也有营业执照，都是"身份证明"，叫法一样但持有者不同。
-
-格式上有一个规律，看有没有 `/`：
-
-```
-data_dev_user01@CORP.LOCAL
-──────────────────────────
-没有 / → 普通用户账号
-
-
-spark/spark-thrift.cluster-net@CORP.LOCAL
-─────────────────────────────────────────
-有 / → 服务账号（服务名/主机名）
-```
-
-`@` 后面的部分叫 Realm，相当于公司的域，类比邮箱地址：
-
-```
-data_dev_user01 @ CORP.LOCAL
-───────────────   ──────────
-  账号名称          公司的域
-```
-
-### keytab 文件 — 密钥卡
-
-包含加密后的密码，用于自动向 KDC 换取 ticket，不需要每次手动输密码。由管理员在 KDC 上生成后交给你，你自己无法生成。
-
-### krb5.conf — 导航地图
-
-告诉客户端 KDC 在哪个地址、Realm 叫什么名字。集群内部节点上已经统一配好，放在 `/etc/krb5.conf`。
-
-### kinit — 打卡动作
-
-用 keytab + principal 向 KDC 换取 ticket 的命令：
+- KDC（Key Distribution Center）：Kerberos 的"保安中心"，负责颁发 ticket。集群管理员维护，你不用直接碰它。
+- principal：身份 ID，人和服务都用它表示。看有没有 `/` 来区分——`data_dev_user01@CORP.LOCAL` 没有 `/`，是普通用户账号；`spark/spark-thrift.cluster-net@CORP.LOCAL` 有 `/`，是服务账号（格式是「服务名/主机名」）。`@` 后面的 `CORP.LOCAL` 叫 Realm，相当于公司的域。
+- keytab：你的"密钥卡"，里面是加密后的密码，用来自动向 KDC 换 ticket，不用每次手输。由管理员在 KDC 上生成给你，自己造不出来。
+- krb5.conf：一张"导航地图"，告诉客户端 KDC 在哪、Realm 叫什么。集群节点上一般已配好，放在 `/etc/krb5.conf`。
+- kinit：一个"打卡动作"，用 keytab + principal 向 KDC 换 ticket：
 
 ```bash
 kinit -kt /path/to/your.keytab data_dev_user01@CORP.LOCAL
 klist  # 查看 ticket 是否有效、是否过期
 ```
 
----
+一句话串起来：keytab 是工牌，kinit 是打卡，ticket 是临时通行证，principal 是工号（用户和服务都有），KDC 是发证的保安中心。Kerberos 的概念其实就这么点，剩下的复杂度基本都来自你拿它去接什么服务。
 
-## Spark Thrift Server 是什么
+## Spark Thrift Server：已经落后了
 
-Thrift Server 是一个 SQL 入口，让你可以用普通的 Python 客户端连进来执行 Spark SQL，不需要自己写 Spark 代码。Thrift 是 Apache 的一个 RPC 框架，Spark 用它包了一层 HiveServer2 兼容服务。
+Spark Thrift Server 是一个 SQL 入口，让你用普通的 Python 客户端（PyHive / JDBC）连进来跑 Spark SQL，不用自己写 Spark 代码。它在很长一段时间里是「让外部程序查 Spark」的标准做法，但放到今天，我不会再建议新项目用它。
 
-```
-你的 Python 代码
-      ↓  （PyHive / JDBC）
-Spark Thrift Server（接收 SQL）
-      ↓
-YARN 集群（执行 Spark 任务）
-      ↓
-返回结果
-```
+它的模型是「一个常驻、大家共用的 Spark 应用」：所有 SQL 都挤在同一个 driver 上，资源是开服时定下的那一坨，人多了互相抢、闲下来也缩不回去。
 
----
+更折磨人的是认证。从集群外部连进来，Kerberos 要走两段——客户端先向 Thrift Server 证明身份，Thrift Server 再向 YARN / HDFS 证明身份。于是外部客户端要交代的参数一大把（krb5.conf、Realm、principal、keytab、auth 方式……），其中 principal 里的主机名还得和 KDC 注册的一字不差，错一个字母就报 `Server not found in Kerberos database`，排查起来特别费时间。
 
-## 认证分两段，不要搞混
+我以前认真研究过怎么把这套参数一个个配通，但现在回头看，没必要再把这些步骤铺开写了——那只会教会你一套正在过时的东西。如果你是新搭，直接看下面的 Spark Connect。
 
-连接 Thrift Server 时，Kerberos 认证分两段：
+## 更推荐的方案：Spark Connect（Spark 3.4 起）
 
-```
-Python 客户端  →  [认证①]  →  Thrift Server  →  [认证②]  →  YARN/HDFS
-```
+如果是新项目、而且 Spark 能上到 3.4 以上，更值得用的是 Spark Connect。
 
-**认证②**（Server → 后端）：Thrift Server 启动时用自己的 keytab 向 YARN 认证，与客户端无关，在启动命令里配置：
+它换了个思路：客户端和 driver 彻底解耦。客户端只是很薄的一层，用 DataFrame API 通过 gRPC 把逻辑计划发给远端的 Connect Server，真正的计算在服务端跑。好处有几个：
 
-```bash
-./sbin/start-thriftserver.sh \
-  --principal spark/spark-thrift.cluster-net@CORP.LOCAL \
-  --keytab /etc/security/keytabs/spark.keytab
-```
+- 客户端轻。本地不用再塞一整个 Spark / JVM，Python 直接 `pip install "pyspark[connect]"` 连过去就行，和服务端的版本也能解耦。
+- 隔离性好。一个客户端跑挂了，不会把整个共享服务带崩，这点比 Thrift Server 那种共用 driver 安心很多。
+- 多语言。同一个服务，Python、Scala 等不同语言的客户端都能连。
 
-这个 `--principal` 参数里的三段都有讲究，逐个说：
+而最值得说的弹性扩容，是它和云原生部署搭在一起的甜点：配合 Spark 的动态资源分配（dynamic allocation），executor 数量能按负载自动涨落——忙的时候自动扩出来，闲下来自动回收，不用像 Thrift Server 那样长期占着一坨固定资源。跑在 K8s 或各家托管 / Serverless Spark 上，这种弹性体验更明显，成本也更可控。
 
-#### realm 必须和 keytab 一致
-
-```
-spark/spark-thrift.cluster-net@CORP.LOCAL
-                                ─────────
-                         必须和 keytab 里的 realm 一致
-```
-
-keytab 是 KDC 颁发的，绑定了特定 realm，不匹配就认证失败。
-
-#### `spark` 前缀——约定俗成，但不是硬性规定
-
-不是必须叫 `spark`，也可以叫 `hive`，取决于管理员建这个 principal 时用的名字。但实践中 Spark Thrift Server 基本都用 `spark`，你只要和管理员确认一致就行。
-
-#### 中间的主机名——最需要注意的部分
-
-```
-spark / spark-thrift.cluster-net @ CORP.LOCAL
-         ──────────────────────
-              这里有讲究
-```
-
-这里必须填 Thrift Server 实际所在机器的 FQDN（完全限定域名），而且要和 KDC 里注册的完全一样，一个字母都不能差。
-
-验证方法，在 Thrift Server 所在机器上执行：
-
-```bash
-hostname -f
-```
-
-输出是什么，principal 里就填什么。比如输出是 `spark-thrift.cluster-net`，那 principal 就是 `spark/spark-thrift.cluster-net@CORP.LOCAL`。
-
-:::warning
-如果填的主机名和 KDC 里注册的不一致，客户端连接时会报 `Server not found in Kerberos database`。这是最常见的坑，排查时优先检查主机名是否完全匹配。
-:::
-
-**认证①**（Client → Server）：你的 Python 服务连进来时需要做的认证，这才是你写代码时需要关心的部分。
-
----
-
-## 为什么集群内和集群外参数不一样
-
-### 集群内（Spark Shell）只需要两个参数
-
-```bash
-KT_PATH=/path/to/keytabs
-KT_NAME=data_dev_user01@CORP.LOCAL
-```
-
-在集群节点上运行，环境天然互信：`/etc/krb5.conf` 已经统一配好，YARN/HDFS 的配置文件里也内置了所有 Realm 信息。只需要告诉 Spark "用哪个 keytab、以哪个身份运行"就够了。
-
-### 集群外（Python 服务）需要五个参数
-
-```dotenv
-KRB5_CONF=/etc/kerberos/krb5.conf
-KRB5_REALM=CORP.LOCAL
-SPARK_PRINCIPAL=spark/spark-thrift.cluster-net@CORP.LOCAL
-SPARK_KEYTAB=/path/to/your.keytab
-HIVE_AUTH=KERBEROS
-```
-
-从外部连进来，环境一无所知，需要一一告知。每个参数的作用：
-
-| 参数 | 作用 |
-|---|---|
-| `KRB5_CONF` | 手动指定 krb5.conf 路径，告诉客户端 KDC 在哪 |
-| `KRB5_REALM` | 明确 Realm，避免多域歧义 |
-| `SPARK_PRINCIPAL` | Thrift Server 的身份，用于验证"我连的服务是合法的" |
-| `SPARK_KEYTAB` | 客户端自己的 keytab，用于 kinit 自动换取 ticket |
-| `HIVE_AUTH` | 告诉连接库启用 KERBEROS（GSSAPI）握手 |
-
-简单说：**集群内是"家里人"，环境天然互信；集群外是"外来客"，每一步都要自证身份、验证对方。**
-
----
-
-## 这些文件和参数从哪里来
-
-| 参数 | 怎么来 |
-|---|---|
-| keytab 文件 | 找管理员要，自己无法生成 |
-| krb5.conf | 从集群节点 `scp /etc/krb5.conf` 过来 |
-| `KRB5_REALM` | 从 krb5.conf 里的 `default_realm` 字段抄 |
-| `SPARK_PRINCIPAL` | 让管理员在 Thrift Server 节点执行 `ps aux \| grep thrift`，输出里的 `--principal` 那一串就是 |
-| `HIVE_AUTH` | 固定填 `KERBEROS`，自己写 |
-
-:::note
-`ps aux` 里看到的是 Thrift Server 自己的 principal（服务账号），和你自己的 `KT_NAME`（用户账号）是两回事。类比打电话给银行客服：你的身份证号是你，客服工号是对方，两个都是"身份"，但一个是你，一个是服务。
-:::
-
-```
-KT_NAME=data_dev_user01@CORP.LOCAL          → 你自己的身份（用户）
-SPARK_PRINCIPAL=spark/spark-thrift...        → Thrift Server 的身份（服务）
-```
-
----
-
-## Python 客户端怎么写
-
-运行前先确保本机有有效 ticket：
-
-```bash
-kinit -kt $SPARK_KEYTAB data_dev_user01@CORP.LOCAL
-klist  # 确认 ticket 存在且未过期
-```
-
-连接代码：
-
-```python
-from pyhive import hive
-import os
-
-conn = hive.connect(
-    host='spark-thrift.cluster-net',
-    port=10000,
-    auth=os.getenv('HIVE_AUTH'),              # 'KERBEROS'
-    kerberos_service_name='spark'             # SPARK_PRINCIPAL 的第一段（/ 前面的部分）
-)
-```
-
-:::important
-`kerberos_service_name` 要填 `SPARK_PRINCIPAL` 里 `/` 前面的那一段。如果 principal 是 `spark/spark-thrift.cluster-net@CORP.LOCAL`，那就填 `spark`。填错了连接会直接报认证失败，错误信息还特别隐晦，排查起来很浪费时间。
-:::
-
----
+当然它也有代价：Spark Connect 在 3.4 还算新，部分 API 和第三方生态的兼容性得自己先验一遍；已经在跑的 Thrift Server 链路短期内也不必急着拆。但新项目、又能用上较新的 Spark，我会直接往 Spark Connect 走。
 
 ## 一句话总结
 
-Kerberos 是公司内网的通行证系统。keytab 是你的工牌，kinit 是打卡，ticket 是临时通行证，principal 是工号（用户和服务都有）。集群内部参数少因为环境互信，外部连接参数多因为一切都要从零说清楚。
-
----
+Kerberos 是公司内网的通行证系统：keytab 是工牌，kinit 是打卡，ticket 是临时通行证，principal 是工号，KDC 是保安中心。至于怎么让外部程序接进来，Spark Thrift Server 那套常驻共用 + 两段 Kerberos 认证已经落后，新项目直接上 Spark 3.4 的 Spark Connect——客户端更轻、隔离更好，还能配合动态资源分配做弹性扩容。
 
 ## 参考资料
 
 - [MIT Kerberos 官方文档](https://web.mit.edu/kerberos/)
-- [Spark Thrift Server 配置指南](https://spark.apache.org/docs/latest/sql-distributed-sql-engine.html)
-- [PyHive GitHub](https://github.com/dropbox/PyHive)
+- [Spark Connect 官方文档](https://spark.apache.org/docs/latest/spark-connect-overview.html)
