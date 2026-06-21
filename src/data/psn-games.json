@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-20T22:58:43.772Z",
+	"updatedAt": "2026-06-21T23:01:27.683Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -132,7 +132,7 @@
 		},
 		{
 			"name": "A Way Out",
-			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA08004_00/3/i_7001e8db890d1a56573af505dc412a20d1cce9cf5dc4ba913f2a127810a5343e/i/icon0.png",
+			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA07995_00/2/i_bf9451994583c160b23f72d11b5c28cdf341e271b35509d51696c3d833fb650b/i/icon0.png",
 			"platform": "PS4",
 			"playtime": 364,
 			"playCount": 4,
@@ -216,7 +216,7 @@
 			}
 		},
 		{
-			"name": "It Takes Two  PS4™ & PS5™",
+			"name": "It Takes Two para PS4™ y PS5™",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202012/0815/0Xqi1LgRoEtJ5zlFprpd54Vu.png",
 			"platform": "PS5",
 			"playtime": 79,
