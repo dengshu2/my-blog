@@ -19,7 +19,7 @@ tags: ["mac", "开发环境", "dotfiles", "homebrew", "效率"]
 | iCloud 同步配置 | 敏感配置放 iCloud，新电脑创建软链接即可恢复 |
 | 按需安装，不囤积 | 全局包不预装，项目需要时再安装 |
 
-核心逻辑很简单：**软件安装靠 Brewfile 自动化，配置恢复靠 iCloud + 软链接**。
+核心逻辑很简单：软件安装靠 Brewfile 自动化，配置恢复靠 iCloud + 软链接。
 
 ## Phase 1: 用 Brewfile 一键安装所有软件
 
@@ -43,12 +43,14 @@ brew "ripgrep"               # 现代 grep 替代
 brew "starship"              # 跨 Shell Prompt
 brew "zsh-autosuggestions"   # 命令建议
 brew "zsh-syntax-highlighting" # 语法高亮
+brew "zoxide"                # 智能 cd，按频率跳转常用目录
+brew "bat"                   # 带语法高亮的 cat 替代
 
 # 版本管理器
-brew "fnm"                   # Node.js 版本管理
 brew "uv"                    # Python 工具链（替代 pip/pipx/venv）
 
-# 编程语言
+# 编程语言 & 运行时
+brew "node@24"               # Node.js（固定单版本，不用版本管理器）
 brew "go"
 brew "deno"
 
@@ -63,7 +65,6 @@ brew "trash"                 # 安全删除（替代 rm）
 
 # 媒体处理
 brew "ffmpeg"                # 视频/音频处理
-brew "yt-dlp"                # 视频下载
 brew "pandoc"                # 文档格式转换
 ```
 
@@ -72,6 +73,11 @@ brew "pandoc"                # 文档格式转换
 ```ruby
 # 终端
 cask "ghostty"               # 主终端模拟器
+
+# 编辑器 & AI 工具
+cask "zed"                   # 轻量代码编辑器
+cask "claude"                # Claude 桌面端
+cask "codex"                 # OpenAI Codex CLI
 
 # 容器
 cask "orbstack"              # Docker + Linux（替代 Docker Desktop）
@@ -85,23 +91,19 @@ cask "wechat"
 cask "raycast"               # 启动器
 cask "rectangle"             # 窗口管理
 cask "maccy"                 # 剪贴板管理
-cask "monitor-control"       # 外接显示器亮度/音量控制
+cask "monitorcontrol"        # 外接显示器亮度/音量控制
 cask "mos"                   # 鼠标平滑滚动
 
-# 笔记 & 媒体
-cask "obsidian"              # 笔记管理
+# 媒体
 cask "iina"                  # 视频播放器
 cask "spotify"               # 音乐
-
-# 数据库
-cask "dbeaver-community"     # 数据库客户端
 
 # 其他
 cask "eudic"                 # 欧路词典
 cask "the-unarchiver"        # 解压工具
 cask "xnip"                  # 截图标注
 cask "piclist"               # 图床管理
-cask "buzz"                  # 语音转文字
+cask "handy"                 # 语音转文字
 
 # 字体
 cask "font-jetbrains-mono-nerd-font"
@@ -164,9 +166,10 @@ ln -sf ~/Documents/dotfiles/ghostty/config ~/.config/ghostty/config
 
 我的 Shell 环境主要由这几部分组成：
 
-- Oh My Zsh — 插件管理框架，用了 `git`、`z`、`docker` 等插件
+- Oh My Zsh — 插件管理框架，用了 `git`、`docker` 等插件
 - Starship — 跨 Shell 的 Prompt，接管 Oh My Zsh 的主题
 - fzf — `Ctrl+R` 历史搜索 / `Ctrl+T` 文件搜索
+- zoxide — 智能目录跳转，`z 关键词` 直接跳常用目录
 - zsh-autosuggestions + zsh-syntax-highlighting — 命令建议和语法高亮
 
 这些都已经在 Brewfile 里了，装好之后 `.zshrc` 通过软链接恢复，Shell 环境就回来了。
@@ -176,14 +179,17 @@ ln -sf ~/Documents/dotfiles/ghostty/config ~/.config/ghostty/config
 
 ## Phase 4: 开发语言与工具链
 
-### Node.js — 用 fnm 管理
+### Node.js — 直接装单版本
+
+之前我一直用 fnm 管理多个 Node 版本，但用下来发现，我自己的场景基本就守着一个 LTS，几乎没有真要在多版本之间切的时候。多出来的那层版本管理器反而是负担：换电脑要装、`.zshrc` 要 hook、偶尔还得想一下当前用的是哪个版本。
+
+所以这次干脆退回最简单的做法，直接用 Homebrew 装固定版本：
 
 ```bash
-fnm install 22    # 安装 LTS 版本
-fnm default 22    # 设为默认
+brew install node@24
 ```
 
-全局包策略：不预装，项目需要时按需安装。常用的也就一个 `pnpm`。
+够用就好，省掉一层心智负担。等哪天真的需要并行多版本了再说。全局包策略不变：不预装，项目需要时按需安装，常用的也就一个 `pnpm`。
 
 ### Python — 用 uv 管理
 
@@ -229,7 +235,6 @@ set -euo pipefail
 - Raycast 登录后配置自动同步
 - 词典应用下载词典包
 - OrbStack 首次启动初始化 Docker 环境
-- Obsidian 打开笔记仓库
 
 这些列个 checklist，一个个勾就好。
 
