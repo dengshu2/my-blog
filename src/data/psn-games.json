@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-06-28T22:55:25.945Z",
+	"updatedAt": "2026-06-29T22:47:11.526Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -26,18 +26,23 @@
 			}
 		},
 		{
-			"name": "黑神话：悟空",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/f643bc7a4414fe6aa83463cb8e69afb0216b5ef51e4731ca.png",
+			"name": "Black Myth: Wukong",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202405/2117/bd406f42e9352fdb398efcf21a4ffe575b2306ac40089d21.png",
 			"platform": "PS5",
 			"playtime": 3767,
 			"playCount": 27,
 			"lastPlayed": "2024-09-24T11:22:26.320000Z",
-			"progress": null,
-			"earned": null
+			"progress": 54,
+			"earned": {
+				"bronze": 19,
+				"silver": 2,
+				"gold": 2,
+				"platinum": 0
+			}
 		},
 		{
 			"name": "Ghost of Yōtei",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202504/2217/91a997201e0db0b70e1dd7c42a3f54f4d3b9aac915c91d87.png",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/050bb77f895515e0b0e906b0b9d75b6174b37eece097b462.png",
 			"platform": "PS5",
 			"playtime": 3517,
 			"playCount": 23,
@@ -52,7 +57,7 @@
 		},
 		{
 			"name": "Hollow Knight",
-			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA13285_00/4/i_876f3770382038e9d18271fce2008c6adfaf17c471f3eb01ee0d98e75b8d7885/i/icon0_02.png",
+			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA13285_00/4/i_876f3770382038e9d18271fce2008c6adfaf17c471f3eb01ee0d98e75b8d7885/i/icon0.png",
 			"platform": "PS4",
 			"playtime": 2440,
 			"playCount": 20,
@@ -66,14 +71,19 @@
 			}
 		},
 		{
-			"name": "潜水员戴夫",
+			"name": "DAVE THE DIVER",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202401/2508/f194dc023adef481689d90db93f343b73f5b4c5741925556.png",
 			"platform": "PS5",
 			"playtime": 1584,
 			"playCount": 11,
 			"lastPlayed": "2025-05-04T02:02:22.420000Z",
-			"progress": null,
-			"earned": null
+			"progress": 41,
+			"earned": {
+				"bronze": 24,
+				"silver": 2,
+				"gold": 0,
+				"platinum": 0
+			}
 		},
 		{
 			"name": "Ghost of Tsushima",
@@ -161,14 +171,19 @@
 			"earned": null
 		},
 		{
-			"name": "麻布仔大冒险",
-			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202010/1614/YTnuxZGgdr197pizUNLjdGKE.png",
+			"name": "Sackboy: A Big Adventure",
+			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202010/1614/TJiBEQMJ9qa93lWBu4sKScY9.png",
 			"platform": "PS5",
 			"playtime": 133,
 			"playCount": 2,
 			"lastPlayed": "2024-10-04T11:46:26.220000Z",
-			"progress": null,
-			"earned": null
+			"progress": 11,
+			"earned": {
+				"bronze": 8,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
 		},
 		{
 			"name": "Tinykin",
@@ -201,7 +216,7 @@
 			}
 		},
 		{
-			"name": "双人成行 PS4™ 和 PS5™",
+			"name": "It Takes Two  PS4™ & PS5™",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202012/0815/0Xqi1LgRoEtJ5zlFprpd54Vu.png",
 			"platform": "PS5",
 			"playtime": 79,
@@ -256,14 +271,19 @@
 			}
 		},
 		{
-			"name": "《巫师 3：狂猎》",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202211/1007/MWZTgNKcKu8btRaz763nK7La.png",
+			"name": "The Witcher 3: Wild Hunt",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202211/1412/5YlA3POEEpaAJsUq3eg6U8d6.png",
 			"platform": "PS5",
 			"playtime": 59,
 			"playCount": 2,
 			"lastPlayed": "2024-09-16T13:59:29.490000Z",
-			"progress": null,
-			"earned": null
+			"progress": 1,
+			"earned": {
+				"bronze": 1,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
 		},
 		{
 			"name": "Horizon Forbidden West",
@@ -326,14 +346,19 @@
 			}
 		},
 		{
-			"name": "瑞奇与叮当 时空跳转™",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202403/2808/42e22c005eb42ce9f1e973e26f6a0a123e7288ad6ac506fd.png",
+			"name": "Ratchet & Clank: Rift Apart",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202101/2921/DwVjpbKOsFOyPdNzmSTSWuxG.png",
 			"platform": "PS5",
 			"playtime": 23,
 			"playCount": 1,
 			"lastPlayed": "2024-06-27T16:45:25.660000Z",
-			"progress": null,
-			"earned": null
+			"progress": 0,
+			"earned": {
+				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
 		},
 		{
 			"name": "Where Winds Meet (F2P)",
