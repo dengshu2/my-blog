@@ -62,7 +62,7 @@
 		"@iconify-json/mdi": "^1.2.3",
 		"@pagefind/default-ui": "^1.5.2",
 		"@resvg/resvg-js": "^2.6.2",
-		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/typography": "^0.5.20",
 		"@types/hast": "^3.0.4",
 		"@types/markdown-it": "^14.1.2",
 		"@types/mdast": "^4.0.4",
