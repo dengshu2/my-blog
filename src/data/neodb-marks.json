@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-07-01T23:03:30.865Z",
+	"updatedAt": "2026-07-02T22:57:17.421Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 476,
+	"total": 477,
 	"categories": [
 		{
 			"category": "movie",
@@ -2828,6 +2828,13 @@
 		{
 			"category": "tv",
 			"items": [
+				{
+					"title": "爱情怎么翻译？ (这爱情可以翻译吗？)",
+					"cover": "https://neodb.social/m/item/doubanmovie/2026/01/15/0bffb713-5192-412e-aead-1670cd2c915f.jpg",
+					"url": "https://neodb.social/tv/season/5l3seZvebPhCCMx67ZVzUa",
+					"rating": 9,
+					"markedAt": "2026-07-02T13:56:24.349Z"
+				},
 				{
 					"title": "苦尽柑来遇见你",
 					"cover": "https://neodb.social/m/item/tmdb_tvseason/2025/10/20/39bdc2e3-e74c-4d1a-b09f-57fb1ee8ed52.jpg",
