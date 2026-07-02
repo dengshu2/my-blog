@@ -18,7 +18,7 @@ tags: ["claude", "skill", "chrome-history-cli", "ai-agent"]
 - Skill 是什么，为什么值得关心
 - 以 chrome-history-cli 为实例，看一个软件怎么"长出" SKILL.md
 
-顺便聊一个判断：**未来 AI 友好的软件，可能都会带一份 SKILL.md。**
+顺便聊一个判断：未来 AI 友好的软件，可能都会带一份 SKILL.md。
 
 ## 1. Skill 是什么
 
@@ -149,9 +149,9 @@ $ python3 chrome_history_cli.py history searches --since 2026-04-15 -n 20
 
 把视野拉宽。
 
-- **API 时代**，软件的"对外形态"是给程序员用的：endpoint、auth、SDK
-- **MCP 时代**（2024 末起），软件开始有了"给 agent 用的 RPC 接口"：你起一个 server，agent 连上
-- **Skill 时代**（2025 末起），软件进一步有了"给 agent 看的说明书 + 本地可执行物"
+- API 时代，软件的"对外形态"是给程序员用的：endpoint、auth、SDK
+- MCP 时代（2024 末起），软件开始有了"给 agent 用的 RPC 接口"：你起一个 server，agent 连上
+- Skill 时代（2025 末起），软件进一步有了"给 agent 看的说明书 + 本地可执行物"
 
 三者不矛盾，分别解决不同问题：
 
@@ -159,7 +159,7 @@ $ python3 chrome_history_cli.py history searches --since 2026-04-15 -n 20
 | ----- | ----------------- | ---------------- | ------------------------- |
 | API   | 远程 HTTP         | 需 server        | 任何程序接入              |
 | MCP   | 远程 / 本地 server | 要起 server、要授权 | agent 长期对接一个服务     |
-| Skill | 本地文件          | **零基建**       | agent 一次性用一个本地工具 |
+| Skill | 本地文件          | 零基建       | agent 一次性用一个本地工具 |
 
 Skill 最戳的是成本。一个 `SKILL.md` 加一个脚本就是完整的交付物，放 GitHub `git clone` 到 `~/.claude/skills/` 即可——没有 server、没有账号、没有 webhook。
 
@@ -192,12 +192,10 @@ Skill 最戳的是成本。一个 `SKILL.md` 加一个脚本就是完整的交�
 
 技术上没什么魔法。但这个小案例里有个模式我觉得成立：
 
-- **工具层**解决"能不能做到"
-- **Skill 层**解决"AI 能不能正确使用"
+- 工具层解决"能不能做到"
+- Skill 层解决"AI 能不能正确使用"
 
-一句话收束：
-
-> 好软件自己会说话——今天可以改成，**好软件有 SKILL.md**。
+下次再写完一个自己的小工具，我大概都会顺手给它配一份 SKILL.md。
 
 ---
 

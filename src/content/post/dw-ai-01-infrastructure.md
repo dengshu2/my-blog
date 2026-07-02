@@ -7,7 +7,7 @@ tags: ["dw-ai", "docker", "clickhouse", "postgresql", "vector", "grafana", "ngin
 
 ## 这个系列在讲什么？
 
-如果你和我一样，日常工作是数据开发，你可能会好奇：**能不能在自己的 VPS 上搭一套完整的数据基础设施？**
+如果你和我一样，日常工作是数据开发，你可能会好奇：能不能在自己的 VPS 上搭一套完整的数据基础设施？
 
 不是为了生产环境，而是为了：
 
@@ -74,7 +74,7 @@ graph TB
     CK --> Grafana
 ```
 
-核心思路很简单：**所有流量经过 Nginx，产生的日志被 Vector 采集进 ClickHouse；业务数据存在 PostgreSQL，通过 MaterializedPostgreSQL 同步到 ClickHouse；最后 Grafana 统一查询和展示。**
+核心思路很简单：所有流量经过 Nginx，产生的日志被 Vector 采集进 ClickHouse；业务数据存在 PostgreSQL，通过 MaterializedPostgreSQL 同步到 ClickHouse；最后 Grafana 统一查询和展示。
 
 ## 流量入口：Nginx Proxy Manager
 
@@ -264,7 +264,7 @@ SETTINGS
 
 全部运行在一台 VPS 上，用 Docker Compose 编排。不复杂，但够用。
 
-**下一篇**，我会介绍如何通过 ClickHouse MCP 让 AI 直接查询这个数据仓库——用自然语言代替 SQL。
+下一篇，我会介绍如何通过 ClickHouse MCP 让 AI 直接查询这个数据仓库——用自然语言代替 SQL。
 
 ## 参考资料
 

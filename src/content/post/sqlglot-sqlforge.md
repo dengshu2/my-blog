@@ -9,7 +9,7 @@ tags: ["sqlglot", "sql", "data-engineering"]
 
 ## sqlglot 是什么
 
-一句话：**纯 Python 实现的 SQL 解析器和转译器**。
+一句话：纯 Python 实现的 SQL 解析器和转译器。
 
 做数据的人都知道，SQL 这东西各家方言多到离谱。同一个日期函数，在 Hive 里叫 `date_format`，到了 DuckDB 变成 `strftime`，PostgreSQL 又是 `to_char`。每次做架构迁移或者跨引擎查询，光是改 SQL 就能改到怀疑人生。
 
@@ -24,7 +24,7 @@ sqlglot 就是来解决这个问题的。它目前支持 31+ 种 SQL 方言的�
 
 sqlglot 不只是个格式化工具，它的能力远比想象中丰富：
 
-**方言转译（Transpile）**：这是最核心的能力。比如把 DuckDB 的时间函数转成 Hive：
+方言转译（Transpile）：这是最核心的能力。比如把 DuckDB 的时间函数转成 Hive：
 
 ```python
 import sqlglot
@@ -35,9 +35,9 @@ sqlglot.transpile("SELECT EPOCH_MS(1618088028295)", read="duckdb", write="hive")
 
 实际场景里，团队做架构迁移（Hive → Spark、Hive → ClickHouse 等），用这个可以批量转换存量 SQL，省下大量人工改写的时间。
 
-**数据血缘（Lineage）**：能追踪列级别的数据来源，DataHub 的 SQL 血缘解析模块底层用的就是 sqlglot。对于需要做数据治理的团队来说，这个能力相当实用。
+数据血缘（Lineage）：能追踪列级别的数据来源，DataHub 的 SQL 血缘解析模块底层用的就是 sqlglot。对于需要做数据治理的团队来说，这个能力相当实用。
 
-**AST 解析**：可以把 SQL 解析成抽象语法树，方便程序化地分析和修改 SQL 结构。
+AST 解析：可以把 SQL 解析成抽象语法树，方便程序化地分析和修改 SQL 结构。
 
 ## 半小时搭了个在线工具
 

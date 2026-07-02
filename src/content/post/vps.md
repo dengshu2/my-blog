@@ -11,7 +11,7 @@ tags: ["vps", "服务器", "安全", "docker", "git"]
 
 转战[HostHatch](https://cloud.hosthatch.com/) 平台。
 
-> **选型说明**：如何选购VPS可以多逛逛论坛 [nodeseek](https://www.nodeseek.com/),再推荐另一个VPS [dmit](https://www.dmit.io/clientarea.php);
+> 选型说明：如何选购VPS可以多逛逛论坛 [nodeseek](https://www.nodeseek.com/),再推荐另一个VPS [dmit](https://www.dmit.io/clientarea.php);
 
 ### 脚本测试
 
@@ -129,7 +129,7 @@ sudo systemctl start ssh.service
 sudo systemctl enable ssh.service
 ```
 
-> **注意**：在完全断开当前连接前，请确保新的 SSH 配置可以正常工作。建议保持当前会话连接，另开一个终端测试新配置是否可以成功连接。
+> 注意：在完全断开当前连接前，请确保新的 SSH 配置可以正常工作。建议保持当前会话连接，另开一个终端测试新配置是否可以成功连接。
 
 ## 4. Docker 环境安装
 
@@ -185,9 +185,7 @@ ssh -T git@github.com
 
 ## 总结
 
-通过以上步骤，我们完成了 VPS 的初始化配置，包括系统更新、SSH 安全加固、Docker 环境搭建和 Git 配置。这些基础配置为后续运行各类应用和服务提供了安全、可靠的环境。
-
-下一篇文章将详细介绍如何在此基础上搭建和运行大数据项目。
+到这里，这台机器就算能安心用了：系统是新的、SSH 只认密钥、Docker 和 Git 都就位。后来我在这套底子上跑起了整套数据基础设施，那是另一篇的内容：[数据仓库+AI（一）：在 VPS 上构建轻量级数据基础设施](/posts/dw-ai-01-infrastructure/)。
 
 ## 参考资料
 

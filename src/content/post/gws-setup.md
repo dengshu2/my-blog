@@ -21,7 +21,7 @@ tags: ["google-workspace", "ai", "cli", "自动化", "工具"]
 
 ## gws 是什么？
 
-**一句话：Google Workspace 全家桶的统一命令行接口，专为人类和 AI Agent 设计。**
+一句话：Google Workspace 全家桶的统一命令行接口，专为人类和 AI Agent 设计。
 
 - 支持 Drive、Gmail、Calendar、Sheets、Docs、Slides、Chat、Forms、Keep、Meet……几乎涵盖所有 Google Workspace 服务
 - 命令结构从 Google Discovery Service 动态生成，不需要手动维护，Google 加新 API 就自动支持
@@ -99,7 +99,7 @@ gws auth login -s drive,gmail,sheets,calendar
 
 ### 第六步：发布 OAuth App（避免 Token 7 天过期）
 
-**这一步很重要，容易被忽略。**
+这一步很重要，容易被忽略。
 
 OAuth App 在 Testing 模式时，Google 限制 Refresh Token 只有 7 天有效期，过了就要重新登录。
 
@@ -197,8 +197,6 @@ AI 就会自动运行相应的 `gws` 命令，读取 JSON 输出，再给我整�
 4. 发布 OAuth App 为 Production
 
 配置完成后，AI 助手就有了操控你整个 Google Workspace 的能力，无需额外代码。
-
-对于经常需要处理 Gmail、Drive、Calendar 的人来说，这个工具值得花 15 分钟配置一次。
 
 ---
 

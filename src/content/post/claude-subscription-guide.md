@@ -43,9 +43,7 @@ tags: ["claude", "claude-code", "ai", "教程", "网络"]
 | Nodeseek | [nodeseek.com](https://www.nodeseek.com/)，国内最活跃的 VPS / 网络技术论坛，网络相关的一切问题都能在这里搜到 |
 | Linux.do | [linux.do](https://linux.do/)，技术社区，关于各种海外服务订阅的问题（Apple ID、信用卡、支付等）大多能在这里找到答案 |
 
-:::tip
-记住这两个社区：网络问题查 Nodeseek，订阅问题查 Linux.do。善用站内搜索，多数问题都有现成答案。
-:::
+记住这两个社区的分工就好：网络问题查 Nodeseek，订阅问题查 Linux.do。善用站内搜索，多数问题都有现成答案。
 
 ## 第一步：解决网络问题
 
@@ -75,9 +73,7 @@ tags: ["claude", "claude-code", "ai", "教程", "网络"]
 - 关键词：认准"美西"（美国西部）节点
 - 去哪找：Nodeseek 的拼车版块 👉 [nodeseek.com/categories/carpool](https://www.nodeseek.com/categories/carpool)，搜索关键词"大妈 CORONA"（即 DMIT 的 CORONA 系列套餐，拼车里的热门型号）
 
-:::note
 不用担心隐私问题：拼车拼的是流量，车主只会发给你一个订阅链接，你通常不能在拼车服务器上进行任何操作，自然也不存在敏感信息泄露的问题。要注意的只是选择论坛里信誉好的老用户发起的车队，避免车主中途跑路。
-:::
 
 ### 方案 B：自己买 VPS 搭建（约 350 元/年）⭐ 推荐
 
@@ -92,9 +88,7 @@ tags: ["claude", "claude-code", "ai", "教程", "网络"]
 1. AI 辅助搭建：直接把"帮我在 Debian VPS 上搭建 sing-box 代理服务"这样的需求丢给 Claude / ChatGPT，跟着指引一步步操作
 2. 一键脚本：使用 233boy 的 sing-box 脚本 👉 [233boy.com/sing-box/sing-box-script](https://233boy.com/sing-box/sing-box-script/)，真正的一行命令搞定
 
-:::tip
 本站之前写过一篇 [VPS 初始化配置指南](/posts/vps/)，购买后的系统配置、SSH 加固可以参考。
-:::
 
 ### 客户端软件：电脑用 Clash Verge Rev，iPhone 用小火箭
 
@@ -379,9 +373,7 @@ Claude 的付费订阅分三档：
 - 为什么建议办全币种信用卡？不只是为了这一次订阅——以后出国旅游、订阅其他海外服务都用得上。办卡可能需要预约去银行网点，但只要有正常工作，基本都能办下来
 - 苹果税的细节：$20 的 Pro 订阅通过 App Store 支付没有额外加价；但 $100 的 Max 档会被额外收取约 $20 的苹果税。所以苹果内购最适合只用 $20 方案的用户
 
-:::important
 能完整走到这一步，你已经能在终端里随时跑 Claude Code 了。剩下的就是用它干活。
-:::
 
 ### 进阶方案：N26 虚拟卡（适合 $100 以上档位）
 
