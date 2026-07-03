@@ -49,7 +49,7 @@ function transformUnhandledDirective(
 }
 
 /** From Astro Starlight: Function that generates an mdast HTML tree ready for conversion to HTML by rehype. */
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: 该节点经 hName/hProperties 直接映射为 HTML，children 混合块级与行内节点，Paragraph 类型无法表达
 function h(el: string, attrs: Properties = {}, children: any[] = []): P {
 	const { properties, tagName } = _h(el, attrs);
 	return {
