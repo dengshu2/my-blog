@@ -12,3 +12,11 @@ updates:
     allow:
       - dependency-type: "direct"
     open-pull-requests-limit: 20
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      major:
+        update-types:
+          - "major"
