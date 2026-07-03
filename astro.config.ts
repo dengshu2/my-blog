@@ -11,17 +11,20 @@ import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
 
 // Remark plugins
+import { unified } from "@astrojs/markdown-remark";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
-import remarkUnwrapImages from "remark-unwrap-images";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import { remarkMermaid } from "./src/plugins/remark-mermaid"; /* Convert mermaid blocks to raw HTML */
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
 
 // Rehype plugins
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 
 // https://astro.build/config
 export default defineConfig({
+	// Astro 7 默认值改为 "jsx"（剥离行内元素间空格），保持 v6 行为
+	compressHTML: true,
 	image: {
 		domains: ["webmention.io"],
 	},
@@ -74,6 +77,9 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
+		// Astro 7 默认改用原生 Sätteri 管线；本站的自定义插件依赖 remark/rehype，
+		// 显式指定 unified 处理器以保留原有 Markdown 行为
+		processor: unified(),
 		rehypePlugins: [
 			[
 				rehypeExternalLinks,
@@ -82,8 +88,9 @@ export default defineConfig({
 					target: "_blank",
 				},
 			],
+			rehypeUnwrapImages,
 		],
-		remarkPlugins: [remarkMermaid, remarkUnwrapImages, remarkReadingTime, remarkDirective, remarkAdmonitions],
+		remarkPlugins: [remarkMermaid, remarkReadingTime, remarkDirective, remarkAdmonitions],
 		remarkRehype: {
 			footnoteLabelProperties: {
 				className: [""],
