@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-07-13T22:45:23.516Z",
+	"updatedAt": "2026-07-14T22:47:32.575Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 477,
+	"total": 478,
 	"categories": [
 		{
 			"category": "movie",
@@ -2828,6 +2828,13 @@
 		{
 			"category": "tv",
 			"items": [
+				{
+					"title": "Re：从零开始的异世界生活",
+					"cover": "https://neodb.social/m/movie/2021/09/17ce7062df-0596-4dfb-89a1-52fde53a8e5c.jpg",
+					"url": "https://neodb.social/tv/season/7FF64bc9kGmyiTUoHAmz1k",
+					"rating": 9,
+					"markedAt": "2026-07-14T08:54:25.100Z"
+				},
 				{
 					"title": "爱情怎么翻译？ (这爱情可以翻译吗？)",
 					"cover": "https://neodb.social/m/item/doubanmovie/2026/01/15/0bffb713-5192-412e-aead-1670cd2c915f.jpg",

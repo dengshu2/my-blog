@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-07-13T22:45:24.713Z",
+	"updatedAt": "2026-07-14T22:47:33.782Z",
 	"summary": {
 		"trophyLevel": 102,
 		"earned": {
@@ -41,6 +41,21 @@
 			}
 		},
 		{
+			"name": "Clair Obscur: Expedition 33",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202501/2217/e5833a53529ff9879e87689f1e8b04d45ba7e6c97fa791e2.png",
+			"platform": "PS5",
+			"playtime": 3700,
+			"playCount": 21,
+			"lastPlayed": "2025-10-03T15:34:45.250000Z",
+			"progress": 60,
+			"earned": {
+				"bronze": 34,
+				"silver": 1,
+				"gold": 1,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Ghost of Yōtei",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/050bb77f895515e0b0e906b0b9d75b6174b37eece097b462.png",
 			"platform": "PS5",
@@ -56,6 +71,21 @@
 			}
 		},
 		{
+			"name": "Sekiro™: Shadows Die Twice",
+			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202010/1700/B66T6RbAfvIGjpEQxPq7k0Mu.png",
+			"platform": "PS4",
+			"playtime": 2677,
+			"playCount": 24,
+			"lastPlayed": "2024-11-09T10:04:27.720000Z",
+			"progress": 48,
+			"earned": {
+				"bronze": 15,
+				"silver": 5,
+				"gold": 1,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Hollow Knight",
 			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA13285_00/4/i_876f3770382038e9d18271fce2008c6adfaf17c471f3eb01ee0d98e75b8d7885/i/icon0.png",
 			"platform": "PS4",
@@ -67,6 +97,21 @@
 				"bronze": 14,
 				"silver": 5,
 				"gold": 1,
+				"platinum": 0
+			}
+		},
+		{
+			"name": "ELDEN RING",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202107/0902/fS3Hhaq06TqLrbjMVplA8MaY.png",
+			"platform": "PS4",
+			"playtime": 2277,
+			"playCount": 18,
+			"lastPlayed": "2025-05-04T02:32:49.010000Z",
+			"progress": 8,
+			"earned": {
+				"bronze": 4,
+				"silver": 1,
+				"gold": 0,
 				"platinum": 0
 			}
 		},
@@ -97,6 +142,21 @@
 				"bronze": 23,
 				"silver": 0,
 				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
+			"name": "Split Fiction",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202411/2918/90ad70c1ef581f93454184750cba9e0ca37bc7e30a4d1f55.png",
+			"platform": "PS5",
+			"playtime": 985,
+			"playCount": 5,
+			"lastPlayed": "2025-04-06T11:14:23.750000Z",
+			"progress": 33,
+			"earned": {
+				"bronze": 2,
+				"silver": 1,
+				"gold": 3,
 				"platinum": 0
 			}
 		},
