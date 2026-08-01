@@ -1,14 +1,21 @@
 {
-	"updatedAt": "2026-07-31T22:52:01.433Z",
+	"updatedAt": "2026-08-01T22:44:25.334Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 478,
+	"total": 479,
 	"categories": [
 		{
 			"category": "movie",
 			"items": [
+				{
+					"title": "Shoplifters",
+					"cover": "https://neodb.social/m/movie/2021/09/1499c49ec6-6897-4f5a-80ea-8a225bf36d1c.jpg",
+					"url": "https://neodb.social/movie/5TTX7VfN4GHX4HbwLILNpq",
+					"rating": 9,
+					"markedAt": "2026-08-01T12:52:53.191Z"
+				},
 				{
 					"title": "Ethel and Ernest",
 					"cover": "https://neodb.social/m/movie/2021/09/1696692804-5174-4e8a-8d87-8fe4802423ea.jpg",
