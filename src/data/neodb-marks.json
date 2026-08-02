@@ -1,14 +1,35 @@
 {
-	"updatedAt": "2026-08-01T22:44:25.334Z",
+	"updatedAt": "2026-08-02T22:45:08.810Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 479,
+	"total": 482,
 	"categories": [
 		{
 			"category": "movie",
 			"items": [
+				{
+					"title": "Anatomy of a Fall",
+					"cover": "https://neodb.social/m/item/movie/2026/05/23/6a26ac8f-2c91-4617-a20a-14e7cef7df1c.jpeg",
+					"url": "https://neodb.social/movie/2EyanzxgOQjBNGXC7Eeauw",
+					"rating": 9,
+					"markedAt": "2026-08-02T03:30:25.463Z"
+				},
+				{
+					"title": "Kung Fu Hustle",
+					"cover": "https://neodb.social/m/movie/2021/09/135717365f-c912-4679-9f01-b05fcca43095.jpg",
+					"url": "https://neodb.social/movie/79xI5OWqu8YpRy91nH4P0V",
+					"rating": null,
+					"markedAt": "2026-08-02T00:51:38.773Z"
+				},
+				{
+					"title": "In the Mood for Love",
+					"cover": "https://neodb.social/m/item/movie/2026/02/14/0b0e2448-7e92-4efa-87ae-f121739dc6bf.jpeg",
+					"url": "https://neodb.social/movie/3lfsaPPZ1kXX09dPlzU2YQ",
+					"rating": null,
+					"markedAt": "2026-08-02T00:51:38.688Z"
+				},
 				{
 					"title": "Shoplifters",
 					"cover": "https://neodb.social/m/movie/2021/09/1499c49ec6-6897-4f5a-80ea-8a225bf36d1c.jpg",
@@ -2524,7 +2545,7 @@
 				},
 				{
 					"title": "My Neighbor Totoro",
-					"cover": "https://neodb.social/m/movie/2021/09/13eda1111e-c4fc-4f0e-99b7-fff0a4e5022f.jpg",
+					"cover": "https://neodb.social/m/item/movie/2026/08/02/00b371be-37e6-46d7-8b06-c7623d97cb9a.jpg",
 					"url": "https://neodb.social/movie/5JBUGlFtP4ANaERj2jTrti",
 					"rating": null,
 					"markedAt": "2018-11-22T03:58:33Z"
