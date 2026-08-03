@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import heroIllustration from "@/assets/hero-illustration.png";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import { getAllPosts, sortMDByDate } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
@@ -45,21 +43,6 @@ const projects: { title: string; description: string; url: string }[] = [
 ---
 
 <PageLayout meta={{ title: "首页" }}>
-	<!-- Hero Section -->
-	<section class="mb-16" id="hero">
-		<figure class="mx-auto max-w-[720px] overflow-hidden rounded-2xl border border-accent/10">
-			<Image
-				src={heroIllustration}
-				alt="水彩风格自画像：戴眼镜的男生坐在书桌前，桌上有笔记本电脑、Deep Learning / Python Crash Course / DDIA 等书、GitHub 马克杯，画面两侧写着 Data 与 AI，下方写着 Curious by nature. Builder at heart."
-				widths={[400, 720, 1120]}
-				sizes="(min-width: 640px) 720px, 100vw"
-				class="h-auto w-full"
-				loading="eager"
-				fetchpriority="high"
-			/>
-		</figure>
-	</section>
-
 	<!-- Projects Section -->
 	<section class="mb-12" id="projects">
 		<div class="mb-5 flex items-center gap-3">
