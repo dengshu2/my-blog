@@ -1,11 +1,23 @@
 {
-	"updatedAt": "2026-08-07T22:25:03.470Z",
+	"updatedAt": "2026-08-08T22:18:15.055Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
 		"avatar": "https://avatars.steamstatic.com/cdff433c9ea96c9933449fa59011b1dc31a4f0a2_full.jpg"
 	},
 	"recent": [
+		{
+			"appid": 3527290,
+			"name": "PEAK",
+			"playtime2Weeks": 215,
+			"playtime": 215
+		},
+		{
+			"appid": 3570070,
+			"name": "Paddle Paddle Paddle",
+			"playtime2Weeks": 100,
+			"playtime": 100
+		},
 		{
 			"appid": 1610440,
 			"name": "Minds Beneath Us",
@@ -65,6 +77,11 @@
 			"playtime": 219
 		},
 		{
+			"appid": 3527290,
+			"name": "PEAK",
+			"playtime": 215
+		},
+		{
 			"appid": 3590,
 			"name": "Plants vs. Zombies: Game of the Year",
 			"playtime": 151
@@ -88,6 +105,11 @@
 			"appid": 620,
 			"name": "Portal 2",
 			"playtime": 119
+		},
+		{
+			"appid": 3570070,
+			"name": "Paddle Paddle Paddle",
+			"playtime": 100
 		},
 		{
 			"appid": 95400,
@@ -137,11 +159,6 @@
 		{
 			"appid": 3240220,
 			"name": "Grand Theft Auto V Enhanced",
-			"playtime": 0
-		},
-		{
-			"appid": 3570070,
-			"name": "Paddle Paddle Paddle",
 			"playtime": 0
 		}
 	]
