@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-08-11T22:31:53.893Z",
+	"updatedAt": "2026-08-12T22:30:22.849Z",
 	"profile": {
 		"name": "runningotter",
 		"url": "https://steamcommunity.com/profiles/76561199023045394/",
@@ -9,161 +9,187 @@
 		{
 			"appid": 3527290,
 			"name": "PEAK",
-			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg?t=1786470571",
 			"playtime2Weeks": 215,
-			"playtime": 215
+			"playtime": 215,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg?t=1786470571"
 		},
 		{
 			"appid": 3570070,
 			"name": "Paddle Paddle Paddle",
-			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/35be35d69c576eeb612eaf49aa62f24689cdc798/header.jpg?t=1783433504",
 			"playtime2Weeks": 100,
-			"playtime": 100
+			"playtime": 100,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/35be35d69c576eeb612eaf49aa62f24689cdc798/header.jpg?t=1783433504"
 		},
 		{
 			"appid": 1610440,
 			"name": "Minds Beneath Us",
 			"playtime2Weeks": 50,
-			"playtime": 50
+			"playtime": 50,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1610440/header.jpg?t=1774934061"
 		}
 	],
 	"games": [
 		{
 			"appid": 1030300,
 			"name": "Hollow Knight: Silksong",
-			"playtime": 3564
+			"playtime": 3564,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1776125736"
 		},
 		{
 			"appid": 1086940,
 			"name": "Baldur's Gate 3",
-			"playtime": 2948
+			"playtime": 2948,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1777363040"
 		},
 		{
 			"appid": 1145360,
 			"name": "Hades",
-			"playtime": 2191
+			"playtime": 2191,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145360/header.jpg?t=1758127023"
 		},
 		{
 			"appid": 391220,
 			"name": "Rise of the Tomb Raider",
-			"playtime": 1766
+			"playtime": 1766,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/391220/header.jpg?t=1766187095"
 		},
 		{
 			"appid": 1260320,
 			"name": "Party Animals",
-			"playtime": 886
+			"playtime": 886,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1260320/header.jpg?t=1783653381"
 		},
 		{
 			"appid": 632470,
 			"name": "Disco Elysium",
-			"playtime": 688
+			"playtime": 688,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/632470/816ea59d6d8ac525f79a07c3a7afa94eddb3437c/header.jpg?t=1780913406"
 		},
 		{
 			"appid": 271590,
 			"name": "Grand Theft Auto V Legacy",
-			"playtime": 517
+			"playtime": 517,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1765387725"
 		},
 		{
 			"appid": 769560,
 			"name": "Night of the Full Moon",
-			"playtime": 387
+			"playtime": 387,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/769560/0590ad63ce944ec1287e2d9519aba37818eba902/header.jpg?t=1780367397"
 		},
 		{
 			"appid": 3097560,
 			"name": "Liar's Bar",
-			"playtime": 293
+			"playtime": 293,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3097560/054cf90dfb2e0de8bf595fcd2cfd1b6853bf2556/header.jpg?t=1783933354"
 		},
 		{
 			"appid": 2868840,
 			"name": "Slay the Spire 2",
-			"playtime": 219
+			"playtime": 219,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/b0958d387dc366211e0f353443710cfcf9fdb020/header.jpg?t=1786139218"
 		},
 		{
 			"appid": 3527290,
 			"name": "PEAK",
-			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg?t=1786470571",
-			"playtime": 215
+			"playtime": 215,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg?t=1786470571"
 		},
 		{
 			"appid": 3590,
 			"name": "Plants vs. Zombies: Game of the Year",
-			"playtime": 151
+			"playtime": 151,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3590/header.jpg?t=1777394124"
 		},
 		{
 			"appid": 1070710,
 			"name": "Kind Words",
-			"playtime": 149
+			"playtime": 149,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1070710/header.jpg?t=1733943033"
 		},
 		{
 			"appid": 383870,
 			"name": "Firewatch",
-			"playtime": 141
+			"playtime": 141,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/383870/41a7d0ff4c2dab4ed69c53c9a29c931e6f62948d/header.jpg?t=1755789801"
 		},
 		{
 			"appid": 1509960,
 			"name": "PICO PARK",
-			"playtime": 129
+			"playtime": 129,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1509960/header.jpg?t=1740033204"
 		},
 		{
 			"appid": 620,
 			"name": "Portal 2",
-			"playtime": 119
+			"playtime": 119,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/620/header.jpg?t=1745363004"
 		},
 		{
 			"appid": 3570070,
 			"name": "Paddle Paddle Paddle",
-			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/35be35d69c576eeb612eaf49aa62f24689cdc798/header.jpg?t=1783433504",
-			"playtime": 100
+			"playtime": 100,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/35be35d69c576eeb612eaf49aa62f24689cdc798/header.jpg?t=1783433504"
 		},
 		{
 			"appid": 95400,
 			"name": "ibb & obb",
-			"playtime": 96
+			"playtime": 96,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/95400/header.jpg?t=1725230107"
 		},
 		{
 			"appid": 431960,
 			"name": "Wallpaper Engine",
-			"playtime": 81
+			"playtime": 81,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/431960/header.jpg?t=1779452230"
 		},
 		{
 			"appid": 1610440,
 			"name": "Minds Beneath Us",
-			"playtime": 50
+			"playtime": 50,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1610440/header.jpg?t=1774934061"
 		},
 		{
 			"appid": 1426210,
 			"name": "It Takes Two",
-			"playtime": 47
+			"playtime": 47,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg?t=1777395376"
 		},
 		{
 			"appid": 1781350,
 			"name": "Fireboy & Watergirl: Fairy Tales",
-			"playtime": 41
+			"playtime": 41,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1781350/header.jpg?t=1635799697"
 		},
 		{
 			"appid": 504230,
 			"name": "Celeste",
-			"playtime": 9
+			"playtime": 9,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg?t=1714089525"
 		},
 		{
 			"appid": 204360,
 			"name": "Castle Crashers",
-			"playtime": 0
+			"playtime": 0,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/204360/header.jpg?t=1764096331"
 		},
 		{
 			"appid": 238460,
 			"name": "BattleBlock Theater",
-			"playtime": 0
+			"playtime": 0,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238460/header.jpg?t=1779296698"
 		},
 		{
 			"appid": 728880,
 			"name": "Overcooked! 2",
-			"playtime": 0
+			"playtime": 0,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/728880/header.jpg?t=1784805486"
 		},
 		{
 			"appid": 3240220,
 			"name": "Grand Theft Auto V Enhanced",
-			"playtime": 0
+			"playtime": 0,
+			"headerImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782"
 		}
 	]
 }
