@@ -1,0 +1,1143 @@
+---
+import { Icon } from "astro-icon/components";
+import { musicConfig } from "@/site-config";
+
+const navidromeUrl = String(
+	import.meta.env.PUBLIC_NAVIDROME_URL ?? musicConfig.navidromeUrl,
+).trim();
+const shareId = String(import.meta.env.PUBLIC_NAVIDROME_SHARE_ID ?? musicConfig.shareId).trim();
+
+let playlistUrl = "";
+let shareUrl = "";
+
+if (shareId) {
+	const baseUrl = `${navidromeUrl.replace(/\/+$/, "")}/`;
+	playlistUrl = new URL(`share/${encodeURIComponent(shareId)}/m3u`, baseUrl).href;
+	shareUrl = new URL(`share/${encodeURIComponent(shareId)}`, baseUrl).href;
+}
+---
+
+{
+	shareId && (
+		<blog-music-player
+			class="music-player"
+			data-playlist-url={playlistUrl}
+			data-share-id={shareId}
+			transition:animate="none"
+			transition:name="music-player"
+			transition:persist="music-player"
+		>
+			<section
+				aria-hidden="true"
+				aria-label="音乐播放器"
+				class="music-player__panel"
+				data-panel
+				inert
+			>
+				<header class="music-player__header">
+					<div>
+						<p class="music-player__eyebrow">Running Otter Radio</p>
+						<p aria-live="polite" class="music-player__status" data-status>
+							打开后加载歌单
+						</p>
+					</div>
+					<div class="music-player__header-actions">
+						<a
+							aria-label="在 Navidrome 中打开共享歌单"
+							href={shareUrl}
+							rel="noopener noreferrer"
+							target="_blank"
+							title="打开共享歌单"
+						>
+							<Icon aria-hidden="true" name="mdi:open-in-new" />
+						</a>
+						<button aria-label="收起音乐播放器" data-close title="收起" type="button">
+							<Icon aria-hidden="true" name="mdi:close" />
+						</button>
+					</div>
+				</header>
+
+				<div class="music-player__now">
+					<div aria-hidden="true" class="music-player__cover">
+						<Icon class="music-player__cover-fallback" data-cover-fallback name="mdi:music-note" />
+						<img alt="" data-cover height="112" hidden width="112" />
+					</div>
+					<div class="music-player__meta">
+						<strong data-title>尚未加载</strong>
+						<span data-artist>Navidrome</span>
+					</div>
+				</div>
+
+				<div class="music-player__timeline">
+					<input
+						aria-label="播放进度"
+						aria-valuetext="0:00 / 0:00"
+						data-progress
+						disabled
+						max="1000"
+						min="0"
+						step="1"
+						type="range"
+						value="0"
+					/>
+					<div aria-hidden="true" class="music-player__time">
+						<span data-current-time>0:00</span>
+						<span data-duration>0:00</span>
+					</div>
+				</div>
+
+				<div aria-label="播放控制" class="music-player__controls">
+					<button
+						aria-label="随机播放"
+						aria-pressed="false"
+						data-shuffle
+						disabled
+						title="随机播放"
+						type="button"
+					>
+						<Icon aria-hidden="true" name="mdi:shuffle-variant" />
+					</button>
+					<button aria-label="上一首" data-previous disabled title="上一首" type="button">
+						<Icon aria-hidden="true" name="mdi:skip-previous" />
+					</button>
+					<button
+						aria-label="播放"
+						class="music-player__play"
+						data-play
+						disabled
+						title="播放"
+						type="button"
+					>
+						<Icon aria-hidden="true" class="music-player__play-icon" name="mdi:play" />
+						<Icon aria-hidden="true" class="music-player__pause-icon" name="mdi:pause" />
+					</button>
+					<button aria-label="下一首" data-next disabled title="下一首" type="button">
+						<Icon aria-hidden="true" name="mdi:skip-next" />
+					</button>
+					<button
+						aria-label="单曲循环"
+						aria-pressed="false"
+						data-repeat
+						disabled
+						title="单曲循环"
+						type="button"
+					>
+						<Icon aria-hidden="true" name="mdi:repeat-once" />
+					</button>
+					<button aria-label="静音" data-mute disabled title="静音" type="button">
+						<Icon aria-hidden="true" class="music-player__volume-icon" name="mdi:volume-high" />
+						<Icon aria-hidden="true" class="music-player__muted-icon" name="mdi:volume-off" />
+					</button>
+				</div>
+
+				<div class="music-player__queue-head">
+					<span>播放列表</span>
+					<button data-retry hidden type="button">
+						重新加载
+					</button>
+					<small data-count>未加载</small>
+				</div>
+				<ol aria-label="歌单曲目" class="music-player__queue" data-list>
+					<li class="music-player__empty">打开播放器后读取歌单</li>
+				</ol>
+			</section>
+
+			<button
+				aria-expanded="false"
+				aria-label="打开音乐播放器"
+				class="music-player__toggle"
+				data-toggle
+				title="音乐"
+				type="button"
+			>
+				<span aria-hidden="true" class="music-player__disc">
+					<Icon class="music-player__disc-fallback" data-dock-fallback name="mdi:music-note" />
+					<img alt="" data-dock-cover height="36" hidden width="36" />
+				</span>
+				<span class="music-player__toggle-label">音乐</span>
+				<Icon aria-hidden="true" class="music-player__wave" name="mdi:waveform" />
+			</button>
+
+			<audio data-audio preload="none" />
+		</blog-music-player>
+	)
+}
+
+<script>
+	interface MusicTrack {
+		artist: string;
+		cover: string;
+		duration: number;
+		title: string;
+		url: string;
+	}
+
+	interface StoredPlayerState {
+		index?: number;
+		muted?: boolean;
+		repeatOne?: boolean;
+		shuffle?: boolean;
+	}
+
+	const formatTime = (seconds: number) => {
+		if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+		const minutes = Math.floor(seconds / 60);
+		return `${minutes}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+	};
+
+	const coverFromStreamUrl = (streamUrl: string) => {
+		try {
+			const url = new URL(streamUrl);
+			if (!/\/share\/s\/[^/]+$/.test(url.pathname)) return "";
+			url.pathname = url.pathname.replace(/\/share\/s\/([^/]+)$/, "/share/img/$1");
+			url.search = "?size=300&square=true";
+			return url.href;
+		} catch {
+			return "";
+		}
+	};
+
+	const parseM3u = (source: string): MusicTrack[] => {
+		const lines = source
+			.replace(/^\uFEFF/, "")
+			.split(/\r?\n/)
+			.map((line) => line.trim());
+		const tracks: MusicTrack[] = [];
+		let pending: Omit<MusicTrack, "cover" | "url"> | undefined;
+
+		for (const line of lines) {
+			if (line.startsWith("#EXTINF:")) {
+				const comma = line.indexOf(",");
+				const duration = Number(line.slice(8, comma));
+				const label = comma >= 0 ? line.slice(comma + 1).trim() : "";
+				const separator = label.indexOf(" - ");
+				pending = {
+					artist: separator >= 0 ? label.slice(0, separator).trim() : "未知歌手",
+					duration: Number.isFinite(duration) ? duration : 0,
+					title: separator >= 0 ? label.slice(separator + 3).trim() : label || "未知歌曲",
+				};
+				continue;
+			}
+
+			if (!line || line.startsWith("#") || !pending) continue;
+			try {
+				const url = new URL(line);
+				if (url.protocol !== "https:" && url.protocol !== "http:") continue;
+				tracks.push({ ...pending, cover: coverFromStreamUrl(url.href), url: url.href });
+				pending = undefined;
+			} catch {
+				// Ignore malformed playlist entries.
+			}
+		}
+
+		return tracks.slice(0, 250);
+	};
+
+	class BlogMusicPlayer extends HTMLElement {
+		private audio!: HTMLAudioElement;
+		private closeButton!: HTMLButtonElement;
+		private count!: HTMLElement;
+		private cover!: HTMLImageElement;
+		private currentIndex = 0;
+		private currentTime!: HTMLElement;
+		private dockCover!: HTMLImageElement;
+		private duration!: HTMLElement;
+		private failedTracks = new Set<number>();
+		private list!: HTMLOListElement;
+		private loadedIndex = -1;
+		private loadPromise?: Promise<void>;
+		private muteButton!: HTMLButtonElement;
+		private nextButton!: HTMLButtonElement;
+		private panel!: HTMLElement;
+		private playButton!: HTMLButtonElement;
+		private previousButton!: HTMLButtonElement;
+		private progress!: HTMLInputElement;
+		private repeatButton!: HTMLButtonElement;
+		private repeatOne = false;
+		private retryButton!: HTMLButtonElement;
+		private shuffleButton!: HTMLButtonElement;
+		private shuffle = false;
+		private status!: HTMLElement;
+		private storageKey = "";
+		private titleElement!: HTMLElement;
+		private artist!: HTMLElement;
+		private toggle!: HTMLButtonElement;
+		private tracks: MusicTrack[] = [];
+		private wantsPlayback = false;
+
+		connectedCallback() {
+			if (this.dataset.ready === "true") return;
+			this.dataset.ready = "true";
+			this.storageKey = `blog-music-player:${this.dataset.shareId ?? "default"}`;
+			this.bindElements();
+			this.restoreState();
+			this.bindEvents();
+		}
+
+		private bindElements() {
+			const required = <T extends Element>(selector: string) => this.querySelector<T>(selector)!;
+			this.audio = required<HTMLAudioElement>("[data-audio]");
+			this.artist = required<HTMLElement>("[data-artist]");
+			this.closeButton = required<HTMLButtonElement>("[data-close]");
+			this.count = required<HTMLElement>("[data-count]");
+			this.cover = required<HTMLImageElement>("[data-cover]");
+			this.currentTime = required<HTMLElement>("[data-current-time]");
+			this.dockCover = required<HTMLImageElement>("[data-dock-cover]");
+			this.duration = required<HTMLElement>("[data-duration]");
+			this.list = required<HTMLOListElement>("[data-list]");
+			this.muteButton = required<HTMLButtonElement>("[data-mute]");
+			this.nextButton = required<HTMLButtonElement>("[data-next]");
+			this.panel = required<HTMLElement>("[data-panel]");
+			this.playButton = required<HTMLButtonElement>("[data-play]");
+			this.previousButton = required<HTMLButtonElement>("[data-previous]");
+			this.progress = required<HTMLInputElement>("[data-progress]");
+			this.repeatButton = required<HTMLButtonElement>("[data-repeat]");
+			this.retryButton = required<HTMLButtonElement>("[data-retry]");
+			this.shuffleButton = required<HTMLButtonElement>("[data-shuffle]");
+			this.status = required<HTMLElement>("[data-status]");
+			this.titleElement = required<HTMLElement>("[data-title]");
+			this.toggle = required<HTMLButtonElement>("[data-toggle]");
+		}
+
+		private restoreState() {
+			let saved: StoredPlayerState = {};
+			try {
+				saved = JSON.parse(localStorage.getItem(this.storageKey) ?? "{}");
+			} catch {
+				// Storage is optional.
+			}
+			this.currentIndex = Number.isInteger(saved.index) ? Number(saved.index) : 0;
+			this.shuffle = Boolean(saved.shuffle);
+			this.repeatOne = Boolean(saved.repeatOne);
+			this.audio.muted = Boolean(saved.muted);
+			this.audio.loop = this.repeatOne;
+			this.shuffleButton.setAttribute("aria-pressed", String(this.shuffle));
+			this.repeatButton.setAttribute("aria-pressed", String(this.repeatOne));
+			this.classList.toggle("is-muted", this.audio.muted);
+		}
+
+		private persist() {
+			try {
+				localStorage.setItem(
+					this.storageKey,
+					JSON.stringify({
+						index: this.currentIndex,
+						muted: this.audio.muted,
+						repeatOne: this.repeatOne,
+						shuffle: this.shuffle,
+					}),
+				);
+			} catch {
+				// Storage is optional.
+			}
+		}
+
+		private bindEvents() {
+			this.toggle.addEventListener("click", () =>
+				this.setOpen(!this.classList.contains("is-open")),
+			);
+			this.closeButton.addEventListener("click", () => {
+				this.setOpen(false);
+				this.toggle.focus();
+			});
+			document.addEventListener("pointerdown", (event) => {
+				if (this.classList.contains("is-open") && !this.contains(event.target as Node))
+					this.setOpen(false);
+			});
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape" && this.classList.contains("is-open")) {
+					this.setOpen(false);
+					this.toggle.focus();
+				}
+			});
+
+			this.playButton.addEventListener("click", () => {
+				if (this.audio.paused) void this.playCurrent();
+				else {
+					this.wantsPlayback = false;
+					this.audio.pause();
+				}
+			});
+			this.previousButton.addEventListener("click", () => {
+				if (this.audio.currentTime > 3) {
+					this.audio.currentTime = 0;
+					return;
+				}
+				this.selectTrack(this.adjacentIndex(-1), !this.audio.paused);
+			});
+			this.nextButton.addEventListener("click", () =>
+				this.selectTrack(this.adjacentIndex(1), !this.audio.paused),
+			);
+			this.shuffleButton.addEventListener("click", () => {
+				this.shuffle = !this.shuffle;
+				this.shuffleButton.setAttribute("aria-pressed", String(this.shuffle));
+				this.shuffleButton.title = this.shuffle ? "关闭随机播放" : "随机播放";
+				this.persist();
+			});
+			this.repeatButton.addEventListener("click", () => {
+				this.repeatOne = !this.repeatOne;
+				this.audio.loop = this.repeatOne;
+				this.repeatButton.setAttribute("aria-pressed", String(this.repeatOne));
+				this.repeatButton.title = this.repeatOne ? "关闭单曲循环" : "单曲循环";
+				this.persist();
+			});
+			this.muteButton.addEventListener("click", () => {
+				this.audio.muted = !this.audio.muted;
+			});
+			this.retryButton.addEventListener("click", () => {
+				this.loadPromise = undefined;
+				void this.loadPlaylist();
+			});
+			this.list.addEventListener("click", (event) => {
+				const button = (event.target as Element).closest<HTMLButtonElement>("[data-track-index]");
+				if (!button) return;
+				this.selectTrack(Number(button.dataset.trackIndex), true);
+			});
+			this.progress.addEventListener("input", () => {
+				if (!Number.isFinite(this.audio.duration) || this.audio.duration <= 0) return;
+				this.audio.currentTime = (Number(this.progress.value) / 1000) * this.audio.duration;
+				this.updateTimeline();
+			});
+
+			this.cover.addEventListener("error", () => (this.cover.hidden = true));
+			this.dockCover.addEventListener("error", () => (this.dockCover.hidden = true));
+			this.audio.addEventListener("loadstart", () => this.setStatus("正在缓冲…"));
+			this.audio.addEventListener("waiting", () => this.setStatus("网络缓冲中…"));
+			this.audio.addEventListener("playing", () => {
+				this.wantsPlayback = true;
+				this.failedTracks.delete(this.currentIndex);
+				this.classList.add("is-playing");
+				this.playButton.ariaLabel = "暂停";
+				this.playButton.title = "暂停";
+				this.setStatus("正在播放");
+			});
+			this.audio.addEventListener("pause", () => {
+				this.classList.remove("is-playing");
+				this.playButton.ariaLabel = "播放";
+				this.playButton.title = "播放";
+				if (!this.wantsPlayback && this.audio.currentTime > 0) this.setStatus("已暂停");
+			});
+			this.audio.addEventListener("loadedmetadata", () => {
+				this.progress.disabled = false;
+				this.updateTimeline();
+			});
+			this.audio.addEventListener("timeupdate", () => this.updateTimeline());
+			this.audio.addEventListener("ended", () => this.selectTrack(this.adjacentIndex(1), true));
+			this.audio.addEventListener("error", () => this.skipFailedTrack());
+			this.audio.addEventListener("volumechange", () => {
+				this.classList.toggle("is-muted", this.audio.muted);
+				this.muteButton.ariaLabel = this.audio.muted ? "恢复声音" : "静音";
+				this.muteButton.title = this.audio.muted ? "恢复声音" : "静音";
+				this.persist();
+			});
+		}
+
+		private setOpen(open: boolean) {
+			this.classList.toggle("is-open", open);
+			this.panel.ariaHidden = String(!open);
+			this.panel.inert = !open;
+			this.toggle.setAttribute("aria-expanded", String(open));
+			this.toggle.ariaLabel = open ? "收起音乐播放器" : "打开音乐播放器";
+			if (open) {
+				void this.loadPlaylist();
+				window.requestAnimationFrame(() => this.closeButton.focus({ preventScroll: true }));
+			}
+		}
+
+		private setStatus(message: string) {
+			this.status.textContent = message;
+		}
+
+		private setControlsDisabled(disabled: boolean) {
+			[
+				this.playButton,
+				this.previousButton,
+				this.nextButton,
+				this.shuffleButton,
+				this.repeatButton,
+				this.muteButton,
+			].forEach((button) => (button.disabled = disabled));
+		}
+
+		private loadPlaylist() {
+			if (this.loadPromise) return this.loadPromise;
+			this.loadPromise = this.fetchPlaylist();
+			return this.loadPromise;
+		}
+
+		private async fetchPlaylist() {
+			const playlistUrl = this.dataset.playlistUrl;
+			if (!playlistUrl) return;
+			this.setControlsDisabled(true);
+			this.retryButton.hidden = true;
+			this.count.textContent = "加载中";
+			this.setStatus("正在读取共享歌单…");
+			this.list.innerHTML = '<li class="music-player__empty">正在读取 Navidrome 歌单…</li>';
+
+			const controller = new AbortController();
+			const timeout = window.setTimeout(() => controller.abort(), 10_000);
+			try {
+				const response = await fetch(playlistUrl, {
+					cache: "no-store",
+					credentials: "omit",
+					headers: { Accept: "audio/x-mpegurl, application/vnd.apple.mpegurl, text/plain" },
+					mode: "cors",
+					signal: controller.signal,
+				});
+				if (response.status === 410) throw new Error("SHARE_EXPIRED");
+				if (!response.ok) throw new Error(`HTTP_${response.status}`);
+				this.tracks = parseM3u(await response.text());
+				if (!this.tracks.length) throw new Error("EMPTY_PLAYLIST");
+
+				this.currentIndex = Math.min(Math.max(this.currentIndex, 0), this.tracks.length - 1);
+				this.renderTracks();
+				this.showTrack(this.currentIndex);
+				this.setControlsDisabled(false);
+				this.setStatus("准备就绪");
+			} catch (error) {
+				const message = error instanceof Error ? error.message : "";
+				this.setStatus(message === "SHARE_EXPIRED" ? "共享歌单已过期" : "歌单暂时无法加载");
+				this.titleElement.textContent = "加载失败";
+				this.artist.textContent = "请稍后重试";
+				this.count.textContent = "0 首";
+				this.list.innerHTML = '<li class="music-player__empty">无法读取共享歌单，请稍后重试。</li>';
+				this.retryButton.hidden = false;
+				this.loadPromise = undefined;
+			} finally {
+				window.clearTimeout(timeout);
+			}
+		}
+
+		private renderTracks() {
+			const fragment = document.createDocumentFragment();
+			this.list.replaceChildren();
+			this.tracks.forEach((track, index) => {
+				const item = document.createElement("li");
+				const button = document.createElement("button");
+				const number = document.createElement("span");
+				const copy = document.createElement("span");
+				const title = document.createElement("strong");
+				const artist = document.createElement("small");
+
+				button.type = "button";
+				button.className = "music-player__track";
+				button.dataset.trackIndex = String(index);
+				button.setAttribute("aria-label", `播放 ${track.title} - ${track.artist}`);
+				number.className = "music-player__track-number";
+				number.textContent = String(index + 1).padStart(2, "0");
+				copy.className = "music-player__track-copy";
+				title.textContent = track.title;
+				artist.textContent = track.artist;
+				copy.append(title, artist);
+				button.append(number, copy);
+				item.append(button);
+				fragment.append(item);
+			});
+			this.list.append(fragment);
+			this.count.textContent = `${this.tracks.length} 首`;
+		}
+
+		private showTrack(index: number) {
+			if (!this.tracks.length) return;
+			this.currentIndex = ((index % this.tracks.length) + this.tracks.length) % this.tracks.length;
+			const track = this.tracks[this.currentIndex];
+			if (!track) return;
+			this.titleElement.textContent = track.title;
+			this.artist.textContent = track.artist;
+			this.count.textContent = `${this.currentIndex + 1}/${this.tracks.length}`;
+			this.updateCover(this.cover, track.cover);
+			this.updateCover(this.dockCover, track.cover);
+			this.list.querySelectorAll<HTMLButtonElement>("[data-track-index]").forEach((button) => {
+				button.setAttribute(
+					"aria-current",
+					String(Number(button.dataset.trackIndex) === this.currentIndex),
+				);
+			});
+			this.list
+				.querySelector(`[data-track-index="${this.currentIndex}"]`)
+				?.scrollIntoView({ block: "nearest" });
+			this.updateMediaSession(track);
+			this.persist();
+		}
+
+		private updateCover(image: HTMLImageElement, source: string) {
+			if (!source) {
+				image.hidden = true;
+				image.removeAttribute("src");
+				return;
+			}
+			image.hidden = false;
+			image.referrerPolicy = "no-referrer";
+			image.src = source;
+		}
+
+		private loadCurrentAudio() {
+			const track = this.tracks[this.currentIndex];
+			if (!track) return false;
+			if (this.loadedIndex === this.currentIndex && this.audio.src) return true;
+			this.loadedIndex = this.currentIndex;
+			this.progress.value = "0";
+			this.progress.disabled = true;
+			this.audio.src = track.url;
+			this.audio.load();
+			return true;
+		}
+
+		private async playCurrent() {
+			if (!this.loadCurrentAudio()) return;
+			this.wantsPlayback = true;
+			try {
+				await this.audio.play();
+			} catch (error) {
+				if (error instanceof DOMException && error.name === "NotAllowedError") {
+					this.wantsPlayback = false;
+					this.setStatus("浏览器阻止了播放，请再点一次");
+					return;
+				}
+				this.skipFailedTrack();
+			}
+		}
+
+		private selectTrack(index: number, shouldPlay: boolean) {
+			if (!this.tracks.length) return;
+			if (!this.audio.paused) this.audio.pause();
+			this.showTrack(index);
+			this.loadedIndex = -1;
+			this.audio.removeAttribute("src");
+			this.audio.load();
+			this.progress.value = "0";
+			this.currentTime.textContent = "0:00";
+			this.duration.textContent = "0:00";
+			if (shouldPlay) void this.playCurrent();
+			else this.setStatus("准备就绪");
+		}
+
+		private adjacentIndex(direction: number) {
+			if (!this.shuffle || this.tracks.length < 2) return this.currentIndex + direction;
+			let candidate = this.currentIndex;
+			while (candidate === this.currentIndex)
+				candidate = Math.floor(Math.random() * this.tracks.length);
+			return candidate;
+		}
+
+		private skipFailedTrack() {
+			if (!this.wantsPlayback || !this.tracks.length) return;
+			this.failedTracks.add(this.currentIndex);
+			if (this.failedTracks.size >= this.tracks.length) {
+				this.wantsPlayback = false;
+				this.setStatus("歌单中的曲目暂时都无法播放");
+				return;
+			}
+			let next = this.currentIndex;
+			do next = (next + 1) % this.tracks.length;
+			while (this.failedTracks.has(next));
+			this.setStatus("这首暂不可播，正在切换下一首");
+			window.setTimeout(() => this.selectTrack(next, true), 350);
+		}
+
+		private updateTimeline() {
+			const duration = Number.isFinite(this.audio.duration)
+				? this.audio.duration
+				: (this.tracks[this.currentIndex]?.duration ?? 0);
+			const current = this.audio.currentTime || 0;
+			const ratio = duration > 0 ? current / duration : 0;
+			this.progress.value = String(Math.round(ratio * 1000));
+			this.progress.style.setProperty("--music-progress", `${ratio * 100}%`);
+			this.currentTime.textContent = formatTime(current);
+			this.duration.textContent = formatTime(duration);
+			this.progress.setAttribute(
+				"aria-valuetext",
+				`${formatTime(current)} / ${formatTime(duration)}`,
+			);
+		}
+
+		private updateMediaSession(track: MusicTrack) {
+			if (!("mediaSession" in navigator) || !("MediaMetadata" in window)) return;
+			navigator.mediaSession.metadata = new MediaMetadata({
+				album: "Running Otter Radio",
+				artist: track.artist,
+				artwork: track.cover ? [{ src: track.cover, sizes: "300x300" }] : [],
+				title: track.title,
+			});
+			try {
+				navigator.mediaSession.setActionHandler("play", () => void this.playCurrent());
+				navigator.mediaSession.setActionHandler("pause", () => {
+					this.wantsPlayback = false;
+					this.audio.pause();
+				});
+				navigator.mediaSession.setActionHandler("previoustrack", () =>
+					this.selectTrack(this.adjacentIndex(-1), true),
+				);
+				navigator.mediaSession.setActionHandler("nexttrack", () =>
+					this.selectTrack(this.adjacentIndex(1), true),
+				);
+			} catch {
+				// Some browsers expose Media Session but not every action.
+			}
+		}
+	}
+
+	if (!customElements.get("blog-music-player")) {
+		customElements.define("blog-music-player", BlogMusicPlayer);
+	}
+</script>
+
+<style is:global>
+	.music-player {
+		position: fixed;
+		bottom: max(1rem, env(safe-area-inset-bottom));
+		left: max(1rem, env(safe-area-inset-left));
+		z-index: 80;
+		display: block;
+		font-family: inherit;
+	}
+
+	.music-player button,
+	.music-player a,
+	.music-player input {
+		font: inherit;
+	}
+
+	.music-player button,
+	.music-player a {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.music-player svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.music-player__toggle {
+		display: flex;
+		height: 3rem;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.3rem 0.8rem 0.3rem 0.35rem;
+		border: 1px solid color-mix(in srgb, hsl(var(--theme-text)) 16%, transparent);
+		border-radius: 999px;
+		background: color-mix(in srgb, hsl(var(--theme-bg)) 90%, transparent);
+		color: hsl(var(--theme-text));
+		box-shadow: 0 10px 28px color-mix(in srgb, hsl(var(--theme-text)) 16%, transparent);
+		backdrop-filter: blur(16px);
+		cursor: pointer;
+		transition:
+			transform 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease;
+	}
+
+	.music-player__toggle:hover {
+		border-color: hsl(var(--theme-link));
+		box-shadow: 0 14px 34px color-mix(in srgb, hsl(var(--theme-text)) 20%, transparent);
+		transform: translateY(-2px);
+	}
+
+	.music-player__toggle:focus-visible,
+	.music-player button:focus-visible,
+	.music-player a:focus-visible,
+	.music-player input:focus-visible {
+		outline: 2px solid hsl(var(--theme-link));
+		outline-offset: 3px;
+	}
+
+	.music-player__disc {
+		position: relative;
+		display: grid;
+		width: 2.35rem;
+		height: 2.35rem;
+		place-items: center;
+		overflow: hidden;
+		border-radius: 50%;
+		background: hsl(var(--theme-accent));
+		color: white;
+	}
+
+	.music-player__disc img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.music-player__disc-fallback {
+		width: 1.2rem !important;
+		height: 1.2rem !important;
+	}
+
+	.music-player__toggle-label {
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+
+	.music-player__wave {
+		width: 1rem !important;
+		height: 1rem !important;
+		color: hsl(var(--theme-link));
+		opacity: 0.65;
+	}
+
+	.music-player.is-playing .music-player__disc {
+		animation: music-player-spin 9s linear infinite;
+	}
+
+	.music-player.is-playing .music-player__wave {
+		animation: music-player-pulse 1.1s ease-in-out infinite alternate;
+		opacity: 1;
+	}
+
+	.music-player__panel {
+		position: absolute;
+		bottom: calc(100% + 0.75rem);
+		left: 0;
+		display: flex;
+		width: min(23rem, calc(100vw - 2rem));
+		max-height: min(35rem, calc(100vh - 6rem));
+		flex-direction: column;
+		overflow: hidden;
+		border: 1px solid color-mix(in srgb, hsl(var(--theme-text)) 14%, transparent);
+		border-radius: 1rem;
+		background: color-mix(in srgb, hsl(var(--theme-bg)) 94%, transparent);
+		color: hsl(var(--theme-text));
+		box-shadow: 0 24px 60px color-mix(in srgb, hsl(var(--theme-text)) 22%, transparent);
+		backdrop-filter: blur(22px);
+		opacity: 0;
+		transform: translateY(0.8rem) scale(0.98);
+		visibility: hidden;
+		transition:
+			opacity 180ms ease,
+			transform 220ms ease,
+			visibility 0s linear 220ms;
+	}
+
+	.music-player.is-open .music-player__panel {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		visibility: visible;
+		transition-delay: 0s;
+	}
+
+	.music-player__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 1rem 0.8rem;
+		border-bottom: 1px solid color-mix(in srgb, hsl(var(--theme-text)) 10%, transparent);
+	}
+
+	.music-player__eyebrow,
+	.music-player__status {
+		margin: 0;
+	}
+
+	.music-player__eyebrow {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.music-player__status {
+		margin-top: 0.12rem;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 68%, transparent);
+		font-size: 0.73rem;
+	}
+
+	.music-player__header-actions {
+		display: flex;
+		gap: 0.2rem;
+	}
+
+	.music-player__header-actions a,
+	.music-player__header-actions button,
+	.music-player__controls button {
+		display: grid;
+		width: 2.15rem;
+		height: 2.15rem;
+		place-items: center;
+		border: 0;
+		border-radius: 50%;
+		background: transparent;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 72%, transparent);
+		cursor: pointer;
+		transition:
+			background-color 160ms ease,
+			color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.music-player__header-actions a:hover,
+	.music-player__header-actions button:hover,
+	.music-player__controls button:hover:not(:disabled) {
+		background: color-mix(in srgb, hsl(var(--theme-text)) 9%, transparent);
+		color: hsl(var(--theme-text));
+		transform: scale(1.06);
+	}
+
+	.music-player__now {
+		display: grid;
+		grid-template-columns: 4.8rem minmax(0, 1fr);
+		gap: 0.9rem;
+		align-items: center;
+		padding: 1rem;
+	}
+
+	.music-player__cover {
+		position: relative;
+		display: grid;
+		aspect-ratio: 1;
+		place-items: center;
+		overflow: hidden;
+		border-radius: 0.8rem;
+		background: color-mix(in srgb, hsl(var(--theme-text)) 8%, transparent);
+		color: hsl(var(--theme-link));
+	}
+
+	.music-player__cover img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.music-player__cover-fallback {
+		width: 2rem !important;
+		height: 2rem !important;
+	}
+
+	.music-player__meta {
+		min-width: 0;
+	}
+
+	.music-player__meta strong,
+	.music-player__meta span {
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.music-player__meta strong {
+		font-size: 1rem;
+	}
+
+	.music-player__meta span {
+		margin-top: 0.25rem;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 66%, transparent);
+		font-size: 0.78rem;
+	}
+
+	.music-player__timeline {
+		padding: 0 1rem;
+	}
+
+	.music-player__timeline input {
+		width: 100%;
+		height: 0.3rem;
+		margin: 0;
+		border-radius: 999px;
+		accent-color: hsl(var(--theme-link));
+		cursor: pointer;
+	}
+
+	.music-player__timeline input:disabled {
+		cursor: default;
+		opacity: 0.45;
+	}
+
+	.music-player__time {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 0.25rem;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 56%, transparent);
+		font-size: 0.68rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.music-player__controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35rem;
+		padding: 0.7rem 1rem 0.9rem;
+	}
+
+	.music-player__controls button:disabled {
+		cursor: not-allowed;
+		opacity: 0.35;
+	}
+
+	.music-player__controls button[aria-pressed="true"] {
+		color: hsl(var(--theme-link));
+		background: color-mix(in srgb, hsl(var(--theme-link)) 12%, transparent);
+	}
+
+	.music-player__controls .music-player__play {
+		width: 2.8rem;
+		height: 2.8rem;
+		background: hsl(var(--theme-accent));
+		color: white;
+	}
+
+	.music-player__controls .music-player__play:hover:not(:disabled) {
+		background: hsl(var(--theme-accent));
+		color: white;
+	}
+
+	.music-player__pause-icon,
+	.music-player__muted-icon,
+	.music-player.is-playing .music-player__play-icon,
+	.music-player.is-muted .music-player__volume-icon {
+		display: none;
+	}
+
+	.music-player.is-playing .music-player__pause-icon,
+	.music-player.is-muted .music-player__muted-icon {
+		display: block;
+	}
+
+	.music-player__queue-head {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.7rem 1rem;
+		border-top: 1px solid color-mix(in srgb, hsl(var(--theme-text)) 10%, transparent);
+		font-size: 0.75rem;
+		font-weight: 650;
+	}
+
+	.music-player__queue-head small {
+		margin-left: auto;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 56%, transparent);
+		font-weight: 400;
+	}
+
+	.music-player__queue-head button {
+		border: 0;
+		background: transparent;
+		color: hsl(var(--theme-link));
+		cursor: pointer;
+		font-size: 0.72rem;
+	}
+
+	.music-player__queue {
+		min-height: 4rem;
+		margin: 0;
+		padding: 0 0.55rem 0.7rem;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		list-style: none;
+	}
+
+	.music-player__empty {
+		padding: 1.2rem 0.5rem;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 58%, transparent);
+		font-size: 0.75rem;
+		text-align: center;
+	}
+
+	.music-player__track {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 2rem minmax(0, 1fr);
+		gap: 0.55rem;
+		align-items: center;
+		padding: 0.48rem 0.55rem;
+		border: 0;
+		border-radius: 0.55rem;
+		background: transparent;
+		color: hsl(var(--theme-text));
+		cursor: pointer;
+		text-align: left;
+		transition: background-color 150ms ease;
+	}
+
+	.music-player__track:hover {
+		background: color-mix(in srgb, hsl(var(--theme-text)) 7%, transparent);
+	}
+
+	.music-player__track[aria-current="true"] {
+		background: color-mix(in srgb, hsl(var(--theme-link)) 13%, transparent);
+		color: hsl(var(--theme-link));
+	}
+
+	.music-player__track-number {
+		color: color-mix(in srgb, currentColor 62%, transparent);
+		font-size: 0.68rem;
+		font-variant-numeric: tabular-nums;
+		text-align: center;
+	}
+
+	.music-player__track-copy {
+		min-width: 0;
+	}
+
+	.music-player__track-copy strong,
+	.music-player__track-copy small {
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.music-player__track-copy strong {
+		font-size: 0.76rem;
+		font-weight: 600;
+	}
+
+	.music-player__track-copy small {
+		margin-top: 0.08rem;
+		color: color-mix(in srgb, hsl(var(--theme-text)) 58%, transparent);
+		font-size: 0.66rem;
+	}
+
+	@keyframes music-player-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes music-player-pulse {
+		to {
+			transform: scaleY(1.22);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.music-player {
+			bottom: max(0.75rem, env(safe-area-inset-bottom));
+			left: max(0.75rem, env(safe-area-inset-left));
+		}
+
+		.music-player__panel {
+			width: calc(100vw - 1.5rem);
+			max-height: calc(100dvh - 5.5rem);
+		}
+
+		.music-player__toggle-label {
+			display: none;
+		}
+
+		.music-player__toggle {
+			width: 3rem;
+			padding: 0.3rem;
+			justify-content: center;
+		}
+
+		.music-player__wave {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.music-player *,
+		.music-player *::before,
+		.music-player *::after {
+			animation: none !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+</style>

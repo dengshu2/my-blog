@@ -4,21 +4,28 @@ import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 export const siteConfig: SiteConfig = {
 	author: "邓舒",
 	date: {
-	  locale: "zh-CN", // 改为中文
-	  options: {
-		day: "numeric",
-		month: "short",
-		year: "numeric",
-	  },
+		locale: "zh-CN", // 改为中文
+		options: {
+			day: "numeric",
+			month: "short",
+			year: "numeric",
+		},
 	},
 	description: "记录技术与生活",
 	lang: "zh-CN",
 	ogLocale: "zh_CN",
 	title: "Running Otter",
 	webmentions: {
-	  link: "", // 暂时不需要 webmentions
+		link: "", // 暂时不需要 webmentions
 	},
 	sortPostsByUpdatedDate: true,
+};
+
+// Public Navidrome share used by the global music player. These values are
+// intentionally non-secret and can be overridden per deployment environment.
+export const musicConfig = {
+	navidromeUrl: "https://music.dengshu.ovh",
+	shareId: "FGh7hVwzH7",
 };
 
 // Used to generate links in both the Header & Footer.
