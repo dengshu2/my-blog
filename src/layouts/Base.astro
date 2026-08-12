@@ -1,11 +1,13 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import MusicPlayer from "@/components/MusicPlayer.astro";
 import SkipLink from "@/components/SkipLink.astro";
 import ThemeProvider from "@/components/ThemeProvider.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import { siteConfig } from "@/site-config";
 import type { SiteMeta } from "@/types";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	meta: SiteMeta;
@@ -16,12 +18,13 @@ const {
 } = Astro.props;
 ---
 
-<html class="scroll-smooth" lang={siteConfig.lang}>
+<html class="scroll-smooth" lang={siteConfig.lang} transition:animate="none">
 	<head>
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
+		<ClientRouter fallback="swap" />
 	</head>
 	<body
-		class="mx-auto flex min-h-screen max-w-5xl flex-col bg-bgColor px-6 pt-16 text-base font-normal text-textColor antialiased sm:px-12"
+		class="bg-bgColor text-textColor mx-auto flex min-h-screen max-w-5xl flex-col px-6 pt-16 text-base font-normal antialiased sm:px-12"
 	>
 		<ThemeProvider />
 		<SkipLink />
@@ -30,19 +33,26 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<MusicPlayer />
 		<script>
-			// Mermaid client-side rendering
-			// The remark-mermaid plugin converts ```mermaid blocks to <pre class="mermaid">
-			const mermaidElements = document.querySelectorAll<HTMLElement>("pre.mermaid");
-			if (mermaidElements.length > 0) {
-				import("mermaid").then((mod) => {
-					mod.default.initialize({
-						startOnLoad: false,
-						theme: document.documentElement.classList.contains("dark") ? "dark" : "default",
-					});
-					mod.default.run({ nodes: mermaidElements });
+			// ClientRouter keeps this module loaded across navigations, so render new
+			// Mermaid blocks from Astro's page lifecycle event.
+			async function renderMermaid() {
+				const mermaidElements = document.querySelectorAll<HTMLElement>(
+					"pre.mermaid:not([data-mermaid-started])",
+				);
+				if (mermaidElements.length === 0) return;
+				mermaidElements.forEach((element) => (element.dataset.mermaidStarted = "true"));
+				const { default: mermaid } = await import("mermaid");
+				mermaid.initialize({
+					startOnLoad: false,
+					theme:
+						document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "default",
 				});
+				await mermaid.run({ nodes: mermaidElements });
 			}
+
+			document.addEventListener("astro:page-load", () => void renderMermaid());
 		</script>
 	</body>
 </html>

@@ -49,3 +49,25 @@ src/
 - 站点信息 — `src/site.config.ts`
 - 全局样式 / 主题色 — `src/styles/global.css`
 - 社交链接 — `src/components/SocialList.astro`
+
+## 音乐播放器
+
+全站播放器从 Navidrome 的公开 Playlist Share 读取 M3U，不保存 Navidrome 用户凭据，也不会自动播放。默认服务与歌单配置位于 `src/site.config.ts`。
+
+1. 在 Navidrome 配置中开启 Sharing，并重启服务：
+
+   ```env
+   ND_ENABLESHARING=true
+   ND_DEFAULTDOWNLOADABLESHARE=false
+   ND_DEFAULTSHAREEXPIRATION=87600h
+   ```
+
+2. 在 Navidrome 中创建或选择“博客音乐”歌单，为歌单创建不可下载的公开 Share。
+3. 如需切换 Navidrome 服务或歌单，复制 `.env.example` 为 `.env` 并覆盖默认配置：
+
+   ```env
+   PUBLIC_NAVIDROME_URL=https://music.dengshu.ovh
+   PUBLIC_NAVIDROME_SHARE_ID=FGh7hVwzH7
+   ```
+
+播放器会在访客第一次打开面板时请求 `/share/<id>/m3u`，后续在 Navidrome 中调整原歌单即可同步曲目。Share 删除或到期后，播放器会显示“共享歌单已过期”。

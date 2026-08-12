@@ -8,6 +8,8 @@ declare module "@pagefind/default-ui" {
 }
 
 interface ImportMetaEnv {
+	readonly PUBLIC_NAVIDROME_SHARE_ID?: string;
+	readonly PUBLIC_NAVIDROME_URL?: string;
 	readonly WEBMENTION_API_KEY: string;
 }
 
