@@ -3,6 +3,8 @@ import steamData from "./steam-games.json";
 export interface SteamGame {
 	appid: number;
 	name: string;
+	/** Steam 商店接口返回的真实横版头图地址 */
+	headerImage?: string;
 	/** 总游戏时长（分钟） */
 	playtime: number;
 }
@@ -27,9 +29,11 @@ export interface SteamData {
 
 export const steam = steamData as unknown as SteamData;
 
-/** Steam 商店横版头图（460x215），所有游戏都有 */
-export function steamHeader(appid: number): string {
-	return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/header.jpg`;
+/** Steam 商店横版头图（460x215）；旧数据使用传统路径兜底。 */
+export function steamHeader(game: Pick<SteamGame, "appid" | "headerImage">): string {
+	return (
+		game.headerImage ?? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`
+	);
 }
 
 /** 商店页链接 */

@@ -1,6 +1,6 @@
 ---
-import { formatPlaytime, steam, steamHeader, steamStoreUrl } from "@/data/steam";
 import { psn } from "@/data/psn";
+import { formatPlaytime, steam, steamHeader, steamStoreUrl } from "@/data/steam";
 import PageLayout from "@/layouts/Base.astro";
 
 const meta = {
@@ -91,7 +91,7 @@ const { games, recent } = steam;
 								class="group flex gap-4 rounded-xl border border-accent/10 bg-bgColor p-3 transition-colors hover:border-accent/30"
 							>
 								<img
-									src={steamHeader(g.appid)}
+									src={steamHeader(g)}
 									alt={g.name}
 									loading="lazy"
 									width="184"
@@ -132,7 +132,7 @@ const { games, recent } = steam;
 								class="group overflow-hidden rounded-xl border border-accent/10 bg-bgColor transition-colors hover:border-accent/30"
 							>
 								<img
-									src={steamHeader(g.appid)}
+									src={steamHeader(g)}
 									alt={g.name}
 									loading="lazy"
 									width="460"
