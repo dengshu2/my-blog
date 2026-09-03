@@ -1,9 +1,9 @@
 {
-	"updatedAt": "2026-09-02T23:41:16.848Z",
+	"updatedAt": "2026-09-03T23:42:01.611Z",
 	"summary": {
 		"trophyLevel": 104,
 		"earned": {
-			"bronze": 262,
+			"bronze": 263,
 			"silver": 41,
 			"gold": 13,
 			"platinum": 0
@@ -195,11 +195,11 @@
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
 			"platform": "PS5",
 			"playtime": 474,
-			"playCount": 2,
-			"lastPlayed": "2026-09-01T15:27:36.410000Z",
-			"progress": 10,
+			"playCount": 3,
+			"lastPlayed": "2026-09-03T13:17:37.080000Z",
+			"progress": 12,
 			"earned": {
-				"bronze": 9,
+				"bronze": 10,
 				"silver": 0,
 				"gold": 0,
 				"platinum": 0
