@@ -12,6 +12,11 @@ updates:
     allow:
       - dependency-type: "direct"
     open-pull-requests-limit: 20
+    # Astro's type checker is not yet compatible with TypeScript 7.
+    ignore:
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
     groups:
       minor-and-patch:
         update-types:
