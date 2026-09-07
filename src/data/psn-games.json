@@ -1,9 +1,9 @@
 {
-	"updatedAt": "2026-09-06T23:21:36.083Z",
+	"updatedAt": "2026-09-07T23:52:13.265Z",
 	"summary": {
 		"trophyLevel": 104,
 		"earned": {
-			"bronze": 263,
+			"bronze": 264,
 			"silver": 41,
 			"gold": 13,
 			"platinum": 0
@@ -161,6 +161,21 @@
 			}
 		},
 		{
+			"name": "Lies of P",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
+			"platform": "PS5",
+			"playtime": 949,
+			"playCount": 5,
+			"lastPlayed": "2026-09-07T15:58:25.280000Z",
+			"progress": 13,
+			"earned": {
+				"bronze": 11,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "God of War",
 			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202011/1021/X3WIAh63yKhRRiMohLoJMeQu.png",
 			"platform": "PS4",
@@ -170,21 +185,6 @@
 			"progress": 15,
 			"earned": {
 				"bronze": 11,
-				"silver": 0,
-				"gold": 0,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Lies of P",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
-			"platform": "PS5",
-			"playtime": 808,
-			"playCount": 4,
-			"lastPlayed": "2026-09-04T15:22:01.460000Z",
-			"progress": 12,
-			"earned": {
-				"bronze": 10,
 				"silver": 0,
 				"gold": 0,
 				"platinum": 0
