@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-09-11T23:41:37.358Z",
+	"updatedAt": "2026-09-12T23:34:52.754Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 482,
+	"total": 492,
 	"categories": [
 		{
 			"category": "movie",
@@ -2856,6 +2856,76 @@
 		{
 			"category": "tv",
 			"items": [
+				{
+					"title": "Ever Night",
+					"cover": "https://neodb.social/m/item/tmdb_tvseason/2026/04/23/9ae80bc0-1550-4691-bbe3-787cf395c0fd.jpg",
+					"url": "https://neodb.social/tv/season/3LFZHsaYGHZxoBJoain5Fy",
+					"rating": null,
+					"markedAt": "2026-09-12T12:07:14.230Z"
+				},
+				{
+					"title": "Mob Psycho 100 (Mob Psycho)",
+					"cover": "https://neodb.social/m/movie/2021/09/154e8f76b8-952c-428a-af94-6261a7599014.jpg",
+					"url": "https://neodb.social/tv/season/5n1XRGkYnDWyLdkhQXMd3H",
+					"rating": null,
+					"markedAt": "2026-09-12T12:05:54.539Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- (Re：从零开始的异世界生活 第四季 夺还篇)",
+					"cover": "https://neodb.social/m/item/bangumi/2026/04/08/86a09bfb-ebf2-4a81-b4cb-b11449555a8f.jpg",
+					"url": "https://neodb.social/tv/season/4Uha8jR8PA6sg5kuFrcsCG",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:26.448Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- (Re：从零开始的异世界生活 第四季 丧失篇)",
+					"cover": "https://neodb.social/m/item/bangumi/2026/04/08/349a827d-4de3-44c5-a2c6-0502e356fa81.jpg",
+					"url": "https://neodb.social/tv/season/5ibfaypMaim9dJYRWsxx6T",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:24.544Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- (Re：从零开始的异世界生活 第三季 反击篇)",
+					"cover": "https://neodb.social/m/item/bangumi/2025/02/04/4d33a30c-0783-4f49-be19-d988cdc5ecff.jpg",
+					"url": "https://neodb.social/tv/season/5JlzqANixv0MP90ti5ysxW",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:19.799Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- Season 3 Shuugeki Hen",
+					"cover": "https://neodb.social/m/item/bangumi/2024/12/25/0b8c4f0d-9ced-49ad-a81c-7cd7c4550727.jpg",
+					"url": "https://neodb.social/tv/season/6uIeVLGbvNGOfBBoDTrGsH",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:17.103Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- (Re:ゼロから始める異世界生活 2nd season Part.2)",
+					"cover": "https://neodb.social/m/movie/2021/09/1613948fae-2829-436e-97b9-2f590fb2ce09.jpg",
+					"url": "https://neodb.social/tv/season/44PEr3uJIrSdwWG8pKkXcV",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:15.228Z"
+				},
+				{
+					"title": "Re:ZERO -Starting Life in Another World- (Re：从零开始的异世界生活 第二季 前半部)",
+					"cover": "https://neodb.social/m/movie/2021/10/066361376c-d43d-49e6-8b5e-2b99b5941091.jpg",
+					"url": "https://neodb.social/tv/season/68y6BCt7ijGBih4zkoTR72",
+					"rating": null,
+					"markedAt": "2026-09-12T12:03:12.468Z"
+				},
+				{
+					"title": "Oh My School! Season 6",
+					"cover": "https://neodb.social/m/item/tmdb_tvseason/2026/07/30/bfdbbbcd-50b1-4d4a-a663-f44a9c956f35.jpg",
+					"url": "https://neodb.social/tv/season/0IxtLkX5Kb7FiNDcBxkLoW",
+					"rating": null,
+					"markedAt": "2026-09-12T12:02:39.124Z"
+				},
+				{
+					"title": "Kill la Kill (双斩少女)",
+					"cover": "https://neodb.social/m/movie/2021/09/15fb7b6005-5728-4050-bb75-a9a285c964e4.jpg",
+					"url": "https://neodb.social/tv/season/3muZ2p1n39JBCv8nIgs8Uh",
+					"rating": null,
+					"markedAt": "2026-09-12T12:02:36.958Z"
+				},
 				{
 					"title": "Re:ZERO -Starting Life in Another World-",
 					"cover": "https://neodb.social/m/movie/2021/09/17ce7062df-0596-4dfb-89a1-52fde53a8e5c.jpg",

@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-09-11T23:41:38.638Z",
+	"updatedAt": "2026-09-12T23:34:54.671Z",
 	"summary": {
 		"trophyLevel": 104,
 		"earned": {
@@ -60,8 +60,8 @@
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/050bb77f895515e0b0e906b0b9d75b6174b37eece097b462.png",
 			"platform": "PS5",
 			"playtime": 3517,
-			"playCount": 23,
-			"lastPlayed": "2025-11-27T12:35:59.050000Z",
+			"playCount": 24,
+			"lastPlayed": "2026-09-12T11:42:39.730000Z",
 			"progress": 70,
 			"earned": {
 				"bronze": 37,
@@ -131,6 +131,21 @@
 			}
 		},
 		{
+			"name": "Lies of P",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
+			"platform": "PS5",
+			"playtime": 1394,
+			"playCount": 7,
+			"lastPlayed": "2026-09-12T15:57:08.140000Z",
+			"progress": 14,
+			"earned": {
+				"bronze": 12,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Ghost of Tsushima",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/niMUubpU9y1PxNvYmDfb8QFD.png",
 			"platform": "PS5",
@@ -157,21 +172,6 @@
 				"bronze": 2,
 				"silver": 1,
 				"gold": 3,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Lies of P",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
-			"platform": "PS5",
-			"playtime": 949,
-			"playCount": 5,
-			"lastPlayed": "2026-09-07T15:58:25.280000Z",
-			"progress": 14,
-			"earned": {
-				"bronze": 12,
-				"silver": 0,
-				"gold": 0,
 				"platinum": 0
 			}
 		},
