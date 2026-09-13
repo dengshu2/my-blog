@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-09-12T23:34:54.671Z",
+	"updatedAt": "2026-09-13T23:47:24.978Z",
 	"summary": {
-		"trophyLevel": 104,
+		"trophyLevel": 106,
 		"earned": {
-			"bronze": 265,
-			"silver": 41,
+			"bronze": 270,
+			"silver": 44,
 			"gold": 13,
 			"platinum": 0
 		}
@@ -116,6 +116,21 @@
 			}
 		},
 		{
+			"name": "Lies of P",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
+			"platform": "PS5",
+			"playtime": 2047,
+			"playCount": 10,
+			"lastPlayed": "2026-09-13T12:38:52.540000Z",
+			"progress": 27,
+			"earned": {
+				"bronze": 17,
+				"silver": 3,
+				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "DAVE THE DIVER",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202401/2508/f194dc023adef481689d90db93f343b73f5b4c5741925556.png",
 			"platform": "PS5",
@@ -126,21 +141,6 @@
 			"earned": {
 				"bronze": 24,
 				"silver": 2,
-				"gold": 0,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Lies of P",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
-			"platform": "PS5",
-			"playtime": 1394,
-			"playCount": 7,
-			"lastPlayed": "2026-09-12T15:57:08.140000Z",
-			"progress": 14,
-			"earned": {
-				"bronze": 12,
-				"silver": 0,
 				"gold": 0,
 				"platinum": 0
 			}
