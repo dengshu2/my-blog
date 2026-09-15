@@ -1,9 +1,9 @@
 {
-	"updatedAt": "2026-09-15T00:04:56.432Z",
+	"updatedAt": "2026-09-15T23:49:46.505Z",
 	"summary": {
 		"trophyLevel": 106,
 		"earned": {
-			"bronze": 270,
+			"bronze": 271,
 			"silver": 44,
 			"gold": 13,
 			"platinum": 0
@@ -119,12 +119,12 @@
 			"name": "Lies of P",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
 			"platform": "PS5",
-			"playtime": 2047,
-			"playCount": 10,
-			"lastPlayed": "2026-09-13T12:38:52.540000Z",
-			"progress": 27,
+			"playtime": 2272,
+			"playCount": 11,
+			"lastPlayed": "2026-09-15T14:09:15.230000Z",
+			"progress": 28,
 			"earned": {
-				"bronze": 17,
+				"bronze": 18,
 				"silver": 3,
 				"gold": 0,
 				"platinum": 0
