@@ -1,11 +1,11 @@
 {
-	"updatedAt": "2026-09-18T23:45:17.354Z",
+	"updatedAt": "2026-09-19T23:47:24.153Z",
 	"summary": {
-		"trophyLevel": 106,
+		"trophyLevel": 109,
 		"earned": {
-			"bronze": 271,
-			"silver": 44,
-			"gold": 13,
+			"bronze": 275,
+			"silver": 47,
+			"gold": 14,
 			"platinum": 0
 		}
 	},
@@ -71,6 +71,21 @@
 			}
 		},
 		{
+			"name": "Lies of P",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
+			"platform": "PS5",
+			"playtime": 2725,
+			"playCount": 13,
+			"lastPlayed": "2026-09-19T12:14:57.400000Z",
+			"progress": 48,
+			"earned": {
+				"bronze": 22,
+				"silver": 6,
+				"gold": 1,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Sekiro™: Shadows Die Twice",
 			"icon": "https://image.api.playstation.com/vulcan/img/rnd/202010/1700/B66T6RbAfvIGjpEQxPq7k0Mu.png",
 			"platform": "PS4",
@@ -111,21 +126,6 @@
 			"earned": {
 				"bronze": 4,
 				"silver": 1,
-				"gold": 0,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Lies of P",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
-			"platform": "PS5",
-			"playtime": 2272,
-			"playCount": 11,
-			"lastPlayed": "2026-09-15T14:09:15.230000Z",
-			"progress": 28,
-			"earned": {
-				"bronze": 18,
-				"silver": 3,
 				"gold": 0,
 				"platinum": 0
 			}
