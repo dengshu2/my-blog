@@ -1,9 +1,9 @@
 {
-	"updatedAt": "2026-09-22T00:24:18.713Z",
+	"updatedAt": "2026-09-22T23:55:00.820Z",
 	"summary": {
 		"trophyLevel": 109,
 		"earned": {
-			"bronze": 275,
+			"bronze": 277,
 			"silver": 47,
 			"gold": 14,
 			"platinum": 0
@@ -470,6 +470,21 @@
 			"progress": 0,
 			"earned": {
 				"bronze": 0,
+				"silver": 0,
+				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
+			"name": "Forza Horizon 5",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202501/2717/42b3ee6b1b2094212231b0b0a82824f687fc5c4dc9bde31c.png",
+			"platform": "PS5",
+			"playtime": 0,
+			"playCount": 1,
+			"lastPlayed": "2026-09-22T11:00:57.550000Z",
+			"progress": 1,
+			"earned": {
+				"bronze": 2,
 				"silver": 0,
 				"gold": 0,
 				"platinum": 0
