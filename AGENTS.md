@@ -20,7 +20,7 @@ This is an Astro blog (based on Astro Cactus theme) configured for Chinese conte
 
 ### Content System
 - **Blog posts**: `src/content/post/*.md` or `.mdx`
-- **Post schema**: Defined in `src/content/config.ts`
+- **Post schema**: Defined in `src/content.config.ts`
   - Required: `title` (max 60), `description` (50-160 chars), `publishDate`
   - Optional: `updatedDate`, `tags`, `coverImage`, `ogImage`, `draft`
 - **Post utilities**: `src/data/post.ts` - Functions for fetching, sorting, and filtering posts
@@ -37,7 +37,7 @@ This is an Astro blog (based on Astro Cactus theme) configured for Chinese conte
 - **Pagefind**: Static search (built via postbuild script)
 - **Satori**: Auto-generates OG images at `src/pages/og-image/[...slug].png.ts`
 - **Expressive Code**: Syntax highlighting with dracula/github-light themes
-- **TailwindCSS**: Styling with config in `tailwind.config.ts`
+- **TailwindCSS**: v4 via `@tailwindcss/vite` (see `astro.config.ts`); styles in `src/styles/global.css`
 
 ### Layouts
 - `src/layouts/Base.astro` - Main HTML wrapper
