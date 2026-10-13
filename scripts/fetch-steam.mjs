@@ -1,10 +1,11 @@
 // 拉取 Steam 游戏库与最近在玩，写入 src/data/steam-games.json。
-// 设计为「失败软着陆」：任何错误都保留现有 JSON，绝不让构建崩。
+// 设计为「失败软着陆」：任何错误都保留现有 JSON；在 GitHub Actions 中失败会让任务变红。
 // 用法：STEAM_API_KEY=xxx node scripts/fetch-steam.mjs
 //   STEAM_ID 可选，默认用下方常量（SteamID 本就是公开信息）。
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { failKeepingExisting, writeIfChanged } from "./lib/data-file.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, "../src/data/steam-games.json");
@@ -15,19 +16,9 @@ const BASE = "https://api.steampowered.com";
 const STORE_BASE = "https://store.steampowered.com/api/appdetails";
 const STORE_CONCURRENCY = 4;
 
-/** 失败时保留旧数据；若无旧数据则写入空结构。始终以 0 退出，不阻断构建。 */
-function keepExisting(reason) {
-	if (existsSync(OUT)) {
-		console.warn(`[steam] ${reason} —— 保留现有数据文件`);
-	} else {
-		console.warn(`[steam] ${reason} —— 无现有数据，写入空文件`);
-		writeFileSync(
-			OUT,
-			`${JSON.stringify({ updatedAt: null, profile: null, recent: [], games: [] }, null, "\t")}\n`,
-		);
-	}
-	process.exit(0);
-}
+/** 失败时保留旧数据；若无旧数据则写入空结构。 */
+const keepExisting = (reason) =>
+	failKeepingExisting("steam", OUT, { profile: null, recent: [], games: [] }, reason);
 
 if (!KEY) keepExisting("缺少 STEAM_API_KEY 环境变量");
 
@@ -127,7 +118,6 @@ try {
 
 	const player = summary?.response?.players?.[0];
 	const data = {
-		updatedAt: new Date().toISOString(),
 		profile: player
 			? { name: player.personaname, url: player.profileurl, avatar: player.avatarfull }
 			: null,
@@ -135,8 +125,12 @@ try {
 		games: games.map(withHeaderImage),
 	};
 
-	writeFileSync(OUT, `${JSON.stringify(data, null, "\t")}\n`);
-	console.log(`[steam] 写入 ${games.length} 款游戏，最近在玩 ${data.recent.length} 款`);
+	const changed = writeIfChanged(OUT, data);
+	console.log(
+		changed
+			? `[steam] 写入 ${games.length} 款游戏，最近在玩 ${data.recent.length} 款`
+			: `[steam] 数据无变化（${games.length} 款游戏），不改写文件`,
+	);
 } catch (err) {
 	keepExisting(`拉取失败：${err.message}`);
 }

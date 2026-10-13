@@ -35,16 +35,20 @@ jobs:
         run: node scripts/fetch-steam.mjs
 
       - name: Fetch NeoDB data
+        # 前面的抓取失败也继续：其余数据照常刷新，成功的部分照常提交，任务最终仍标红提醒
+        if: ${{ !cancelled() }}
         env:
           NEODB_API_TOKEN: ${{ secrets.NEODB_API_TOKEN }}
         run: node scripts/fetch-neodb.mjs
 
       - name: Fetch PSN data
+        if: ${{ !cancelled() }}
         env:
           PSN_NPSSO: ${{ secrets.PSN_NPSSO }}
         run: node scripts/fetch-psn.mjs
 
       - name: Commit & push if changed
+        if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

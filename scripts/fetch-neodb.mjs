@@ -1,10 +1,16 @@
 // 拉取 NeoDB「看过/读过/玩过」(complete)的全部标记，写入 src/data/neodb-marks.json。
-// 失败软着陆：任何错误都保留现有 JSON，绝不让构建崩。
+// 失败软着陆：任何错误都保留现有 JSON；单个分类失败时沿用该分类的旧数据。
+// 在 GitHub Actions 中失败会让任务变红（见 scripts/lib/data-file.mjs）。
 // 用法：NEODB_API_TOKEN=xxx node scripts/fetch-neodb.mjs
 //   NEODB_INSTANCE 可选，默认 https://neodb.social
-import { existsSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+	failKeepingExisting,
+	readExisting,
+	reportError,
+	writeIfChanged,
+} from "./lib/data-file.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, "../src/data/neodb-marks.json");
@@ -16,18 +22,8 @@ const CATEGORIES = ["movie", "tv", "book", "music", "game", "podcast", "performa
 const PAGE_DELAY_MS = 300; // 对社区实例友好一点，别猛刷
 const MAX_PAGES = 300; // 安全阀，防止异常时死循环
 
-function keepExisting(reason) {
-	if (existsSync(OUT)) {
-		console.warn(`[neodb] ${reason} —— 保留现有数据文件`);
-	} else {
-		console.warn(`[neodb] ${reason} —— 无现有数据，写入空文件`);
-		writeFileSync(
-			OUT,
-			`${JSON.stringify({ updatedAt: null, profile: null, total: 0, categories: [] }, null, "\t")}\n`,
-		);
-	}
-	process.exit(0);
-}
+const keepExisting = (reason) =>
+	failKeepingExisting("neodb", OUT, { profile: null, total: 0, categories: [] }, reason);
 
 if (!TOKEN) keepExisting("缺少 NEODB_API_TOKEN 环境变量");
 
@@ -35,7 +31,7 @@ const headers = { Authorization: `Bearer ${TOKEN}`, Accept: "application/json" }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getJSON(url) {
-	const res = await fetch(url, { headers });
+	const res = await fetch(url, { headers, signal: AbortSignal.timeout(15_000) });
 	if (!res.ok) throw new Error(`HTTP ${res.status} @ ${url.replace(INSTANCE, "")}`);
 	return res.json();
 }
@@ -66,12 +62,15 @@ async function fetchCategory(category) {
 }
 
 try {
-	let profile = null;
+	const previous = readExisting(OUT);
+	const failures = [];
+
+	let profile = previous?.profile ?? null;
 	try {
 		const me = await getJSON(`${INSTANCE}/api/me`);
 		profile = { username: me.username, url: `${INSTANCE}/users/${me.username}/` };
 	} catch (e) {
-		console.warn(`[neodb] /api/me 失败：${e.message}`);
+		console.warn(`[neodb] /api/me 失败：${e.message}（沿用旧资料）`);
 	}
 
 	const categories = [];
@@ -87,19 +86,30 @@ try {
 			}
 			await sleep(PAGE_DELAY_MS);
 		} catch (e) {
-			// 单个分类失败不影响其它分类
-			console.warn(`[neodb] 分类 ${cat} 拉取失败：${e.message}（跳过）`);
+			// 单个分类失败不影响其它分类，并沿用该分类上一次的数据，避免整类消失
+			failures.push(cat);
+			const old = previous?.categories?.find((c) => c.category === cat);
+			if (old) {
+				categories.push(old);
+				total += old.items.length;
+			}
+			console.warn(`[neodb] 分类 ${cat} 拉取失败：${e.message}（${old ? "沿用旧数据" : "跳过"}）`);
 		}
 	}
 
 	// 全军覆没时别用空数据覆盖好数据
-	if (total === 0) keepExisting("所有分类都没拉到数据");
+	if (failures.length === CATEGORIES.length || total === 0) keepExisting("所有分类都没拉到数据");
 
-	writeFileSync(
-		OUT,
-		`${JSON.stringify({ updatedAt: new Date().toISOString(), profile, total, categories }, null, "\t")}\n`,
+	const changed = writeIfChanged(OUT, { profile, total, categories });
+	console.log(
+		changed
+			? `[neodb] 写入 ${total} 条标记，覆盖 ${categories.length} 个分类`
+			: `[neodb] 数据无变化（${total} 条），不改写文件`,
 	);
-	console.log(`[neodb] 写入 ${total} 条标记，覆盖 ${categories.length} 个分类`);
+	if (failures.length > 0) {
+		reportError("neodb", `部分分类拉取失败：${failures.join(", ")}`);
+		if (process.env.GITHUB_ACTIONS === "true") process.exit(1);
+	}
 } catch (err) {
 	keepExisting(`拉取失败：${err.message}`);
 }

@@ -1,11 +1,11 @@
 // 拉取 PSN 游玩记录（时长）+ 奖杯进度，写入 src/data/psn-games.json。
 // 用 NPSSO 走 PSN 移动端 OAuth 流程换 access token（零依赖，原生 fetch）。
 // 游戏列表以 gamelist（游玩时长）为主，按 trophyTitles 的完成度做补充（按游戏名匹配）。
-// 失败软着陆：任何错误都保留现有 JSON。
+// 失败软着陆：任何错误都保留现有 JSON；在 GitHub Actions 中失败（如 NPSSO 过期）会让任务变红。
 // 用法：PSN_NPSSO=xxx node scripts/fetch-psn.mjs
-import { existsSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { failKeepingExisting, readExisting, writeIfChanged } from "./lib/data-file.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, "../src/data/psn-games.json");
@@ -27,18 +27,10 @@ const PLATFORM = {
 	ps_vita_game: "PS Vita",
 };
 
-function keepExisting(reason) {
-	if (existsSync(OUT)) {
-		console.warn(`[psn] ${reason} —— 保留现有数据文件`);
-	} else {
-		console.warn(`[psn] ${reason} —— 无现有数据，写入空文件`);
-		writeFileSync(
-			OUT,
-			`${JSON.stringify({ updatedAt: null, summary: null, games: [] }, null, "\t")}\n`,
-		);
-	}
-	process.exit(0);
-}
+const keepExisting = (reason) =>
+	failKeepingExisting("psn", OUT, { summary: null, games: [] }, reason);
+
+const TIMEOUT_MS = 15_000;
 
 if (!NPSSO) keepExisting("缺少 PSN_NPSSO 环境变量");
 
@@ -64,7 +56,11 @@ async function getAccessToken() {
 		response_type: "code",
 		scope: SCOPE,
 	})}`;
-	const authRes = await fetch(authUrl, { redirect: "manual", headers: { Cookie: `npsso=${NPSSO}` } });
+	const authRes = await fetch(authUrl, {
+		redirect: "manual",
+		headers: { Cookie: `npsso=${NPSSO}` },
+		signal: AbortSignal.timeout(TIMEOUT_MS),
+	});
 	const code = new URL(authRes.headers.get("location") || "").searchParams.get("code");
 	if (!code) throw new Error("拿不到 authorization code（NPSSO 可能已过期）");
 
@@ -80,6 +76,7 @@ async function getAccessToken() {
 			grant_type: "authorization_code",
 			token_format: "jwt",
 		}),
+		signal: AbortSignal.timeout(TIMEOUT_MS),
 	});
 	if (!tokenRes.ok) throw new Error(`token 交换失败 HTTP ${tokenRes.status}`);
 	const json = await tokenRes.json();
@@ -88,16 +85,20 @@ async function getAccessToken() {
 }
 
 async function apiGet(token, path) {
-	const res = await fetch(`${API_BASE}${path}`, { headers: { Authorization: `Bearer ${token}` } });
+	const res = await fetch(`${API_BASE}${path}`, {
+		headers: { Authorization: `Bearer ${token}` },
+		signal: AbortSignal.timeout(TIMEOUT_MS),
+	});
 	if (!res.ok) throw new Error(`HTTP ${res.status} @ ${path}`);
 	return res.json();
 }
 
 try {
 	const token = await getAccessToken();
+	const previous = readExisting(OUT);
 
-	// 奖杯总览（等级 + 各色奖杯数）
-	let summary = null;
+	// 奖杯总览（等级 + 各色奖杯数），失败时沿用上次的数据
+	let summary = previous?.summary ?? null;
 	try {
 		const s = await apiGet(token, "/trophy/v1/users/me/trophySummary");
 		summary = { trophyLevel: s.trophyLevel, earned: s.earnedTrophies };
@@ -107,11 +108,15 @@ try {
 
 	// 奖杯完成度，按归一化游戏名建索引（用来给 gamelist 补充进度）
 	const trophyByName = new Map();
+	let trophiesOk = false;
 	try {
 		let offset = 0;
 		let total = Number.POSITIVE_INFINITY;
 		while (offset < total) {
-			const data = await apiGet(token, `/trophy/v1/users/me/trophyTitles?limit=100&offset=${offset}`);
+			const data = await apiGet(
+				token,
+				`/trophy/v1/users/me/trophyTitles?limit=100&offset=${offset}`,
+			);
 			total = data.totalItemCount ?? 0;
 			const batch = data.trophyTitles ?? [];
 			for (const t of batch) {
@@ -123,9 +128,12 @@ try {
 			if (batch.length === 0) break;
 			offset += batch.length;
 		}
+		trophiesOk = true;
 	} catch (e) {
-		console.warn(`[psn] trophyTitles 失败：${e.message}`);
+		console.warn(`[psn] trophyTitles 失败：${e.message}（沿用上次的奖杯进度）`);
 	}
+	// 奖杯接口失败时用上次的进度兜底，避免所有游戏的完成度被清空
+	const previousProgress = new Map((previous?.games ?? []).map((g) => [norm(g.name), g]));
 
 	// 游玩记录（含时长），作为主列表
 	const games = [];
@@ -139,7 +147,7 @@ try {
 		total = data.totalItemCount ?? 0;
 		const batch = data.titles ?? [];
 		for (const t of batch) {
-			const tr = trophyByName.get(norm(t.name));
+			const tr = trophiesOk ? trophyByName.get(norm(t.name)) : previousProgress.get(norm(t.name));
 			games.push({
 				name: t.name,
 				icon: t.imageUrl ?? null,
@@ -159,11 +167,12 @@ try {
 
 	games.sort((a, b) => b.playtime - a.playtime); // 按游玩时长从多到少
 
-	writeFileSync(
-		OUT,
-		`${JSON.stringify({ updatedAt: new Date().toISOString(), summary, games }, null, "\t")}\n`,
+	const changed = writeIfChanged(OUT, { summary, games });
+	console.log(
+		changed
+			? `[psn] 写入 ${games.length} 个游戏（按时长排序），奖杯等级 ${summary?.trophyLevel ?? "?"}`
+			: `[psn] 数据无变化（${games.length} 个游戏），不改写文件`,
 	);
-	console.log(`[psn] 写入 ${games.length} 个游戏（按时长排序），奖杯等级 ${summary?.trophyLevel ?? "?"}`);
 } catch (err) {
 	keepExisting(`拉取失败：${err.message}`);
 }
