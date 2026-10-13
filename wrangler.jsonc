@@ -1,0 +1,10 @@
+{
+	"name": "my-blog",
+	"compatibility_date": "2026-10-01",
+	// 纯静态站：只发布 astro build + pagefind 的产物，没有 Worker 脚本
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page",
+	},
+	"routes": [{ "pattern": "blog.runningotter.com", "custom_domain": true }],
+}
