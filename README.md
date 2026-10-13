@@ -2,16 +2,15 @@
 
 [blog.runningotter.com](https://blog.runningotter.com/)
 
-个人博客，基于 Astro 5 + Tailwind CSS v4 构建。
+个人博客，基于 Astro 7 + Tailwind CSS v4 构建，以纯静态站部署在 Cloudflare Workers。
 
 ## 本地开发
 
 ```bash
-npm install
-npm run dev          # http://localhost:4321
-npm run build        # 生产构建
-npm run postbuild    # 构建搜索索引（需先 build）
-npm run preview      # 预览生产构建
+pnpm install
+pnpm dev             # http://localhost:4321
+pnpm build           # 类型检查 + 生产构建 + Pagefind 搜索索引
+pnpm preview         # 预览生产构建
 ```
 
 ## 写文章
@@ -48,7 +47,19 @@ src/
 
 - 站点信息 — `src/site.config.ts`
 - 全局样式 / 主题色 — `src/styles/global.css`
-- 社交链接 — `src/components/SocialList.astro`
+- 部署 / 响应头 — `wrangler.jsonc`、`public/_headers`
+
+## 部署
+
+推送到 `main` 后由 Cloudflare Workers Builds 自动构建（`pnpm build`）并发布（`npx wrangler deploy`），`dist/` 作为静态资源上线到 blog.runningotter.com。也可以本地手动发布：
+
+```bash
+pnpm build && npx wrangler deploy
+```
+
+## 外部数据
+
+游戏页和书架页的数据来自 `src/data/*.json`，由 GitHub Actions `refresh-data` 每天抓取 Steam / NeoDB / PSN（`scripts/fetch-*.mjs`）。内容有变化才会提交；抓取失败会保留旧数据并让任务失败报警。PSN 的 `PSN_NPSSO` 大约两个月过期一次，需要到仓库 Secrets 里更新。
 
 ## 音乐播放器
 

@@ -6,6 +6,10 @@ dist/
 
 # dependencies
 node_modules/
+.pnpm-store/
+
+# wrangler local state
+.wrangler/
 
 # logs
 npm-debug.log*

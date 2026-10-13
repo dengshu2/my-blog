@@ -243,6 +243,7 @@ if (shareId) {
 		private dockCover!: HTMLImageElement;
 		private duration!: HTMLElement;
 		private failedTracks = new Set<number>();
+		private skipTimer: number | undefined;
 		private list!: HTMLOListElement;
 		private loadedIndex = -1;
 		private loadPromise?: Promise<void>;
@@ -594,12 +595,16 @@ if (shareId) {
 					this.setStatus("浏览器阻止了播放，请再点一次");
 					return;
 				}
+				// AbortError：缓冲中被切歌打断，不是曲目本身的问题
+				if (error instanceof DOMException && error.name === "AbortError") return;
 				this.skipFailedTrack();
 			}
 		}
 
 		private selectTrack(index: number, shouldPlay: boolean) {
 			if (!this.tracks.length) return;
+			window.clearTimeout(this.skipTimer);
+			this.skipTimer = undefined;
 			if (!this.audio.paused) this.audio.pause();
 			this.showTrack(index);
 			this.loadedIndex = -1;
@@ -621,7 +626,8 @@ if (shareId) {
 		}
 
 		private skipFailedTrack() {
-			if (!this.wantsPlayback || !this.tracks.length) return;
+			// 加载失败时 play() 的拒绝和 audio 的 error 事件会各触发一次，只处理第一次
+			if (!this.wantsPlayback || !this.tracks.length || this.skipTimer !== undefined) return;
 			this.failedTracks.add(this.currentIndex);
 			if (this.failedTracks.size >= this.tracks.length) {
 				this.wantsPlayback = false;
@@ -632,7 +638,7 @@ if (shareId) {
 			do next = (next + 1) % this.tracks.length;
 			while (this.failedTracks.has(next));
 			this.setStatus("这首暂不可播，正在切换下一首");
-			window.setTimeout(() => this.selectTrack(next, true), 350);
+			this.skipTimer = window.setTimeout(() => this.selectTrack(next, true), 350);
 		}
 
 		private updateTimeline() {

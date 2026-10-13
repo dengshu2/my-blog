@@ -41,7 +41,7 @@ This is an Astro blog (based on Astro Cactus theme) configured for Chinese conte
 
 ### Layouts
 - `src/layouts/Base.astro` - Main HTML wrapper
-- `src/layouts/BlogPost.astro` - Blog post template with TOC
+- `src/layouts/BlogPost.astro` - Blog post template (Masthead, content, giscus comments)
 
 ### Path Aliases
 - `@/` maps to `src/` (e.g., `import { siteConfig } from "@/site-config"`)

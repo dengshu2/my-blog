@@ -10,45 +10,31 @@ permissions:
   contents: read
 
 jobs:
-  lint:
-    name: Check for build and type issues
+  build:
+    name: Lint, type-check and build
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v7
 
-      - name: install node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-
-      - name: install pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.33.0
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
+      - name: Setup Node
+        uses: actions/setup-node@v7
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-        # use astro check for issues
-      - name: Run check
-        run: pnpm astro check
+      - name: Lint
+        run: pnpm lint
 
-        # ensure build works
-      - name: Run build
+      # build 已包含 astro check（类型检查）和 pagefind 索引
+      - name: Build
         run: pnpm build
