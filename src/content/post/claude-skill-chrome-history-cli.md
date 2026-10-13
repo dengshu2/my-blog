@@ -1,6 +1,6 @@
 ---
 title: "给软件发一张 AI 名片：从 Skill 到 chrome-history-cli"
-publishDate: "22 April 2026"
+publishDate: "2026-04-22"
 description: "Claude 在 2025 年 10 月推出 Skills——一种让 AI agent 找得到、装得上、用得对软件的协议。这篇以我刚开源的 chrome-history-cli 为案例，讲 Skill 是什么、长什么样，以及为什么未来每个 AI 友好的软件都可能带一份 SKILL.md。"
 tags: ["claude", "skill", "chrome-history-cli", "ai-agent"]
 ---

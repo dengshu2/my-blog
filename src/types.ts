@@ -18,7 +18,12 @@ export interface PaginationLink {
 }
 
 export interface SiteMeta {
+	/** 文章发布时间（ISO），有值时按文章页输出 og/JSON-LD */
 	articleDate?: string | undefined;
+	/** 文章更新时间（ISO） */
+	articleModified?: string | undefined;
+	/** 不希望被搜索引擎收录的页面（如 404） */
+	noindex?: boolean;
 	description?: string;
 	ogImage?: string | undefined;
 	title: string;

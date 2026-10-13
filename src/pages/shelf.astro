@@ -9,7 +9,12 @@ const meta = {
 
 const groups = orderedCategories();
 const updatedLabel = neodb.updatedAt
-	? new Date(neodb.updatedAt).toLocaleDateString("zh-CN", { day: "numeric", month: "long", year: "numeric" })
+	? new Date(neodb.updatedAt).toLocaleDateString("zh-CN", {
+			day: "numeric",
+			month: "long",
+			year: "numeric",
+			timeZone: "Asia/Shanghai",
+		})
 	: null;
 ---
 

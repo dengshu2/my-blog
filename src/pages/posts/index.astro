@@ -8,7 +8,7 @@ const allPostsByDate = sortMDByDate(allPosts);
 const uniqueTags = getUniqueTags(allPosts);
 
 const meta = {
-	description: "Read my collection of posts and the things that interest me",
+	description: "全部博客文章，按年份归档，记录技术与生活",
 	title: "归档",
 };
 
@@ -19,7 +19,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 <PageLayout meta={meta}>
 	<h1 class="title mb-6">归档</h1>
 	<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
-		<section aria-label="Blog post list">
+		<section aria-label="文章列表">
 			{
 				descYearKeys.map((yearKey) => (
 					<>
@@ -61,7 +61,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 						{uniqueTags.map((tag) => (
 							<li>
 								<a
-									aria-label={`View all posts with the tag: ${tag}`}
+									aria-label={`查看标签「${tag}」下的文章`}
 									class="inline-block rounded-md border border-accent/20 bg-accent/5 px-2.5 py-0.5 text-textColor/80 transition-colors hover:border-accent/50 hover:bg-accent/10 hover:text-accent"
 									href={`/tags/${tag}/`}
 								>
@@ -71,8 +71,8 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 						))}
 					</ul>
 					<span class="mt-4 block sm:text-end">
-						<a aria-label="View all blog categories" class="sm:hover:text-accent" href="/tags/">
-							View all →
+						<a aria-label="查看全部标签" class="sm:hover:text-accent" href="/tags/">
+							全部标签 →
 						</a>
 					</span>
 				</aside>

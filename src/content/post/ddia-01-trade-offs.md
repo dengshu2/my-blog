@@ -5,7 +5,7 @@ description: "开读 Kleppmann DDIA 第 1 章：OLTP/OLAP 的裂缝、记录系�
 tags: ["ddia", "读书笔记", "数据系统", "olap", "oltp"]
 ---
 
-![DDIA 封面](https://github.com/Vonng/ddia/raw/main/static/title.jpg)
+![DDIA 封面](https://img.runningotter.com/2026/10/2fd32a8b81723029a345d97e1fff4edd.jpg)
 
 ## 写在前面
 

@@ -7,11 +7,12 @@ import "@pagefind/default-ui/css/ui.css";
 <site-search class="ms-auto" id="search">
 	<button
 		class="flex h-9 w-9 items-center justify-center rounded-md ring-zinc-400 transition-all hover:ring-2"
+		aria-label="搜索"
 		data-open-modal
 		disabled
 	>
 		<svg
-			aria-label="search"
+			aria-hidden="true"
 			class="h-7 w-7"
 			fill="none"
 			height="16"
@@ -28,13 +29,13 @@ import "@pagefind/default-ui/css/ui.css";
 		</svg>
 	</button>
 	<dialog
-		aria-label="search"
+		aria-label="搜索"
 		class="h-full max-h-full w-full max-w-full border border-zinc-400 bg-bgColor shadow backdrop:backdrop-blur sm:mx-auto sm:mb-auto sm:mt-16 sm:h-max sm:max-h-[calc(100%-8rem)] sm:min-h-[15rem] sm:w-5/6 sm:max-w-[48rem] sm:rounded-md"
 	>
 		<div class="dialog-frame flex flex-col gap-4 p-6 pt-12 sm:pt-6">
 			<button
 				class="ms-auto cursor-pointer rounded-md bg-zinc-200 p-2 font-semibold dark:bg-zinc-700"
-				data-close-modal>Close</button
+				data-close-modal>关闭</button
 			>
 			{
 				import.meta.env.DEV ? (
@@ -62,10 +63,7 @@ import "@pagefind/default-ui/css/ui.css";
 		private openBtn: HTMLButtonElement;
 
 		closeModal = () => {
-			if (this.dialog.open) {
-				this.dialog.close();
-				window.removeEventListener("click", this.onWindowClick);
-			}
+			if (this.dialog.open) this.dialog.close();
 		};
 
 		onWindowClick = (event: MouseEvent) => {
@@ -105,6 +103,10 @@ import "@pagefind/default-ui/css/ui.css";
 			this.openBtn.addEventListener("click", this.openModal);
 			this.openBtn.disabled = false;
 			this.closeBtn.addEventListener("click", this.closeModal);
+			// 无论点关闭、点外面还是按 Esc，对话框关闭时都移除全局点击监听
+			this.dialog.addEventListener("close", () =>
+				window.removeEventListener("click", this.onWindowClick),
+			);
 		}
 
 		connectedCallback() {

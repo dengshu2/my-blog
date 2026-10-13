@@ -1,6 +1,6 @@
 ---
 title: "从『做不到』到『一下午』：用 wx-cli 给群友画像"
-publishDate: "19 April 2026"
+publishDate: "2026-04-19"
 description: "以一次『给群友做数据画像』的真实分析为主线，展示 wx-cli 如何把过去几乎无法完成的微信数据任务，变成一个下午能跑完的标准数据项目。"
 tags: ["wx-cli", "wechat", "cli", "data-analysis"]
 ---
@@ -21,7 +21,7 @@ tags: ["wx-cli", "wechat", "cli", "data-analysis"]
 
 所以这件事在过去几乎做不到。你要么花一周写个逆向，要么放弃。
 
-直到前几天我发现了 [wx-cli](https://github.com/jackwener/wx-cli)，这个问题被解开了。本文以"给一个群友做技术画像"为主线，记录从零到成品的完整过程。
+直到前几天我发现了 [wx-cli](https://www.npmjs.com/package/@jackwener/wx-cli)，这个问题被解开了。本文以"给一个群友做技术画像"为主线，记录从零到成品的完整过程。
 
 ## 0. 先说结论
 
@@ -331,4 +331,4 @@ wx-cli 本身只是解密层，但它改变的是整个工作流的可能性：
 
 下次你想认真了解一个群、一段关系、或者过去一年自己在微信上留下了什么，你终于有工具可以做了。
 
-项目地址：[github.com/jackwener/wx-cli](https://github.com/jackwener/wx-cli)
+npm 包：[@jackwener/wx-cli](https://www.npmjs.com/package/@jackwener/wx-cli)（GitHub 仓库目前无法访问）

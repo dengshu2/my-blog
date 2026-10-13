@@ -110,7 +110,7 @@ graph LR
 
 ## 四、核心思路：一句话讲清楚
 
-mcp-chat 的核心抽象借鉴自 Claude Code 源码（参考我整理的 [claude-code-sourcemap](https://github.com/dengshu2/claude-code-sourcemap)），但只留下最朴素的一件事：
+mcp-chat 的核心抽象借鉴自 Claude Code 源码（参考我之前整理的 claude-code-sourcemap，该仓库现已下线），但只留下最朴素的一件事：
 
 > 让模型自己反复"想一步、动一下手、看一眼结果、再想下一步"，直到问题被解决。
 
@@ -244,5 +244,4 @@ AI 时代，所有生产范式都在被重写。与其去抱怨"工具一周一�
 - [ClickHouse/mcp-clickhouse](https://github.com/ClickHouse/mcp-clickhouse)
 - [Model Context Protocol 规范](https://modelcontextprotocol.io/)
 - [Vercel AI SDK](https://sdk.vercel.ai/)
-- [claude-code-sourcemap](https://github.com/dengshu2/claude-code-sourcemap) — Claude Code 源码结构分析
 - [mcp-chat 在线体验](https://mcpchat.dengshu.ovh/)

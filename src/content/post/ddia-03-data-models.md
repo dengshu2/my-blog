@@ -5,7 +5,7 @@ description: "DDIA 第 3 章笔记：从存一份 LinkedIn 简历切入，把关
 tags: ["ddia", "读书笔记", "数据系统", "数据模型", "查询语言"]
 ---
 
-![DDIA 封面](https://github.com/Vonng/ddia/raw/main/static/title.jpg)
+![DDIA 封面](https://img.runningotter.com/2026/10/2fd32a8b81723029a345d97e1fff4edd.jpg)
 
 > *The limits of my language mean the limits of my world.*  
 > ——Wittgenstein

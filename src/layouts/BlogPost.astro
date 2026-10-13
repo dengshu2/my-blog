@@ -16,10 +16,11 @@ const {
 	id,
 } = post;
 const socialImage = ogImage ?? `/og-image/${id}.png`;
-const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
+const articleDate = publishDate.toISOString();
+const articleModified = updatedDate?.toISOString();
 ---
 
-<BaseLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
+<BaseLayout meta={{ articleDate, articleModified, description, ogImage: socialImage, title }}>
 	<article class="wrap-break-word" data-pagefind-body>
 		<div id="blog-hero"><Masthead content={post} /></div>
 		<div
@@ -31,7 +32,7 @@ const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 	</article>
 	<back-to-top>
 		<button
-			aria-label="Back to Top"
+			aria-label="回到顶部"
 			class="fixed inset-e-4 bottom-8 z-90 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:inset-e-8 sm:h-12 sm:w-12 dark:bg-zinc-700"
 			data-show="false"
 			><svg

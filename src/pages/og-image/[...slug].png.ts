@@ -83,10 +83,8 @@ export async function GET(context: APIContext) {
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
 	return new Response(new Uint8Array(png), {
-		headers: {
-			"Cache-Control": "public, max-age=31536000, immutable",
-			"Content-Type": "image/png",
-		},
+		// 静态构建时响应头不会生效，缓存策略见 public/_headers
+		headers: { "Content-Type": "image/png" },
 	});
 }
 

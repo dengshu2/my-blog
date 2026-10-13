@@ -22,15 +22,41 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import { rehypeLazyImages } from "./src/plugins/rehype-lazy-images";
 
+/** 从文章 frontmatter 读取 updatedDate / publishDate，作为站点地图的 lastmod */
+function readPostDates(dir: string) {
+	const dates = new Map<string, string>();
+	for (const file of fs.readdirSync(dir)) {
+		if (!/\.mdx?$/.test(file)) continue;
+		const frontmatter = fs.readFileSync(`${dir}/${file}`, "utf8").split(/^---$/m)[1] ?? "";
+		const field = (name: string) =>
+			frontmatter.match(new RegExp(`^${name}:\\s*["']?([^"'\\n]+)`, "m"))?.[1];
+		const date = field("updatedDate") ?? field("publishDate");
+		if (date) dates.set(`/posts/${file.replace(/\.mdx?$/, "")}/`, new Date(date).toISOString());
+	}
+	return dates;
+}
+const postLastModified = readPostDates("./src/content/post");
+
 // https://astro.build/config
 export default defineConfig({
 	// Astro 7 默认值改为 "jsx"（剥离行内元素间空格），保持 v6 行为
 	compressHTML: true,
+	image: {
+		// 文章里的图床图片在构建时下载并转成 WebP、补上宽高，部署在本站 /_astro/ 下长期缓存
+		domains: ["img.runningotter.com"],
+	},
 	integrations: [
 		expressiveCode(expressiveCodeOptions),
 		icon(),
 
-		sitemap(),
+		sitemap({
+			// 标签页内容单薄，不进站点地图
+			filter: (page) => !new URL(page).pathname.startsWith("/tags/"),
+			serialize(item) {
+				const lastmod = postLastModified.get(new URL(item.url).pathname);
+				return lastmod ? { ...item, lastmod } : item;
+			},
+		}),
 		mdx(),
 		robotsTxt(),
 		webmanifest({
@@ -76,31 +102,36 @@ export default defineConfig({
 	],
 	markdown: {
 		// Astro 7 默认改用原生 Sätteri 管线；本站的自定义插件依赖 remark/rehype，
-		// 显式指定 unified 处理器以保留原有 Markdown 行为
-		processor: unified(),
-		rehypePlugins: [
-			[
-				rehypeExternalLinks,
-				{
-					rel: ["nofollow", "noreferrer"],
-					target: "_blank",
-				},
+		// 显式指定 unified 处理器并把插件交给它，保留原有 Markdown 行为
+		processor: unified({
+			rehypePlugins: [
+				[
+					rehypeExternalLinks,
+					{
+						rel: ["nofollow", "noreferrer"],
+						target: "_blank",
+					},
+				],
+				rehypeUnwrapImages,
+				rehypeLazyImages,
 			],
-			rehypeUnwrapImages,
-			rehypeLazyImages,
-		],
-		remarkPlugins: [remarkMermaid, remarkReadingTime, remarkDirective, remarkAdmonitions],
-		remarkRehype: {
-			footnoteLabelProperties: {
-				className: [""],
+			remarkPlugins: [remarkMermaid, remarkReadingTime, remarkDirective, remarkAdmonitions],
+			remarkRehype: {
+				footnoteLabelProperties: {
+					className: [""],
+				},
 			},
-		},
+		}),
 	},
 	// https://docs.astro.build/en/guides/prefetch/
 	prefetch: true,
 	// ! Please remember to replace the following site property with your own domain
 	site: "https://blog.runningotter.com/",
 	vite: {
+		build: {
+			// Mermaid 核心块约 660 KB，只在含图表的文章里按需加载，不必每次构建都告警
+			chunkSizeWarningLimit: 700,
+		},
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},

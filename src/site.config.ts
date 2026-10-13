@@ -9,6 +9,8 @@ export const siteConfig: SiteConfig = {
 			day: "numeric",
 			month: "short",
 			year: "numeric",
+			// 构建机器在 UTC，显式按北京时间格式化
+			timeZone: "Asia/Shanghai",
 		},
 	},
 	description: "记录技术与生活",

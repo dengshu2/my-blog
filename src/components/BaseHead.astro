@@ -5,12 +5,40 @@ import "../styles/global.css";
 
 type Props = SiteMeta;
 
-const { articleDate, description, ogImage, title } = Astro.props;
+const { articleDate, articleModified, description, noindex, ogImage, title } = Astro.props;
 
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href;
+// 文章的 og-image 由 /og-image 路由生成（1200×630），站点默认分享图是 1280×640
+const socialImageSize = ogImage ? { height: 630, width: 1200 } : { height: 640, width: 1280 };
+
+const author = { "@type": "Person", name: siteConfig.author, url: Astro.site?.href };
+const jsonLd = articleDate
+	? {
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			author,
+			dateModified: articleModified ?? articleDate,
+			datePublished: articleDate,
+			description,
+			headline: title,
+			image: socialImageURL,
+			inLanguage: siteConfig.lang,
+			mainEntityOfPage: canonicalURL.href,
+		}
+	: Astro.url.pathname === "/"
+		? {
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				author,
+				description,
+				inLanguage: siteConfig.lang,
+				name: siteConfig.title,
+				url: Astro.site?.href,
+			}
+		: undefined;
 ---
 
 <meta charset="utf-8" />
@@ -33,7 +61,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 }
 
 {/* Canonical URL */}
-<link href={canonicalURL} rel="canonical" />
+{noindex ? <meta content="noindex" name="robots" /> : <link href={canonicalURL} rel="canonical" />}
 
 {/* Primary Meta Tags */}
 <meta content={siteTitle} name="title" />
@@ -41,7 +69,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta content={siteConfig.author} name="author" />
 
 {/* Theme Colour */}
-<meta content="" name="theme-color" />
+<meta content="#fafafa" name="theme-color" />
 
 {/* Open Graph / Facebook */}
 <meta content={articleDate ? "article" : "website"} property="og:type" />
@@ -51,23 +79,24 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta content={siteConfig.title} property="og:site_name" />
 <meta content={siteConfig.ogLocale} property="og:locale" />
 <meta content={socialImageURL} property="og:image" />
-<meta content="1200" property="og:image:width" />
-<meta content="630" property="og:image:height" />
+<meta content={String(socialImageSize.width)} property="og:image:width" />
+<meta content={String(socialImageSize.height)} property="og:image:height" />
 {
 	articleDate && (
 		<>
 			<meta content={siteConfig.author} property="article:author" />
 			<meta content={articleDate} property="article:published_time" />
+			{articleModified && <meta content={articleModified} property="article:modified_time" />}
 		</>
 	)
 }
 
 {/* Twitter */}
-<meta content="summary_large_image" property="twitter:card" />
-<meta content={canonicalURL} property="twitter:url" />
-<meta content={title} property="twitter:title" />
-<meta content={description} property="twitter:description" />
-<meta content={socialImageURL} property="twitter:image" />
+<meta content="summary_large_image" name="twitter:card" />
+<meta content={canonicalURL} name="twitter:url" />
+<meta content={title} name="twitter:title" />
+<meta content={description} name="twitter:description" />
+<meta content={socialImageURL} name="twitter:image" />
 
 {/* Sitemap */}
 <link href="/sitemap-index.xml" rel="sitemap" />
@@ -76,3 +105,6 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <link href="/rss.xml" rel="alternate" title={siteConfig.title} type="application/rss+xml" />
 
 <meta content={Astro.generator} name="generator" />
+
+{/* 结构化数据 */}
+{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />}
