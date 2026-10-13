@@ -25,9 +25,6 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 export default defineConfig({
 	// Astro 7 默认值改为 "jsx"（剥离行内元素间空格），保持 v6 行为
 	compressHTML: true,
-	image: {
-		domains: ["webmention.io"],
-	},
 	integrations: [
 		expressiveCode(expressiveCodeOptions),
 		icon(),

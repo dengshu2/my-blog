@@ -15,9 +15,6 @@ export const siteConfig: SiteConfig = {
 	lang: "zh-CN",
 	ogLocale: "zh_CN",
 	title: "Running Otter",
-	webmentions: {
-		link: "", // 暂时不需要 webmentions
-	},
 	sortPostsByUpdatedDate: true,
 };
 
