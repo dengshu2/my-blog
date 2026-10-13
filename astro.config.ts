@@ -20,6 +20,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time";
 // Rehype plugins
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
+import { rehypeLazyImages } from "./src/plugins/rehype-lazy-images";
 
 // https://astro.build/config
 export default defineConfig({
@@ -81,11 +82,12 @@ export default defineConfig({
 			[
 				rehypeExternalLinks,
 				{
-					rel: ["nofollow, noreferrer"],
+					rel: ["nofollow", "noreferrer"],
 					target: "_blank",
 				},
 			],
 			rehypeUnwrapImages,
+			rehypeLazyImages,
 		],
 		remarkPlugins: [remarkMermaid, remarkReadingTime, remarkDirective, remarkAdmonitions],
 		remarkRehype: {

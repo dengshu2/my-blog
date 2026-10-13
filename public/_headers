@@ -1,5 +1,25 @@
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://static.cloudflareinsights.com https://giscus.app; style-src 'self' 'unsafe-inline' https://giscus.app; font-src 'self' data:; img-src 'self' data: https:; media-src 'self' https://music.dengshu.ovh; connect-src 'self' https://music.dengshu.ovh https://cloudflareinsights.com; frame-src https://giscus.app; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
 /pagefind/*
   Cache-Control: public, max-age=3600
+
+/og-image/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/icons/*
+  Cache-Control: public, max-age=604800
+
+/favicon-32x32.png
+  Cache-Control: public, max-age=604800
+
+/social-card.png
+  Cache-Control: public, max-age=86400

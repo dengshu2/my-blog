@@ -1,8 +1,7 @@
-/* LXGW WenKai Screen — individual imports to avoid nested @import path issues */
+/* LXGW WenKai Screen（GB 版，简体规范字形） */
 @import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreen.css";
-@import "lxgw-wenkai-screen-webfont/lxgwwenkaigbscreenr.css";
-@import "lxgw-wenkai-screen-webfont/lxgwwenkaiscreen.css";
-@import "lxgw-wenkai-screen-webfont/lxgwwenkaiscreenr.css";
+/* Inter 自托管（可变字重，按 unicode-range 只下载用到的子集） */
+@import "@fontsource-variable/inter";
 
 /* Tailwind CSS 4 - CSS-first configuration */
 @import "tailwindcss";
@@ -67,7 +66,7 @@
 
 	body {
 		font-family:
-			"Inter",
+			"Inter Variable",
 			"LXGW WenKai Screen",
 			"PingFang SC",
 			"Noto Sans SC",
@@ -249,13 +248,13 @@
 		/* Admonitions/Aside */
 		.aside {
 			--admonition-color: var(--tw-prose-quotes);
-			@apply my-4 py-4 ps-4 border-s-2 border-[--admonition-color];
+			@apply my-4 py-4 ps-4 border-s-2 border-(--admonition-color);
 
 			.aside-title {
-				@apply font-bold text-base flex items-center gap-2 my-0 capitalize text-[--admonition-color];
+				@apply font-bold text-base flex items-center gap-2 my-0 capitalize text-(--admonition-color);
 
 				&::before {
-					@apply inline-block shrink-0 overflow-visible h-4 w-4 align-middle content-[''] bg-[--admonition-color];
+					@apply inline-block shrink-0 overflow-visible h-4 w-4 align-middle content-[''] bg-(--admonition-color);
 					mask-size: contain;
 					mask-position: center;
 					mask-repeat: no-repeat;
