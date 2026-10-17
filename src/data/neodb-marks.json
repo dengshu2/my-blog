@@ -1,14 +1,42 @@
 {
-	"updatedAt": "2026-10-15T00:11:33.789Z",
+	"updatedAt": "2026-10-17T23:38:36.748Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 492,
+	"total": 508,
 	"categories": [
 		{
 			"category": "movie",
 			"items": [
+				{
+					"title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
+					"cover": "https://neodb.social/m/item/tmdb_movie/2026/01/05/59065e13-8bae-45c8-b398-146366998d04.jpg",
+					"url": "https://neodb.social/movie/0Bdn7H9YBhH4pIjeahnzEo",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:47.961Z"
+				},
+				{
+					"title": "Shrounding the Heavens Movie：Fighting Against Wang Teng with Copper Coffin",
+					"cover": "https://neodb.social/m/item/tmdb_movie/2026/04/16/871f6d9e-e2c9-43dc-a6e5-2569297a106c.jpg",
+					"url": "https://neodb.social/movie/3iNzn4WJ4Gh6csvuhofhPl",
+					"rating": 2,
+					"markedAt": "2026-10-17T02:21:45.147Z"
+				},
+				{
+					"title": "The World of Love",
+					"cover": "https://neodb.social/m/item/doubanmovie/2025/09/11/3565b4c8-9c0b-4d9e-aafd-4ac533bd465d.jpg",
+					"url": "https://neodb.social/movie/7kTAKhCRH1vBDAu8fCYpZ7",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:42.616Z"
+				},
+				{
+					"title": "Hoppers",
+					"cover": "https://neodb.social/m/item/movie/2026/01/25/815440ba-7537-4ae1-8d09-ce0be959d58b.jpg",
+					"url": "https://neodb.social/movie/0wKIhL3cZWrGKaDctLomq2",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:40.205Z"
+				},
 				{
 					"title": "Anatomy of a Fall",
 					"cover": "https://neodb.social/m/item/movie/2026/05/23/6a26ac8f-2c91-4617-a20a-14e7cef7df1c.jpeg",
@@ -2538,7 +2566,7 @@
 				},
 				{
 					"title": "Interstellar",
-					"cover": "https://neodb.social/m/movie/2022/08/048e1c6e37-520b-4d04-8a6a-e716b7a18003.jpg",
+					"cover": "https://neodb.social/m/item/movie/2026/10/17/6dbc13d0-2074-4c3a-a495-d7a66e8d1b2e.jpeg",
 					"url": "https://neodb.social/movie/2vE4NFmmigU2ofsivNOdcG",
 					"rating": null,
 					"markedAt": "2018-11-22T03:59:18Z"
@@ -2657,7 +2685,7 @@
 				},
 				{
 					"title": "Farewell My Concubine",
-					"cover": "https://neodb.social/m/item/movie/2023/02/02/9fcaf1da-6927-4d94-b5d2-da74ce9e5414.webp",
+					"cover": "https://neodb.social/m/item/movie/2026/10/17/439d1b59-0a6d-469c-b961-57cb4adfb543.jpeg",
 					"url": "https://neodb.social/movie/4RQwAeTa5E2DKPPbFt4UVJ",
 					"rating": null,
 					"markedAt": "2018-11-22T03:55:56Z"
@@ -2856,6 +2884,90 @@
 		{
 			"category": "tv",
 			"items": [
+				{
+					"title": "Arcane",
+					"cover": "https://neodb.social/m/item/tv/2025/10/01/a57c64bf-5ed2-4d60-833e-30299d3d2e12.webp",
+					"url": "https://neodb.social/tv/2i2SMEtfaSP30kBfrIztol",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:41.885Z"
+				},
+				{
+					"title": "Yao—Chinese Folktales",
+					"cover": "https://neodb.social/m/item/tmdb_tv/2026/01/01/4e1ff466-35d8-4f18-bdd1-0afaef9a95cc.jpg",
+					"url": "https://neodb.social/tv/4rghi1Yy3YDGBRdkDa3NRi",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:35.897Z"
+				},
+				{
+					"title": "Fog Hill of Five Elements",
+					"cover": "https://neodb.social/m/item/tmdb_tv/2025/01/18/11d0c30a-e887-4eaf-bd9e-40c4ef713386.jpg",
+					"url": "https://neodb.social/tv/1jT0S4Y5oA8x7BUKQsHijq",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:29.263Z"
+				},
+				{
+					"title": "Delicious in Dungeon",
+					"cover": "https://neodb.social/m/item/tv/2024/07/23/19a59c9b-7067-4b2c-9d55-4c83be0a19cb.jpg",
+					"url": "https://neodb.social/tv/75MyuGLyRnRFsZ4nCuJzqF",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:21.950Z"
+				},
+				{
+					"title": "Cyberpunk: Edgerunners",
+					"cover": "https://neodb.social/m/movie/2022/05/025c372f29-4a9a-4363-9d59-5f90f6f3d0ce.jpg",
+					"url": "https://neodb.social/tv/3Dqn1qPiRZqmZqUQ0v1GXT",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:13.884Z"
+				},
+				{
+					"title": "Frieren: Beyond Journey's End ",
+					"cover": "https://neodb.social/m/item/tmdb_tv/2023/12/20/69bad949-a6bc-4630-93d4-6f331586b8b4.jpg",
+					"url": "https://neodb.social/tv/4OWmnWLqbCkiuLglAUtpLs",
+					"rating": 8,
+					"markedAt": "2026-10-17T05:18:04.842Z"
+				},
+				{
+					"title": "A Place Further Than The Universe (A Story that Leads to the Antarctica)",
+					"cover": "https://neodb.social/m/movie/2021/09/1570082a39-3796-4590-a442-865f112aabf7.jpg",
+					"url": "https://neodb.social/tv/season/5AssepCSIxIQMVp9QwXC8o",
+					"rating": null,
+					"markedAt": "2026-10-17T02:22:30.856Z"
+				},
+				{
+					"title": "Jaadugar: A Witch in Mongolia",
+					"cover": "https://neodb.social/m/item/doubanmovie/2026/07/06/3bbdb55d-ebf7-4561-9626-02d6adf6f9ba.webp",
+					"url": "https://neodb.social/tv/season/2MT1k6byNBUhoFlfSmt5X0",
+					"rating": 9,
+					"markedAt": "2026-10-17T02:21:59.947Z"
+				},
+				{
+					"title": "Mushoku Tensei: Jobless Reincarnation Season 2 - Part 2",
+					"cover": "https://neodb.social/m/item/doubanmovie/2024/04/23/33019458-8013-4f40-8f8c-909469bf42ad.webp",
+					"url": "https://neodb.social/tv/season/2xlmJBit5NEvDj6MmLwqzo",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:57.367Z"
+				},
+				{
+					"title": "Mushoku Tensei: Jobless Reincarnation Season 2",
+					"cover": "https://neodb.social/m/item/doubanmovie/2023/09/25/7a0d0f98-a991-4404-8392-c0c7de56f320.jpg",
+					"url": "https://neodb.social/tv/season/3ZXfRC8wkhQfGiiq9gbiw0",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:55.009Z"
+				},
+				{
+					"title": "Mob Psycho 100 (Mob Psycho II)",
+					"cover": "https://neodb.social/m/movie/2021/09/1522af86b3-1728-4cf1-a46a-361746f4a87d.jpg",
+					"url": "https://neodb.social/tv/season/2P3i8NxW1LokuS8fpEFPp3",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:52.590Z"
+				},
+				{
+					"title": "Oh My School! Season 5",
+					"cover": "https://neodb.social/m/item/tmdb_tvseason/2026/07/30/666bd71a-6b3c-48b7-a588-dd70d7d0870c.jpg",
+					"url": "https://neodb.social/tv/season/6jMyxd4Zwzu9lzhBEkqDgf",
+					"rating": null,
+					"markedAt": "2026-10-17T02:21:50.296Z"
+				},
 				{
 					"title": "Ever Night",
 					"cover": "https://neodb.social/m/item/tmdb_tvseason/2026/04/23/9ae80bc0-1550-4691-bbe3-787cf395c0fd.jpg",
