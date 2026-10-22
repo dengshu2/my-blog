@@ -1,6 +1,7 @@
 ---
 title: "从零开始：订阅 Claude 会员并稳定使用 Claude Code 的完整指南"
 publishDate: "2026-06-12"
+updatedDate: "2026-10-22"
 description: "面向完全小白的保姆级教程：从网络环境、谷歌账号到订阅支付，三步解决国内使用 Claude 和 Claude Code 的所有问题，附完整资源链接。"
 tags: ["claude", "claude-code", "ai", "教程", "网络"]
 ---
@@ -8,7 +9,7 @@ tags: ["claude", "claude-code", "ai", "教程", "网络"]
 > 这篇文章只解决一件事：让一个“完全没有经验”的人，从零开始，最终能在国内稳定地订阅和使用 Claude（包括 Claude Code）。这里存在着一个鸡生蛋和蛋生鸡的问题。第一步要靠你自己解决了。
 
 :::note
-本文所有内容仅供学习交流，请在遵守当地法律法规的前提下使用相关技术。文中提到的价格、链接和方案均为写作时（2026 年 6 月）的情况，可能随时间变化。
+本文所有内容仅供学习交流，请在遵守当地法律法规的前提下使用相关技术。本文初稿写于 2026 年 6 月，订阅支付方案于 2026 年 10 月更新。文中提到的价格、链接和方案可能随时间变化。
 :::
 
 ## 写在前面
@@ -357,7 +358,9 @@ Claude 的付费订阅分三档：
 
 我的建议是先从 $20 开始。你大概率用不完它的额度；真到了额度不够的那天，再升级也不迟。
 
-### 主推方案：iPhone + 美区礼品卡（适合 $20 档）⭐
+目前推荐两条手机订阅路线：iPhone 用户可以用美区礼品卡，Android 用户可以通过 Google Play 绑定国内外币卡支付。按手头的设备选择即可。
+
+### 推荐方案一：iPhone + 美区礼品卡（适合 $20 档）⭐
 
 这是我试下来最稳、最不折腾的方案，也是绝大多数人在用的。你需要准备三样东西：
 
@@ -373,22 +376,25 @@ Claude 的付费订阅分三档：
 - 为什么建议办全币种信用卡？不只是为了这一次订阅——以后出国旅游、订阅其他海外服务都用得上。办卡可能需要预约去银行网点，但只要有正常工作，基本都能办下来
 - 苹果税的细节：$20 的 Pro 订阅通过 App Store 支付没有额外加价；但 $100 的 Max 档会被额外收取约 $20 的苹果税。所以苹果内购最适合只用 $20 方案的用户
 
+### 推荐方案二：Android 手机 + Google Play 订阅 ⭐
+
+如果你用的是 Google 手机（Pixel），或者其他能正常使用 Google Play 的 Android 手机，也可以直接在 Claude App 内订阅。Google Play 可以绑定国内银行发行的外币卡（如支持外币支付的 Visa / Mastercard），省去购买和充值美区礼品卡的步骤。
+
+流程概括：在 Google Play 绑定国内外币卡 → 下载官方 Claude App → 登录你要订阅的 Claude 账号 → 在 App 内选择套餐，通过 Google Play 完成支付。
+
+绑定的是 Google Play 的付款方式，实际能否扣款取决于 Google Play 账号地区、发卡行和卡片的支付权限，以结账页面和实际扣款结果为准。订阅后，续费和取消也在 Google Play 中管理。Claude 官方的 [订阅支付说明](https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs) 也确认了 Android 内购由 Google Play 处理。
+
 能完整走到这一步，你已经能在终端里随时跑 Claude Code 了。剩下的就是用它干活。
 
-### 进阶方案：N26 虚拟卡（适合 $100 以上档位）
+### 不再推荐：N26 虚拟卡
 
-如果你需要订阅 $100/$200 的 Max 档，为了绕开苹果税，更划算的方式是在网页端直接绑卡支付。社区里目前比较成熟的是 N26（一家欧洲数字银行）方案：
+旧版文章曾推荐通过 N26 虚拟卡在网页端订阅高档位套餐，现在不再推荐这条路线。目前仅凭中国大陆或中国香港护照，已无法直接完成注册，还需要提供额外的证明材料。具体材料要求以 N26 对开户地区和个人身份的审核为准。
 
-参考帖：[nodeseek.com/post-667079-1](https://www.nodeseek.com/post-667079-1)
+对从零开始的用户来说，这条路线的开户门槛已经变高，建议优先选择上面的手机订阅方式。原来的 [Nodeseek 参考帖](https://www.nodeseek.com/post-667079-1) 仅作为历史资料保留，不再作为当前的操作指南。
 
-需要准备的链路：
+### 补充参考视频
 
-- N26 账户：完成开通和实名认证，App 内可以看到虚拟卡（卡号 + 有效期 + CVV）
-- 众安银行（ZA Bank）：香港的虚拟银行，港元账户，作为整条入金链路的起点
-- Wise 账户：负责港币换欧元的中转，缺了它没法低损耗入金
-- 稳定的美国节点：操作全程不能断网、不能切换节点，这点我吃过亏，单独提醒
-
-这条链路明显比礼品卡方案复杂，适合已经有一定折腾经验、且确实需要高档位订阅的用户。
+如果你更习惯跟着视频操作，可以参考 [这段 YouTube 视频](https://www.youtube.com/watch?v=8lNWd7PvvCU)。核心逻辑和本文一样：先解决网络，再解决账号，最后完成订阅支付；具体界面和支付条件以实际操作时为准。
 
 ### 终极方案：出国
 
@@ -414,7 +420,9 @@ Claude 的付费订阅分三档：
 | Clash 分流规则 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) · [Shadowrocket-ADBlock-Rules-Forever](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever) |
 | 美区 Apple ID 注册 | [linux.do 教程帖](https://linux.do/t/topic/2021625) |
 | 招行全币种信用卡 | [YouTube 视频教程](https://www.youtube.com/watch?v=VMoS1BG6NFI) |
-| N26 方案（高档位订阅） | [Nodeseek 参考帖](https://www.nodeseek.com/post-667079-1) |
+| Google Play 订阅 | [Claude 官方订阅支付说明](https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs) |
+| 补充参考视频（核心逻辑相同） | [YouTube 视频](https://www.youtube.com/watch?v=8lNWd7PvvCU) |
+| N26 旧方案（不再推荐） | [Nodeseek 历史参考帖](https://www.nodeseek.com/post-667079-1) |
 | 网络问题社区 | [Nodeseek](https://www.nodeseek.com/) |
 | 订阅问题社区 | [Linux.do](https://linux.do/) |
 
