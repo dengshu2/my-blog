@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v7
@@ -55,6 +57,7 @@ jobs:
           if [[ -n "$(git status --porcelain src/data/)" ]]; then
             git add src/data/
             git commit -m "chore(data): 自动刷新外部数据"
+            git pull --rebase origin main
             git push
           else
             echo "数据无变化，跳过提交"

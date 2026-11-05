@@ -10,7 +10,20 @@ import { failKeepingExisting, readExisting, writeIfChanged } from "./lib/data-fi
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, "../src/data/psn-games.json");
 
-const NPSSO = process.env.PSN_NPSSO;
+// 兼容纯 64 位 token、整段 JSON {"npsso":"...","expires_in":...} 或带首尾引号/空格的情况
+function parseNpsso(input) {
+	if (!input) return null;
+	const trimmed = input.trim();
+	if (trimmed.startsWith("{") && trimmed.endsWith("}")) {
+		try {
+			const parsed = JSON.parse(trimmed);
+			if (parsed?.npsso) return String(parsed.npsso).trim();
+		} catch {}
+	}
+	return trimmed.replace(/^["']+|["']+$/g, "").trim();
+}
+
+const NPSSO = parseNpsso(process.env.PSN_NPSSO);
 
 // PSN 官方移动端 App 的公开 OAuth 凭证（社区通用，psn-api 同款）
 const CLIENT_ID = "09515159-7237-4370-9b40-3806e67c0891";
