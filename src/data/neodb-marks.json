@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-11-03T03:10:26.483Z",
+	"updatedAt": "2026-11-05T12:38:14.181Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 508,
+	"total": 509,
 	"categories": [
 		{
 			"category": "movie",
@@ -3259,6 +3259,13 @@
 			"category": "game",
 			"items": [
 				{
+					"title": "影之刃零 Phantom Blade Zero",
+					"cover": "https://neodb.social/m/item/doubangame/2025/01/23/47e7f1d8-7e26-41d5-9172-8dd7b42e35e8.jpg",
+					"url": "https://neodb.social/game/6c6BOIItTM0Kdi0a3iwITC",
+					"rating": 10,
+					"markedAt": "2026-11-05T11:12:52.377Z"
+				},
+				{
 					"title": "Cult of the Lamb",
 					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/c11dfff9-906a-40c4-b7f9-14e06f04eaf3.jpg",
 					"url": "https://neodb.social/game/1LokobCERl6t4VOjv27Ydl",
@@ -3329,7 +3336,7 @@
 					"markedAt": "2026-06-02T17:03:23.047Z"
 				},
 				{
-					"title": "猛兽派对",
+					"title": "Party Animals",
 					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/6a27ee26-5634-4487-80c1-1e992368eb0a.jpg",
 					"url": "https://neodb.social/game/4b6LFtGSshn4Wj6DIhbcbN",
 					"rating": null,
@@ -3518,7 +3525,7 @@
 					"markedAt": "2020-02-01T07:05:09Z"
 				},
 				{
-					"title": "雷曼：传奇",
+					"title": "Rayman® Legends",
 					"cover": "https://neodb.social/m/item/doubangame/2024/07/16/decda867-228b-4ce4-a7d5-1c6f6998f2e1.jpg",
 					"url": "https://neodb.social/game/4Uv0prNSK20sbecgxlyZHj",
 					"rating": 10,
