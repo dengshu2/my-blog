@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-11-11T01:36:08.387Z",
+	"updatedAt": "2026-11-12T02:36:05.199Z",
 	"summary": {
 		"trophyLevel": 116,
 		"earned": {
@@ -101,6 +101,21 @@
 			}
 		},
 		{
+			"name": "Phantom Blade Zero",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202607/2810/8ea15bce1b7336894aa364867c03a3ea32ecd2f1455a4333.png",
+			"platform": "PS5",
+			"playtime": 2504,
+			"playCount": 14,
+			"lastPlayed": "2026-11-11T15:12:08.060000Z",
+			"progress": 57,
+			"earned": {
+				"bronze": 15,
+				"silver": 11,
+				"gold": 0,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Hollow Knight",
 			"icon": "https://image.api.playstation.com/gs2-sec/appkgo/prod/CUSA13285_00/4/i_876f3770382038e9d18271fce2008c6adfaf17c471f3eb01ee0d98e75b8d7885/i/icon0.png",
 			"platform": "PS4",
@@ -126,21 +141,6 @@
 			"earned": {
 				"bronze": 4,
 				"silver": 1,
-				"gold": 0,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Phantom Blade Zero",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202607/2810/8ea15bce1b7336894aa364867c03a3ea32ecd2f1455a4333.png",
-			"platform": "PS5",
-			"playtime": 2185,
-			"playCount": 13,
-			"lastPlayed": "2026-11-10T11:12:06.070000Z",
-			"progress": 57,
-			"earned": {
-				"bronze": 15,
-				"silver": 11,
 				"gold": 0,
 				"platinum": 0
 			}
