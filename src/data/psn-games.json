@@ -1,11 +1,11 @@
 {
-	"updatedAt": "2026-11-12T02:36:05.199Z",
+	"updatedAt": "2026-11-13T02:17:11.248Z",
 	"summary": {
-		"trophyLevel": 116,
+		"trophyLevel": 118,
 		"earned": {
-			"bronze": 292,
-			"silver": 58,
-			"gold": 14,
+			"bronze": 294,
+			"silver": 60,
+			"gold": 15,
 			"platinum": 0
 		}
 	},
@@ -104,14 +104,14 @@
 			"name": "Phantom Blade Zero",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202607/2810/8ea15bce1b7336894aa364867c03a3ea32ecd2f1455a4333.png",
 			"platform": "PS5",
-			"playtime": 2504,
-			"playCount": 14,
-			"lastPlayed": "2026-11-11T15:12:08.060000Z",
-			"progress": 57,
+			"playtime": 2631,
+			"playCount": 16,
+			"lastPlayed": "2026-11-12T14:11:23.740000Z",
+			"progress": 76,
 			"earned": {
-				"bronze": 15,
-				"silver": 11,
-				"gold": 0,
+				"bronze": 17,
+				"silver": 13,
+				"gold": 1,
 				"platinum": 0
 			}
 		},
