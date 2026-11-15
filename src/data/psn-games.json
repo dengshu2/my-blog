@@ -1,11 +1,11 @@
 {
-	"updatedAt": "2026-11-13T02:17:11.248Z",
+	"updatedAt": "2026-11-15T01:26:30.757Z",
 	"summary": {
-		"trophyLevel": 118,
+		"trophyLevel": 120,
 		"earned": {
 			"bronze": 294,
-			"silver": 60,
-			"gold": 15,
+			"silver": 61,
+			"gold": 17,
 			"platinum": 0
 		}
 	},
@@ -71,6 +71,21 @@
 			}
 		},
 		{
+			"name": "Phantom Blade Zero",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202607/2810/8ea15bce1b7336894aa364867c03a3ea32ecd2f1455a4333.png",
+			"platform": "PS5",
+			"playtime": 2879,
+			"playCount": 17,
+			"lastPlayed": "2026-11-14T07:18:21.710000Z",
+			"progress": 98,
+			"earned": {
+				"bronze": 17,
+				"silver": 14,
+				"gold": 3,
+				"platinum": 0
+			}
+		},
+		{
 			"name": "Lies of P",
 			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202305/2308/06b354c8015b3c71e54f43aa883aab4641285d4a91734681.png",
 			"platform": "PS5",
@@ -96,21 +111,6 @@
 			"earned": {
 				"bronze": 15,
 				"silver": 5,
-				"gold": 1,
-				"platinum": 0
-			}
-		},
-		{
-			"name": "Phantom Blade Zero",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202607/2810/8ea15bce1b7336894aa364867c03a3ea32ecd2f1455a4333.png",
-			"platform": "PS5",
-			"playtime": 2631,
-			"playCount": 16,
-			"lastPlayed": "2026-11-12T14:11:23.740000Z",
-			"progress": 76,
-			"earned": {
-				"bronze": 17,
-				"silver": 13,
 				"gold": 1,
 				"platinum": 0
 			}
@@ -447,7 +447,7 @@
 		},
 		{
 			"name": "Where Winds Meet (F2P)",
-			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202610/1410/c4d22396830728db25505b2b0b623d5c4259f44a7aab1447.png",
+			"icon": "https://image.api.playstation.com/vulcan/ap/rnd/202611/1310/644cfefdf5d3a02191c4444153321a90a961b7140d3874ce.png",
 			"platform": "PS5",
 			"playtime": 9,
 			"playCount": 2,
