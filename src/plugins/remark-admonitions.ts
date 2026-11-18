@@ -8,6 +8,14 @@ import { toString as mdastToString } from "mdast-util-to-string";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
+// @astrojs/mdx 8 不再向全局暴露 mdast-util-to-hast 的 Data 扩展，在此显式声明供 rehype 转换使用
+declare module "mdast" {
+	interface Data {
+		hName?: string | undefined;
+		hProperties?: Properties | undefined;
+	}
+}
+
 // Supported admonition types
 const Admonitions = new Set<AdmonitionType>(["tip", "note", "important", "caution", "warning"]);
 
