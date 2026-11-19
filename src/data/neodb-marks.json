@@ -1,14 +1,21 @@
 {
-	"updatedAt": "2026-11-15T01:26:29.014Z",
+	"updatedAt": "2026-11-19T02:53:02.756Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 509,
+	"total": 510,
 	"categories": [
 		{
 			"category": "movie",
 			"items": [
+				{
+					"title": "All Wishes Come True!",
+					"cover": "https://neodb.social/m/item/movie/2026/10/07/def3b4e0-0e66-46f2-9d2b-b4f2932cb18b.jpeg",
+					"url": "https://neodb.social/movie/5TTMVeHIkg4ZGn3vBj07nV",
+					"rating": 8,
+					"markedAt": "2026-11-19T01:17:24.707Z"
+				},
 				{
 					"title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
 					"cover": "https://neodb.social/m/item/tmdb_movie/2026/01/05/59065e13-8bae-45c8-b398-146366998d04.jpg",
