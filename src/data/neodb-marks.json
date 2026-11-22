@@ -1,14 +1,21 @@
 {
-	"updatedAt": "2026-11-19T02:53:02.756Z",
+	"updatedAt": "2026-11-22T01:48:04.187Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 510,
+	"total": 512,
 	"categories": [
 		{
 			"category": "movie",
 			"items": [
+				{
+					"title": "Look Back",
+					"cover": "https://neodb.social/m/item/doubanmovie/2024/08/06/71c12e16-49c9-4ea8-bc7c-13626acc4ce2.jpg",
+					"url": "https://neodb.social/movie/2U8yMOgmiYTtZdxyvrCmBU",
+					"rating": 8,
+					"markedAt": "2026-11-21T15:11:33.563Z"
+				},
 				{
 					"title": "All Wishes Come True!",
 					"cover": "https://neodb.social/m/item/movie/2026/10/07/def3b4e0-0e66-46f2-9d2b-b4f2932cb18b.jpeg",
@@ -2892,6 +2899,13 @@
 			"category": "tv",
 			"items": [
 				{
+					"title": "Shōgun",
+					"cover": "https://neodb.social/m/item/tv/2024/04/20/7448d3b5-249e-40c0-b76d-daed7a64157f.webp",
+					"url": "https://neodb.social/tv/season/6FZSMs2e1I4ZbPmHoPjcmR",
+					"rating": 8,
+					"markedAt": "2026-11-21T08:13:25.088Z"
+				},
+				{
 					"title": "Arcane",
 					"cover": "https://neodb.social/m/item/tv/2025/10/01/a57c64bf-5ed2-4d60-833e-30299d3d2e12.webp",
 					"url": "https://neodb.social/tv/2i2SMEtfaSP30kBfrIztol",
@@ -3084,7 +3098,7 @@
 					"title": "The Long Season",
 					"cover": "https://neodb.social/m/item/tmdb_tvseason/2023/05/31/8f8596d0-85eb-402f-84c2-c5f5b60cb1a4.jpg",
 					"url": "https://neodb.social/tv/season/3lQQuTAsTbabpQ0VAdtfOx",
-					"rating": 10,
+					"rating": 8,
 					"markedAt": "2023-05-04T16:48:17Z"
 				},
 				{
