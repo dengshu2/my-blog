@@ -1,10 +1,10 @@
 {
-	"updatedAt": "2026-11-22T01:48:04.187Z",
+	"updatedAt": "2026-11-23T02:04:06.842Z",
 	"profile": {
 		"username": "runningOtter",
 		"url": "https://neodb.social/users/runningOtter/"
 	},
-	"total": 512,
+	"total": 513,
 	"categories": [
 		{
 			"category": "movie",
@@ -2898,6 +2898,13 @@
 		{
 			"category": "tv",
 			"items": [
+				{
+					"title": "Adolescence",
+					"cover": "https://neodb.social/m/item/doubanmovie/2025/03/24/6945d7a5-97c4-4432-bd8c-97313d35cede.jpg",
+					"url": "https://neodb.social/tv/season/2yzMeIeX1ZfY5MYc08Mwmq",
+					"rating": 10,
+					"markedAt": "2026-11-22T15:10:05.407Z"
+				},
 				{
 					"title": "Shōgun",
 					"cover": "https://neodb.social/m/item/tv/2024/04/20/7448d3b5-249e-40c0-b76d-daed7a64157f.webp",
